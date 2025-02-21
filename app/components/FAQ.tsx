@@ -3,6 +3,14 @@ import { Manrope, Roboto_Serif } from "next/font/google";
 import Image from "next/image";
 import React, { useState } from "react";
 
+interface FaqItem {
+  item: {
+    question: string;
+    answer: string;
+  };
+  onToggle: () => void;
+  isOpen: boolean;
+}
 const manrope = Manrope({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -11,7 +19,7 @@ const roboto = Roboto_Serif({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
-const FaqItem = ({ item, onToggle, isOpen }: any) => {
+const FaqItem = ({ item, onToggle, isOpen }: FaqItem) => {
   return (
     <div className="relative z-20 w-[90vw] lg:w-[667px] mb-5 pb-3 cursor-pointer before:absolute before:bottom-0 before:left-0 before:w-full before:h-[2px] before:bg-gradient-to-r before:from-[#26183E00] before:via-[#A26DFF] before:to-[#26183E00]">
       <div
@@ -53,8 +61,8 @@ const FaqItem = ({ item, onToggle, isOpen }: any) => {
 };
 
 const FAQ = () => {
-  const [isOpenIndex, setIsOpenIndex] = useState(null);
-  const onToggle = (index: any) => {
+  const [isOpenIndex, setIsOpenIndex] = useState<number | null>(null);
+  const onToggle = (index: number | null) => {
     setIsOpenIndex(isOpenIndex === index ? null : index);
   };
   return (
