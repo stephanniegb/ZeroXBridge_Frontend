@@ -3,11 +3,10 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-// Import all images in one group
+
 import HeroImg from "@/public/new-hero.svg";
 import Mesh from "@/public/mesh.svg";
 import RightArrow from "@/public/right-arrow.svg";
-import Blur from "@/public/blur.svg";
 import Blur2 from "@/public/blur-2.svg";
 
 interface StatItem {
@@ -17,7 +16,6 @@ interface StatItem {
   suffix: string;
 }
 
-// Updated stats data with parsed numeric values and suffixes
 const STATS_DATA: StatItem[] = [
   { value: "0", label: "Total Transactions", endValue: 70, suffix: "M+" },
   { value: "0", label: "Active Users", endValue: 7, suffix: "K+" },
@@ -36,8 +34,8 @@ const Header = () => {
   useEffect(() => {
     if (!isVisible) return;
 
-    const animationDuration = 2000; // 2 seconds
-    const steps = 60; // Number of steps in the animation
+    const animationDuration = 2000; 
+    const steps = 60; 
     const interval = animationDuration / steps;
 
     const animations = STATS_DATA.map((stat, index) => {
@@ -85,7 +83,6 @@ const Header = () => {
 
   return (
     <div className="w-full bg-[#07040b] relative pb-[2em]">
-      {/* Mesh Background */}
       <Image
         src={Mesh}
         alt="Background Mesh"
