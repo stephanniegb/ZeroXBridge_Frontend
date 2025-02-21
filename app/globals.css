@@ -2,20 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+.gradient-01 {
+  position: absolute;
+  width: 350px; /* Smaller width */
+  height: 250px; /* Smaller height */
+  right: -200px;
+  top: 30%;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  background: #a26dff;
+  filter: blur(150px); /* Reduce blur */
+  transform: rotate(-114.2deg);
+  opacity: 0.9; /* Boost visibility */
 }
+.gradient-02 {
+  position: absolute;
+  width: 350px; /* Smaller width */
+  height: 250px; /* Smaller height */
+  left: -200px;
+  bottom: 0;
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #a26dff;
+  filter: blur(150px); /* Reduce blur */
+  transform: rotate(-114.2deg);
+  opacity: 0.9; /* Boost visibility */
 }
