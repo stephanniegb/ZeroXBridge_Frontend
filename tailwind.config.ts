@@ -11,6 +11,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'howitworks': "linear-gradient(90deg, #26183E 0%, #A26DFF 47.5%, #26183E 100%)",
+      },
+      backgroundImage: {
+        'check-bg' : "url('/check-bg.svg')",
+        'main-bg': "url('/background.svg')",
       },
     },
   },
