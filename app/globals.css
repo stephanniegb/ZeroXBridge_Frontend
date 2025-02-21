@@ -21,15 +21,14 @@
   position: absolute;
   width: 250px; /* Reduce size */
   height: 200px;
-  left: -100px;
-  bottom: -200px;
+  left: -50px;
+  bottom: -150px;
 
   background: #a26dff;
-  backdrop-filter: blur(100px); /* Reduce blur intensity */
-  filter: blur(130px); /* Maintain texture */
+  backdrop-filter: blur(200px); /* Reduce blur intensity */
+  filter: blur(130px);
   transform: rotate(-114.2deg);
   opacity: 1; /* Ensure full visibility */
   /* Ensures only the circular part is visible */
   pointer-events: none;
 }
-
