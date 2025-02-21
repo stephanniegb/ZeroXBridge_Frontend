@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 // Import all images in one group
-import HeroImg from "@/public/hero.svg";
+import HeroImg from "@/public/new-hero.svg";
 import Mesh from "@/public/mesh.svg";
 import RightArrow from "@/public/right-arrow.svg";
 import Blur from "@/public/blur.svg";
@@ -42,14 +42,14 @@ const Header = () => {
 
     const animations = STATS_DATA.map((stat, index) => {
       let currentStep = 0;
-      
+
       return setInterval(() => {
         if (currentStep === steps) {
           clearInterval(animations[index]);
           return;
         }
 
-        setCounts(prevCounts => {
+        setCounts((prevCounts) => {
           const newCounts = [...prevCounts];
           newCounts[index] = Math.min(
             Math.ceil((stat.endValue * currentStep) / steps),
@@ -62,7 +62,7 @@ const Header = () => {
       }, interval);
     });
 
-    return () => animations.forEach(interval => clearInterval(interval));
+    return () => animations.forEach((interval) => clearInterval(interval));
   }, [isVisible]);
 
   const renderStatItem = (stat: StatItem, index: number) => (
@@ -75,7 +75,8 @@ const Header = () => {
       />
       <div className="flex flex-col space-y-2">
         <div className="text-2xl font-[500] text-gray-400">
-          {counts[index]}{stat.suffix}
+          {counts[index]}
+          {stat.suffix}
         </div>
         <div className="text-sm text-gray-400">{stat.label}</div>
       </div>
@@ -83,7 +84,7 @@ const Header = () => {
   );
 
   return (
-    <div className="w-full bg-black relative pb-[2em]">
+    <div className="w-full bg-[#07040b] relative pb-[2em]">
       {/* Mesh Background */}
       <Image
         src={Mesh}
@@ -91,17 +92,17 @@ const Header = () => {
         className="absolute inset-0 w-full h-[47.63em] object-cover opacity-60"
         priority={true}
       />
-      
+
       <div className="relative max-w-7xl 2xl:w-full overflow-hidden mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         <div className="flex flex-col lg:flex-row justify-between gap-12">
-          {/* Left Content */}
           <div className="flex-1 space-y-8 pl-[1em]">
-            <h1 className="lg:text-4xl xl:text-5xl text-2xl text-wrap w-[449px] lg:w-[679px] font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="lg:text-4xl xl:text-5xl text-2xl text-wrap w-[449px] lg:w-[679px] font-bold bg-gradient-to-r from-[#3f2b6f] via-[#9B6DFF] to-[#3f2b6f] bg-clip-text text-transparent">
               Secure Cross-Chain Liquidity with Zero-Knowledge Proofs
             </h1>
             <div>
               <p className="text-gray-400 text-lg">
-                Unlock liquidity on Starknet using Ethereum collateral—no asset transfers,
+                Unlock liquidity on Starknet using Ethereum collateral—no asset
+                transfers,
               </p>
               <p className="text-gray-400 text-lg">
                 no wrapping, no centralized bridges.
@@ -111,21 +112,13 @@ const Header = () => {
               Launch App
             </button>
           </div>
-
-          {/* Right Content - Hero Image */}
           <div className="absolute right-0 top-0 w-[50%] h-full">
             <div className="flex-1 flex justify-center items-center relative">
-              <Image 
-                src={HeroImg} 
-                alt="Hero Image" 
-                className="z-10" 
-                priority={true}
-              />
               <Image
-                src={Blur}
+                src={HeroImg}
                 alt="Hero Image"
-                className="absolute right-[3em] z-20 top-0 w-[100%]"
-                priority={false}
+                className="z-10"
+                priority={true}
               />
             </div>
           </div>
@@ -138,7 +131,7 @@ const Header = () => {
         <Image
           src={Blur2}
           alt="Hero Image"
-          className="absolute right-0 bottom-[-6em] z-10 w-[80%]"
+          className="absolute right-0 bottom-[-3em] z-10 w-[80%]"
           priority={false}
         />
       </div>
