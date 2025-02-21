@@ -66,10 +66,10 @@ const FAQ = () => {
     setIsOpenIndex(isOpenIndex === index ? null : index);
   };
   return (
-    <div className="bg-black lg:py-20 py-10  lg:px-0  lg:overflow-hidden flex justify-center items-center ">
-      <div className=" w-[95vw] lg:max-w-[1200px] lg:w-[1200px] relative px-5 flex overflow-hidden   flex-col justify-center items-center ">
+    <div className="bg-black lg:py-20  py-10  lg:px-0  lg:overflow-hidden flex justify-center items-center ">
+      <div className=" w-[95vw] lg:max-w-[1200px] py-0 lg:py-10  lg:w-[1200px] relative px-5 flex overflow-hidden   flex-col justify-center items-center ">
         <p
-          className={`lg:w-[700px] text-center  font-bold text-3xl w-[95vw]   lg:text-5xl bg-gradient-to-r  from-[#26183E] via-[#A26DFF] to-[#26183E] text-transparent bg-clip-text ${manrope.className}`}
+          className={`lg:min-w-[700px] lg:w-[700px] text-center  font-bold text-3xl w-[95vw]   lg:text-5xl bg-gradient-to-r  from-[#26183E] via-[#A26DFF] to-[#26183E] text-transparent bg-clip-text ${manrope.className}`}
         >
           You have a Question You’re not clear about?
         </p>
@@ -96,8 +96,9 @@ const FAQ = () => {
           })}
     
           <div className="gradient-01 z-0 rounded-full  "></div>
-
+        
       </div>
+      <div className="gradient-02 z-0 rounded-full  "></div>
     </div>
   );
 };
