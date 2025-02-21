@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #a26dff;
+  --white: #f0f0f0;
+  --white-2: #d4d4d4;
+}
 .gradient-01 {
   position: absolute;
   width: 250px; /* Reduce size */
