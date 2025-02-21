@@ -4,25 +4,17 @@
 
 .gradient-01 {
   position: absolute;
-  width: 350px; /* Smaller width */
-  height: 250px; /* Smaller height */
-  right: -200px;
-  top: 30%;
+  width: 250px; /* Reduce size */
+  height: 200px;
+  right: -70px;
+  top: 40%;
 
   background: #a26dff;
-  filter: blur(150px); /* Reduce blur */
+  backdrop-filter: blur(100px); /* Reduce blur intensity */
+  filter: blur(130px); /* Maintain texture */
   transform: rotate(-114.2deg);
-  opacity: 0.9; /* Boost visibility */
+  opacity: 1; /* Ensure full visibility */
+  /* Ensures only the circular part is visible */
+  pointer-events: none;
 }
-.gradient-02 {
-  position: absolute;
-  width: 350px; /* Smaller width */
-  height: 250px; /* Smaller height */
-  left: -200px;
-  bottom: 0;
 
-  background: #a26dff;
-  filter: blur(150px); /* Reduce blur */
-  transform: rotate(-114.2deg);
-  opacity: 0.9; /* Boost visibility */
-}

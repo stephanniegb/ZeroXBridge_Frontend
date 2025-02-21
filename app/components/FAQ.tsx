@@ -21,7 +21,7 @@ const roboto = Roboto_Serif({
 });
 const FaqItem = ({ item, onToggle, isOpen }: FaqItem) => {
   return (
-    <div className="relative z-20 w-[90vw] lg:w-[667px] mb-5 pb-3 cursor-pointer before:absolute before:bottom-0 before:left-0 before:w-full before:h-[2px] before:bg-gradient-to-r before:from-[#26183E00] before:via-[#A26DFF] before:to-[#26183E00]">
+    <div className="relative z-20 lg:max-w-[667px]  mb-5 pb-3 cursor-pointer before:absolute before:bottom-0 before:left-0 before:w-full before:h-[2px] before:bg-gradient-to-r before:from-[#26183E00] before:via-[#A26DFF] before:to-[#26183E00]">
       <div
         className="flex justify-between items-center gap-5"
         onClick={onToggle}
@@ -51,7 +51,7 @@ const FaqItem = ({ item, onToggle, isOpen }: FaqItem) => {
         }`}
       >
         <p
-          className={`lg:text-[16px] text-[13px]  font-400  text-white/85 max-w-[609px] ${roboto.className}`}
+          className={`lg:text-[16px] text-[13px] px-6  font-400  text-white/85 max-w-[609px] ${roboto.className}`}
         >
           {item.answer}
         </p>
@@ -66,15 +66,15 @@ const FAQ = () => {
     setIsOpenIndex(isOpenIndex === index ? null : index);
   };
   return (
-    <div className="bg-black lg:py-20 py-10 px-10 relative overflow-hidden flex justify-center items-center ">
-      <div className=" max-w-[1200px] px-10 flex flex-col justify-center items-center ">
+    <div className="bg-black lg:py-20 py-10  lg:px-0  lg:overflow-hidden flex justify-center items-center ">
+      <div className=" w-[95vw] lg:max-w-[1200px] lg:w-[1200px] relative px-5 flex overflow-hidden   flex-col justify-center items-center ">
         <p
-          className={`lg:w-[700px] text-center font-bold text-3xl w-[95vw] lg:text-5xl bg-gradient-to-r from-[#26183E] via-[#A26DFF] to-[#26183E] text-transparent bg-clip-text ${manrope.className}`}
+          className={`lg:w-[700px] text-center  font-bold text-3xl w-[95vw]   lg:text-5xl bg-gradient-to-r  from-[#26183E] via-[#A26DFF] to-[#26183E] text-transparent bg-clip-text ${manrope.className}`}
         >
           You have a Question You’re not clear about?
         </p>
         <p
-          className={`lg:text-xl text-sm w-[95vw] lg:max-w-none text-center   text-[#D4D4D4] mt-2 mb-32 ${roboto.className} `}
+          className={`lg:text-[20px] text-sm  lg:w-[691px] text-center    text-[#D4D4D4] mt-6 mb-24 ${roboto.className} `}
         >
           ZeroXBridge is here to answer all your questions and keep you updated.
         </p>
@@ -94,9 +94,10 @@ const FAQ = () => {
               />
             );
           })}
-      </div>
+    
+          <div className="gradient-01 z-0 rounded-full  "></div>
 
-      <div className="gradient-01 z-0 " />
+      </div>
     </div>
   );
 };
