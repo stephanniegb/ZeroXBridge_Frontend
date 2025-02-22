@@ -44,7 +44,7 @@ const AboutUs = () => {
             </div>
           </div>
 
-          <div className="relative bg-grid-pattern bg-cover bg-center rounded-2xl px-10 py-5 shadow-custom-purple border border-transparent hover:border-gradient-purple transition-all duration-300 flex flex-col justify-between h-[300px] w-[520px]">
+          <div className="relative bg-grid-pattern bg-cover bg-center rounded-2xl pb-5 px-10 shadow-custom-purple border border-transparent flex flex-col justify-between h-[300px] w-[520px]">
             <div className="flex justify-end mb-0 top-5 right-4">
               <Image
                 src="/images/centralized-icon.png"
@@ -54,10 +54,12 @@ const AboutUs = () => {
               />
             </div>
 
-            <h3 className={`${manrope.className} text-white-style text-sm font-semibold mb-3`}>No Centralized Intermediaries</h3>
-            <p className={`${robotoSerif.className} text-white-style font-serif`}>
-              Centralized bridges introduce single points of failure and custodial risks. ZeroXBridge uses decentralized, trustless zk-STARK proofs to ensure security and transparency.
-            </p>
+            <div className='pb-5'>
+              <h3 className={`${manrope.className} text-white-style text-sm font-semibold mb-3`}>No Centralized Intermediaries</h3>
+              <p className={`${robotoSerif.className} text-white-style`}>
+                Centralized bridges introduce single points of failure and custodial risks. ZeroXBridge uses decentralized, trustless zk-STARK proofs to ensure security and transparency.
+              </p>
+            </div>
           </div>
         </div>
 
