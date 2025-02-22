@@ -10,12 +10,12 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
-    const gradientBorder = "bg-gradient-to-b from-[#A26DFF] to-[#291A43] p-[0.7px] rounded-full";
+    const gradientBorder = "bg-gradient-to-b from-[#A26DFF] to-[#A26DFF] p-[0.7px] rounded-full";
 
     return (
-        <header className={`${isDarkMode ? "bg-[#09050E]" : "bg-white"} border-b ${isDarkMode ? "border-gray-800" : "border-gray-300"} flex h-24`}>
+        <header className={`${isDarkMode ? "bg-[#09050E]" : "bg-white"} border-b-2 ${isDarkMode ? "border-[#1F1333]" : "border-gray-300"} flex h-24`}>
             {/* Logo section with border */}
-            <div className={`w-80 h-24 flex items-center justify-start pl-6 border-r ${isDarkMode ? "border-gray-800" : "border-gray-300"}`}>
+            <div className={`w-80 h-24 flex items-center justify-start pl-6 border-r-2 ${isDarkMode ? "border-[#1F1333]" : "border-gray-300"}`}>
                 <Image
                     src={Logo}
                     alt="ZeroxBridge Logo"
