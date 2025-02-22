@@ -12,7 +12,7 @@ export default function TradingChartComponent(){
                     <span className="text-base text-[#808080]">&#x2228;</span>
                 </h1>
 
-                <div className="flex justify-between px-7 py-3 mt-4 bg-[#3B2A65]">
+                <div className="flex justify-between px-11 py-3 mt-4 bg-[#3B2A65]">
                     <p className="flex items-center gap-2">
                         <span>721,882</span>
                         <span className="text-[#EE2E6B]">-4</span>
@@ -35,7 +35,7 @@ export default function TradingChartComponent(){
             </div>
 
             <div className="flex flex-col border-l-[0.1px] border-[#8280FF] text-white">
-                <div className="flex justify-between items-center text-xl">
+                <div className="flex justify-between items-center text-xl px-5">
                     <h2 className="flex gap-2 justify-start items-center">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M12 0V12H0L12 0Z" fill="url(#paint0_linear_127_2178)"/>
@@ -52,21 +52,6 @@ export default function TradingChartComponent(){
                 </div>
 
                 <div className="flex flex-col text-xl mt-4">
-                    {/* <div className="flex justify-between gap-10">
-                        <div className="flex gap-2 items-center">
-                            <BTCIcon />
-                            BTC
-                        </div>
-                        <p className="flex justify-start">
-                            <span className="flex gap-2 items-center">
-                                ¥ 721,882
-                            </span>
-                            <span className="flex gap-2 items-center">
-                                -4.66%
-                                <DownArrow />
-                            </span>
-                        </p>
-                    </div> */}
 
                     {
                         coinData.map((coinObject, index) => {
@@ -75,7 +60,7 @@ export default function TradingChartComponent(){
                                 <div 
                                     key={index} 
                                     className={`flex justify-between 
-                                        gap-10 border-b-[0.1px] border-[#8280FF] py-3
+                                        gap-20 border-b-[0.4px] border-[#8280FF] py-3 px-5
                                         ${coinObject.name === 'BTC' && 'bg-[#3B2A65]'}
                                         `}
                                 >
