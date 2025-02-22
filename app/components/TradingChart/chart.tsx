@@ -32,7 +32,7 @@ export default function Chart() {
         const chart = createChart(chartContainerRef.current, {
             layout: {
                 background: { type: ColorType.Solid, color: '#21192F' },
-                textColor: '#FFFFFF'
+                textColor: '#808080'
             },
             width: chartContainerRef.current.clientWidth,
             height: 500,

@@ -120,3 +120,19 @@ export const UpArrow = () => {
         </svg>
     )
 }
+
+export const NotificationIcon = () => {
+    return (
+        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clipPath="url(#clip0_127_1727)">
+                <circle cx="9.6582" cy="9.09082" r="9" fill="white" stroke="#6226EF" strokeWidth="0.617647"/>
+                <path fillRule="evenodd" clipRule="evenodd" d="M9.6582 13.8408C10.2082 13.8408 10.6582 13.3908 10.6582 12.8408H8.6582C8.6582 13.3908 9.1032 13.8408 9.6582 13.8408ZM12.6582 10.8408V8.34082C12.6582 6.80582 11.8382 5.52082 10.4082 5.18082V4.84082C10.4082 4.42582 10.0732 4.09082 9.6582 4.09082C9.2432 4.09082 8.9082 4.42582 8.9082 4.84082V5.18082C7.4732 5.52082 6.6582 6.80082 6.6582 8.34082V10.8408L5.6582 11.8408V12.3408H13.6582V11.8408L12.6582 10.8408Z" fill="#6226EF"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_127_1727">
+                <rect width="18" height="18" fill="white" transform="translate(0.658203 0.0908203)"/>
+                </clipPath>
+            </defs>
+        </svg>
+    )
+}
