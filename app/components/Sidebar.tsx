@@ -5,7 +5,7 @@ import Chart from "../../public/Chart.png";
 import Swap from "../../public/Swap.png";
 import Claim from "../../public/Claim.png";
 import Coins from "../../public/Coins.png";
-import { cn } from "@/utils/cn"; // Utility function for conditional classes
+import { cn } from "@/utils/cn";
 
 interface SidebarProps {
     isDarkMode: boolean;
@@ -34,8 +34,6 @@ const Sidebar = ({ isDarkMode }: SidebarProps) => {
                     >
                         <Image src={tab.icon} alt={tab.name} height={24} width={24} />
                         <p className="text-base font-light">{tab.name}</p>
-
-                        {/* White accent design at the bottom right */}
                         {activeTab === tab.name && (
                             <span className="absolute right-0 top-0 h-full w-2 bg-[#8f8d94] rounded-r-xl"></span>
                         )}
