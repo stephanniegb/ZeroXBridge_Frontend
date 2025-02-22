@@ -1,12 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from "next/image";
-
-import HeroImg from "@/public/new-hero.svg";
-import Mesh from "@/public/mesh.svg";
-import RightArrow from "@/public/right-arrow.svg";
-import Blur2 from "@/public/blur-2.svg";
+import Image from 'next/image';
+import RightArrow from '@/public/right-arrow.svg';
 
 interface StatItem {
   value: string;
@@ -15,10 +11,10 @@ interface StatItem {
 }
 
 const STATS_DATA: StatItem[] = [
-  { value: "70M+", label: "Total Transactions", endValue: 70 },
-  { value: "7K+", label: "Active Users", endValue: 7 },
-  { value: "20M+", label: "Total earned", endValue: 20 },
-  { value: "10M+", label: "Total Investments", endValue: 10 },
+  { value: '70M+', label: 'Total Transactions', endValue: 70 },
+  { value: '7K+', label: 'Active Users', endValue: 7 },
+  { value: '20M+', label: 'Total earned', endValue: 20 },
+  { value: '10M+', label: 'Investments', endValue: 10 },
 ];
 
 const Header = () => {
@@ -38,7 +34,6 @@ const Header = () => {
 
     const animations = STATS_DATA.map((stat, index) => {
       let currentStep = 0;
-
       return setInterval(() => {
         if (currentStep === steps) {
           clearInterval(animations[index]);
@@ -79,54 +74,29 @@ const Header = () => {
   );
 
   return (
-    <div className="w-full bg-black relative pb-[2em]">
-      {/* Mesh Background */}
-      <Image
-        src={Mesh}
-        alt="Background Mesh"
-        className="absolute inset-0 w-full h-[47.63em] object-cover opacity-50"
-        priority={true}
-      />
-      <div className="relative max-w-7xl 2xl:w-full overflow-hidden mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="flex flex-col lg:flex-row justify-between gap-12">
-          {/* Left Content */}
-          <div className="flex-1 space-y-8 pl-[1em]">
-            <h1 className="lg:text-[48px] font-manrope xl:text-5xl text-2xl text-wrap w-[449px] lg:w-[679px] font-bold bg-gradient-to-r from-[#5D3EA8] via-[#9B6DFF] to-[#5D3EA8] bg-clip-text text-transparent pb-[7px]">
-              Secure Cross-Chain Liquidity with Zero-Knowledge Proofs
-            </h1>
-            <div className='font-roboto-serif text-[17px] font-[400] relative'>
-              <p className="text-gray-400 z-20 ">
-                Unlock liquidity on Starknet using Ethereum collateral—no asset transfers,
-              </p>
-              <p className="text-gray-400 ">
-                no wrapping, no centralized bridges.
-              </p>
-            </div>
-            <button className="bg-[#4C327A] text-white lg:w-[12.5em] text-[16px] font-[700] py-3 px-8 rounded-full transition-all hover:bg-opacity-90 shadow-[0_4px_8px_rgba(194,151,255,0.25),0_-4px_4px_rgba(162,109,255,0.5)]">
-              Launch App
-            </button>
+    <div className="flex flex-col gap-[10em] bg-[url(/hero-bg.svg)] bg-cover bg-center h-[47.6875em] justify-center">
+      <div className="flex relative items-center">
+        <div className="flex flex-col pl-[1em] justify-center h-full lg:pl-[7em] mt-[3em] gap-[1em]">
+          <h1 className="lg:text-[48px] font-manrope xl:text-5xl text-2xl text-wrap w-[449px] lg:w-[679px] font-bold bg-gradient-to-r from-[#262429] via-[#9B6DFF] to-[#262429]  bg-clip-text text-transparent pb-[7px]">
+            Secure Cross-Chain Liquidity with Zero-Knowledge Proofs
+          </h1>
+          <div className="font-roboto-serif text-[17px] font-[400] relative mt-4">
+            <p className="text-gray-400 z-20">
+              Unlock liquidity on Starknet using Ethereum collateral—no asset transfers,
+            </p>
+            <p className="text-gray-400">
+              no wrapping, no centralized bridges.
+            </p>
           </div>
-          {/* Right Content - Hero Image */}
-          <div className="absolute  right-0 top-0 w-[50%] h-full">
-            <div className="flex-1 flex justify-center items-center relative">
-              <Image
-                src={HeroImg}
-                alt="Hero Image"
-                className="z-10"
-                priority={true}
-              />
-            </div>
-          </div>
+          <button className="mt-6 bg-[#4C327A] text-white lg:w-[12.5em] text-[16px] font-[700] py-3 px-8 rounded-full transition-all hover:bg-opacity-90 shadow-[0_4px_8px_rgba(194,151,255,0.25),0_-4px_4px_rgba(162,109,255,0.5)]">
+            Launch App
+          </button>
         </div>
-        <div className="flex flex-wrap justify-between items-center gap-8 pt-12 w-[80%] ml-[8em] mt-[3.5em]">
+      </div>
+      <div>
+        <div className="flex flex-wrap justify-between items-center pt-12 w-[70%] ml-[12em] ">
           {STATS_DATA.map(renderStatItem)}
         </div>
-        <Image
-          src={Blur2}
-          alt="Hero Image"
-          className="absolute right-0 bottom-[-6em] z-10 w-[80%]"
-          priority={false}
-        />
       </div>
     </div>
   );
