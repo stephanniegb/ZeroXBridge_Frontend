@@ -2,7 +2,7 @@
 
 import { CandlestickData, CandlestickSeries, ColorType, createChart, HistogramData, HistogramSeries, IChartApi, Time } from "lightweight-charts"
 import React, { useEffect, useRef, useState } from "react"
-import { Range } from "react-range";
+import { DetailsIcon } from "./Coins"
 
 type ChartProps = {
     selectedInterval: {
@@ -63,7 +63,8 @@ export default function Chart({ selectedInterval }: ChartProps) {
                 timeVisible: true,
                 barSpacing: 16,
                 borderVisible: false,
-                rightOffset: 0,
+                rightOffset: -4,
+                fixLeftEdge: true,
                 lockVisibleTimeRangeOnResize: true
             },
             grid: {
@@ -114,7 +115,7 @@ export default function Chart({ selectedInterval }: ChartProps) {
         }
 
         chart?.timeScale()?.setVisibleLogicalRange({
-            from: candleStickData.length - (12 * (8 * secondsToHours(selectedInterval.secondsValue)) + 3),
+            from: candleStickData.length - (12 * (9 * secondsToHours(selectedInterval.secondsValue)) + 3),
             to: candleStickData.length
         })
         
@@ -150,16 +151,19 @@ export default function Chart({ selectedInterval }: ChartProps) {
             </div>
 
             {/* 'Scroll bar' under the chart */}
-            <div className="bg-white px-6 flex items-center h-6 rounded mt-2 w-[820px]">
-                <input 
-                    type="range" 
-                    className="custom-range"
-                    min={-dataLength}
-                    max={0}
-                    step={1}
-                    value={scrollPos}
-                    onChange={handleScrollChange}
-                />
+            <div className="flex justify-start gap-6 items-center">
+                <div className="bg-white px-6 flex items-center h-6 rounded -mt-1 w-[820px]">
+                    <input 
+                        type="range" 
+                        className="custom-range"
+                        min={-dataLength}
+                        max={0}
+                        step={1}
+                        value={scrollPos}
+                        onChange={handleScrollChange}
+                    />
+                </div>
+                <DetailsIcon />
             </div>
         </div>
     )

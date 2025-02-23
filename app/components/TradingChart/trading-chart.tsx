@@ -31,7 +31,7 @@ export default function TradingChartComponent(){
                     <span className="text-base text-[#808080]">&#x2228;</span>
                 </h1>
 
-                <div className="py-3 mt-4 bg-[#3B2A65] w-full">
+                <div className="py-3 mt-6 bg-[#3B2A65] w-full">
                     <div className="flex justify-between w-full pl-10 pr-16">
                         <p className="flex items-center gap-2">
                             <span>721,882</span>
@@ -92,7 +92,7 @@ export default function TradingChartComponent(){
                     <FilterIcon />
                 </div>
 
-                <div className="flex flex-col text-xl mt-4">
+                <div className="flex flex-col text-xl mt-6 w-[400px]">
 
                     {
                         coinData.map((coinObject, index) => {
