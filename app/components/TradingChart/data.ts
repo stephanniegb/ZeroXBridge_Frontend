@@ -61,6 +61,12 @@ export const coinData: CoinData[] = [
         performance: -4.66
     },
     {
+        name: 'XEM',
+        icon: XEMIcon,
+        price: '721,882',
+        performance: -4.66
+    },
+    {
         name: 'USK',
         icon: USKIcon,
         price: '721,882',

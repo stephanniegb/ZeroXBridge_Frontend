@@ -1,17 +1,26 @@
 'use client'
 
-import { CandlestickData, CandlestickSeries, ColorType, createChart, HistogramData, HistogramSeries, Time } from "lightweight-charts"
-import { useEffect, useRef } from "react"
+import { CandlestickData, CandlestickSeries, ColorType, createChart, HistogramData, HistogramSeries, IChartApi, Time } from "lightweight-charts"
+import React, { useEffect, useRef, useState } from "react"
+import { Range } from "react-range";
+
+type ChartProps = {
+    selectedInterval: {
+        name: string, secondsValue: number
+    }
+}
 
 const toTime = (timestamp: number): Time => timestamp as Time
 
 const generateMockData = () => {
-    const startTime = Date.now() / 1000 - 8 * 3600;
+    const intervalInSeconds = 300; // 5 minutes
+    const numberOfPoints = 30 * 24 * 12;
+    const startTime = Date.now() / 1000 - numberOfPoints * intervalInSeconds;
     const data: CandlestickData[] = [];
     let previousClose = 720000;
 
-    for (let i = 0; i < 96; i++) {
-        const time = toTime(Math.floor(startTime + i * 300));
+    for (let i = 0; i < numberOfPoints; i++) {
+        const time = toTime(Math.floor(startTime + i * intervalInSeconds));
         const open = previousClose;
         const close = open + (Math.random() - 0.5) * 2000;
         const high = Math.max(open, close) + Math.random() * 1000;
@@ -23,10 +32,24 @@ const generateMockData = () => {
     return data;
 };
 
-export default function Chart() {
+export default function Chart({ selectedInterval }: ChartProps) {
     const chartContainerRef = useRef<HTMLDivElement>(null)
+
+    const chartRef = useRef<IChartApi | null>(null)
+    const [scrollPos, setScrollPos] = useState(0)
+    const [dataLength, setDataLength] = useState(0)
     
     useEffect(() => {
+        
+        const candleStickData = generateMockData()
+        setDataLength(candleStickData.length)
+
+        const volumeData: HistogramData[] = candleStickData.map(candle => ({
+            time: candle.time,
+            value: Math.floor(Math.random() * 100) + 30,
+            color: '#EFF2FC'
+        }))
+
         if (!chartContainerRef.current) return
 
         const chart = createChart(chartContainerRef.current, {
@@ -35,11 +58,13 @@ export default function Chart() {
                 textColor: '#808080'
             },
             width: chartContainerRef.current.clientWidth,
-            height: 500,
+            height: 440,
             timeScale: {
                 timeVisible: true,
-                barSpacing: 10,
-                borderVisible: false
+                barSpacing: 16,
+                borderVisible: false,
+                rightOffset: 0,
+                lockVisibleTimeRangeOnResize: true
             },
             grid: {
                 vertLines: { visible: false },
@@ -47,12 +72,7 @@ export default function Chart() {
             }
         })
 
-        const candleStickData = generateMockData()
-        const volumeData: HistogramData[] = candleStickData.map(candle => ({
-            time: candle.time,
-            value: Math.floor(Math.random() * 100) + 50,
-            color: '#EFF2FC'
-        }))
+        chartRef.current = chart
 
         const candleSeries = chart.addSeries(CandlestickSeries, {
             upColor: '#CCB7FF',
@@ -81,229 +101,66 @@ export default function Chart() {
         // Configure the volume scale
         chart.priceScale('volume').applyOptions({
             scaleMargins: {
-                top: 0.8,  // Position volume at the bottom
+                top: 0.9,  // Position volume at the bottom
                 bottom: 0  // Align with bottom of chart
             },
             borderVisible: false,
             visible: false  // Hide the volume scale
         })
+
+        const secondsToHours = (secondsValue: number) => {
+            const hoursValue = secondsValue / 3600
+            return hoursValue
+        }
+
+        chart?.timeScale()?.setVisibleLogicalRange({
+            from: candleStickData.length - (12 * (8 * secondsToHours(selectedInterval.secondsValue)) + 3),
+            to: candleStickData.length
+        })
         
         candleSeries.setData(candleStickData)
         volumeSeries.setData(volumeData)
 
-        return () => {
-            chart.remove()
+        const handleRangeChange = () => {
+            const currentPos = chart.timeScale().scrollPosition()
+            setScrollPos(currentPos)
         }
-    }, [])
+        chart.timeScale().subscribeVisibleLogicalRangeChange(handleRangeChange)
+
+        return () => {
+            chart.timeScale().unsubscribeVisibleLogicalRangeChange(handleRangeChange);
+            chart.remove();
+        }
+    }, [selectedInterval])
+
+    const handleScrollChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newPos = Number(e.target.value)
+        setScrollPos(newPos)
+
+        chartRef.current?.timeScale().scrollToPosition(newPos, false)
+    }
 
     return (
-        <div 
-            ref={chartContainerRef}
-            style={{ 
-                width: '800px', 
-                height: '600px',
-                minWidth: '800px'
-            }}
-        />
+        <div className="flex flex-col w-[900px]">
+            {/* Chart Container */}
+            <div 
+                ref={chartContainerRef}
+                className="w-[900px] h-fit py-4"
+            >
+            </div>
+
+            {/* 'Scroll bar' under the chart */}
+            <div className="bg-white px-6 flex items-center h-6 rounded mt-2 w-[820px]">
+                <input 
+                    type="range" 
+                    className="custom-range"
+                    min={-dataLength}
+                    max={0}
+                    step={1}
+                    value={scrollPos}
+                    onChange={handleScrollChange}
+                />
+            </div>
+        </div>
     )
 }
-
-// import { CandlestickData, CandlestickSeries, ColorType, createChart, HistogramData, HistogramSeries, Time, WhitespaceData } from "lightweight-charts"
-// import { useEffect, useRef } from "react"
-
-// // Helper to convert timestamp to Lightweight Charts Time type
-// const toTime = (timestamp: number): Time => timestamp as Time
-
-// const generateMockData = () => {
-//     const startTime = Date.now() / 1000 - 8 * 3600;
-//     const data: CandlestickData[] = [];
-//     let previousClose = 720000;
-
-//     for (let i = 0; i < 96; i++) {
-//         const time = toTime(Math.floor(startTime + i * 300));
-//         const open = previousClose;
-//         const close = open + (Math.random() - 0.5) * 2000;
-//         const high = Math.max(open, close) + Math.random() * 1000;
-//         const low = Math.min(open, close) - Math.random() * 1000;
-        
-//         data.push({ time, open, high, low, close });
-//         previousClose = close;
-//     }
-//     return data;
-// };
-
-// export default function Chart() {
-//     const chartContainerRef = useRef<HTMLDivElement>(null)
-    
-//     useEffect(() => {
-//         if (!chartContainerRef.current) return
-
-//         // 1. Initialize chart with explicit dimensions
-//         const chart = createChart(chartContainerRef.current, {
-//             layout: {
-//                 background: { type: ColorType.Solid, color: '#21192F' },
-//                 textColor: '#FFFFFF'
-//             },
-//             width: chartContainerRef.current.clientWidth,
-//             height: 600,
-//             timeScale: {
-//                 timeVisible: true,
-//                 barSpacing: 10, // Ensure dense candles
-//                 borderVisible: false
-//             },
-//             grid: {
-//                 vertLines: { visible: false },
-//             }
-//         })
-
-//         // 2. Generate typed data
-//         const candleStickData = generateMockData()
-
-//         const volumeData: HistogramData[] = candleStickData.map(candle => ({
-//             time: candle.time,
-//             value: Math.floor(Math.random() * 100) + 50,
-//             color: '#EFF2FC'
-//         }))
-//         console.log(volumeData[0].value)
-
-//         // 3. Add series to chart
-//         const candleSeries = chart.addSeries(CandlestickSeries, {
-//             upColor: '#CCB7FF',
-//             downColor: '#8280FF',
-//             borderVisible: false,
-//             wickUpColor: '#CCB7FF',
-//             wickDownColor: '#8280FF'
-//         })
-        
-//         const volumeSeries = chart.addSeries(HistogramSeries, {
-//             color: '#EFF2FC',
-//             priceFormat: { type: 'volume' },
-//             priceScaleId: '',
-//             priceLineVisible: false
-//         })
-
-        
-//         // Configure the main price scale (candlesticks)
-//         chart.priceScale('right').applyOptions({
-//             scaleMargins: {
-//                 top: 0.1,  // Leave space at the top
-//                 bottom: 0.2  // Leave room for volume
-//             },
-//             borderVisible: false
-//         })
-        
-//         // Configure the volume scale
-//         chart.priceScale('volume').applyOptions({
-//             scaleMargins: {
-//                 top: 0.8,  // Position volume at the bottom
-//                 bottom: 0  // Align with bottom of chart
-//             },
-//             borderVisible: false,
-//             visible: false  // Hide the volume scale
-//         })
-        
-//         candleSeries.setData(candleStickData)
-//         volumeSeries.setData(volumeData)
-
-
-//         // 4. Essential cleanup
-//         return () => {
-//             chart.remove()
-//         }
-//     }, [])
-
-//     return (
-//         <div 
-//             ref={chartContainerRef}
-//             style={{ 
-//                 width: '800px', 
-//                 height: '600px',
-//                 minWidth: '800px' // Ensures minimum visible area
-//             }}
-//         />
-//     )
-// }
-
-// import { CandlestickData, CandlestickSeries, ColorType, createChart, HistogramSeries, Time } from "lightweight-charts"
-// import { useEffect, useRef } from "react"
-
-// const generateMockData = () => {
-//     const startTime = Date.now() / 1000 - 8 * 3600; // 8 hours ago
-//     const data = [];
-//     let previousClose = 720000; // Starting price from image
-  
-//     for (let i = 0; i < 96; i++) { // 5-minute intervals (8h * 12 = 96)
-//       const time = startTime + i * 300; // 5-minute increments
-//       const open = previousClose;
-//       const close = open + (Math.random() - 0.5) * 2000;
-//       const high = Math.max(open, close) + Math.random() * 1000;
-//       const low = Math.min(open, close) - Math.random() * 1000;
-      
-//       data.push({
-//         time: Math.floor(time),
-//         open,
-//         high,
-//         low,
-//         close,
-//       });
-  
-//       previousClose = close;
-//     }
-  
-//     return data;
-// };
-  
-
-// export default function Chart(){
-//     const chartContainerRef = useRef<any>(null)
-    
-//     useEffect(() => {
-//         const chart = createChart(chartContainerRef?.current, {
-//             layout: {
-//                 background: {
-//                     type: ColorType.Solid, color: '#21192F'
-//                 },
-//                 textColor: '#FFFFFF'
-//             },
-//             timeScale: {
-//                 timeVisible: true,
-//             },
-//             // width: 500,
-//             // height: 200
-//         })
-
-//         const candleStickData = generateMockData();
-
-//         const candleSeries = chart.addSeries(CandlestickSeries, {
-//             upColor: '#CCB7FF',
-//             downColor: '#8280FF',
-//             borderVisible: false,
-//             wickUpColor: '#CCB7FF',
-//             wickDownColor: '#8280FF'
-//         })
-
-//         candleSeries.setData(candleStickData)
-
-//         const volumeData = candleStickData.map((candle) => ({
-//             time: candle.time,
-//             value: Math.floor(Math.random() * 100) + 50,
-//             color: '#EFF2FC'
-//         }))
-
-//         const volumeSeries = chart.addSeries(HistogramSeries, {
-//             color: '#EFF2FC',
-//             priceFormat: {
-//                 type: 'volume'
-//             },
-//             priceScaleId: '',
-//             priceLineVisible: false
-//         })
-//         volumeSeries.setData(volumeData)
-//     }, [])
-
-//     return (
-//         <div ref={chartContainerRef} style={{width: '100%', height: '600px'}}>
-//         </div>
-//     )
-// }
-
