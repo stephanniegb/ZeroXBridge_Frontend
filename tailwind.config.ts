@@ -31,8 +31,8 @@ export default {
           "linear-gradient(180deg, rgba(162, 109, 255, 0.9) 0%, rgba(162, 109, 255, 0) 90%)",
         'gradient-purple': 'linear-gradient(90deg, rgba(38, 24, 62, 1) 0%, rgba(162, 109, 255, 1) 50%, rgba(38, 24, 62, 1) 100%)',
         'gradient-card': 'linear-gradient(135deg, rgba(162, 109, 255, 0.25), rgba(72, 61, 139, 0.5))',
-        'grid-pattern': "url('/grid-background.svg'), linear-gradient(21deg, #09050E 64.15%, #462B74 129.88%)",
-        'grid-pattern-2': "url('/grid-background.svg'), linear-gradient(294deg, #09050E 55.15%, #462B74 129.88%)",
+        'grid-pattern': "url('/small-grid.svg')",
+        'grid-pattern-2': "url('/large-grid.svg')",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
