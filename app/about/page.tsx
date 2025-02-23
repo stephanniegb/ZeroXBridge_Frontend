@@ -3,7 +3,7 @@ import AboutUs from '../components/about';
 
 const AboutPage = () => {
   return (
-    <main className="min-h-screen bg-black flex items-center justify-center">
+    <main className="min-h-screen bg-main-bg flex items-center justify-center">
       <AboutUs />
     </main>
   );

@@ -17,14 +17,12 @@ const robotoSerif = Roboto_Serif({
 const AboutUs = () => {
   return (
     <section className="bg-dark-bg text-white rounded-3xl p-10 m-5 shadow-lg max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold font-manrope mb-3 text-center bg-gradient-purple bg-clip-text text-transparent">
-        ZeroXBridge is here to
-      </h1>
-      <h1 className="text-4xl font-bold font-manrope mb-6 text-center bg-gradient-purple bg-clip-text text-transparent">
+      <h1 className="text-5xl font-bold font-manrope mb-3 text-center bg-gradient-to-r from-[#262429] via-[#9B6DFF] to-[#262429] bg-clip-text text-transparent">
+        ZeroXBridge is here to <br/>
         Redefine Cross-Chain liquidity
       </h1>
 
-      <p className="text-lg text-gray-300 text-center whitespace-nowrap font-roboto-serif mb-20">
+      <p className="text-xl text-gray-300 text-center whitespace-nowrap font-roboto-serif mb-20">
         With ZeroXBridge eliminating the vulnerabilities of traditional
         cross-chain solutions:
       </p>
@@ -43,11 +41,11 @@ const AboutUs = () => {
 
             <div className="flex items-start gap-3.5 flex-col absolute mt-12">
               <h3
-                className={`${manrope.className} text-[16px] text-white-style`}
+                className={`${manrope.className} text-[16px] text-gray-400`}
               >
                 No Asset Transfers
               </h3>
-              <p className={`${robotoSerif.className} text-white-style text-sm`}>
+              <p className={`${robotoSerif.className} text-gray-300 text-sm`}>
                 Traditional bridges require moving assets between chains,<br />
                 exposing them to security risks like hacks and exploits.<br />
                 ZeroXBridge eliminates this by keeping your collateral <br />securely
@@ -72,7 +70,7 @@ const AboutUs = () => {
               >
                 No Centralized Intermediaries
               </h3>
-              <p className={`${robotoSerif.className} text-white-style text-sm`}>
+              <p className={`${robotoSerif.className} text-gray-300 text-sm`}>
                 Centralized bridges introduce single points of failure and <br />
                 custodial risks. ZeroXBridge uses decentralized, trustless <br />
                 zk-STARK proofs to ensure security and transparency.
@@ -103,7 +101,7 @@ const AboutUs = () => {
             No Liquidity Fragmentation
           </h3>
           <p
-            className={`${robotoSerif.className} text-white-style font-serif text-center text-sm`}
+            className={`${robotoSerif.className} text-gray-300 font-serif text-center text-sm`}
           >
             Traditional bridges fragment liquidity across<br /> multiple chains,
             reducing efficiency.<br /> ZeroXBridge maintains liquidity cohesion by<br />
