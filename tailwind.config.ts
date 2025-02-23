@@ -43,6 +43,9 @@ export default {
       boxShadow: {
         'custom-purple': '0 0 4px 2px rgba(162, 109, 255, 0.25)',
       },
+      animation: {
+        slowSpin: "spin 3s linear infinite", 
+      },
     },
   },
   plugins: [],
