@@ -11,14 +11,14 @@ import lock2 from "../../../public/success-state/lock2.svg";
 
 
 
-type IconType = "wallet" | "swap" | "burn" | "lock"; // Add more types as needed
+type IconType = "claim" | "swap" | "burn" | "lock"; // Add more types as needed
 
 interface AnimatedIconProps {
   iconType: IconType; // Type of icon set // Time between transitions (ms)
 }
 
 const iconSets: Record<IconType, string[]> = {
-  wallet: [wallet1, wallet2],
+  claim: [wallet1, wallet2],
   burn: [burn1, burn2],
   swap: [swap1, swap2],
   lock: [lock1, lock2],
@@ -31,7 +31,7 @@ const AnimatedIcon: React.FC<AnimatedIconProps> = ({ iconType }) => {
   useEffect(() => {
     const iconInterval = setInterval(() => {
       setCurrentIconIndex(1);
-    }, 1000);
+    }, 700);
 
     return () => clearInterval(iconInterval); // Cleanup on unmount
   }, [icons]);

@@ -23,7 +23,7 @@ export const SwapSuccess: Story = {
 export const ClaimSuccess: Story = {
   args: {
     message: 'You have successfully CLAIMED your xZB tokens',
-    icon: <AnimatedIcon iconType='wallet' />,
+    icon: <AnimatedIcon iconType='claim' />,
   },
 };
 

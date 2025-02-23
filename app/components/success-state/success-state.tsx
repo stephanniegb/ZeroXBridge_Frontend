@@ -1,6 +1,7 @@
 import React from 'react';
 import { Manrope} from "next/font/google";
 import { X } from 'lucide-react';
+import Link from 'next/link';
 
 const manrope = Manrope({
   weight: ["400", "700"],
@@ -10,10 +11,9 @@ const manrope = Manrope({
 
 interface SuccessStateProps {
   isOpen: boolean;
-  onClose: () => void;
+  onClose: React.Dispatch<React.SetStateAction<boolean>>;
   message: string;
   icon: React.ReactNode;
-  onDashboardClick: () => void;
 }
 
 const SuccessState: React.FC<SuccessStateProps> = ({
@@ -21,7 +21,6 @@ const SuccessState: React.FC<SuccessStateProps> = ({
   onClose,
   message,
   icon,
-  onDashboardClick,
 }) => {
   if (!isOpen) return null;
 
@@ -31,7 +30,7 @@ const SuccessState: React.FC<SuccessStateProps> = ({
       <div className="relative bg-[#1E1E2B] rounded-2xl p-8 max-w-md w-full mx-4 flex flex-col items-center">
 
         <button 
-          onClick={onClose}
+          onClick={() => onClose(false)}
           className="absolute left-5 top-5 text-gray-400 hover:text-white"
         >
           <X size={20} />
@@ -47,12 +46,12 @@ const SuccessState: React.FC<SuccessStateProps> = ({
           {message}
         </p>
 
-        <button
-          onClick={onDashboardClick}
-          className="w-full py-3 px-6 bg-gradient-to-b text-base from-[#A26DFF] to-[#09050E] hover:bg-opacity-90 rounded-full text-[#D4D4D4] font-bold transition-all"
+        <Link
+          href={"/dashboard"}
+          className="w-full py-3 px-6 text-center bg-gradient-to-b text-base from-[#A26DFF] to-[#09050E] hover:bg-opacity-90 rounded-full text-[#D4D4D4] font-bold transition-all"
         >
           Go to Dashboard
-        </button>
+        </Link>
       </div>
     </div>
   );
