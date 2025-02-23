@@ -1,5 +1,6 @@
-"use client"
-import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
+"use client";
+import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { useState } from "react";
 
 const data = [
   { month: "JAN", thisYear: 1000, lastYear: 800 },
@@ -14,69 +15,62 @@ const data = [
   { month: "OCT", thisYear: 3600, lastYear: 3400 },
   { month: "NOV", thisYear: 3800, lastYear: 3600 },
   { month: "DEC", thisYear: 4000, lastYear: 3800 },
-]
+];
 
-const timeRanges = ["ALL", "6M", "3M", "1M", "1W"]
+const timeRanges = ["ALL", "6M", "3M", "1M", "1W"];
 
 export default function Analytictable() {
+  const [selectedRange, setSelectedRange] = useState("ALL");
+
   return (
-    <div className=" flex justify-center items-center">
-      <div className="col-span-4 bg-gradient-to-b from-[#21192F] to-[#3E246B] rounded-lg shadow-lg max-w-[1024px] overflow-hidden m-10">
-
-
-        <div className="p-6 flex flex-row items-center justify-between">
+    <div className="">
+        <div className="flex flex-row items-center justify-between">
           <div>
             <div className="text-2xl font-bold text-white">$0.00</div>
             <div className="text-sm text-red-500">-100.00% (-29.51) this week</div>
           </div>
-          <button className=" flex p-2 gap-3 text-white hover:bg-white/10 rounded-full transition-colors">
-            <h2>Filter</h2>
-            <img src="./filter.svg" />
+          <button className="flex p-2 gap-3 text-white hover:bg-white/10 rounded-full transition-colors">
+            <span>Filter</span>
+            <img src="/filter.svg" alt="Filter" />
           </button>
         </div>
+      <div className="bg-gradient-to-b from-[#21192F] to-[#3E246B] rounded-2xl shadow-lg overflow-hidden h-full">
 
         <div className="p-6 pt-0">
-
-          <div className="flex flex-col h-[400px]">
-
+          <div className="flex flex-col min-h-[300px] md:h-[400px]">
             <div className="flex items-center justify-between gap-4 mb-4">
-
               <div className="flex gap-4">
                 {["Total Users", "Total Projects", "Operating Status"].map((label) => (
-                  <button key={label} className="px-3 py-2 text-white hover:bg-white/10 rounded-md transition-colors">
+                  <button
+                    key={label}
+                    className="px-3 py-2 text-white hover:bg-white/10 rounded-md transition-colors focus:ring-2 focus:ring-purple-500"
+                  >
                     {label}
                   </button>
                 ))}
               </div>
 
-              <div>
-
-              </div>
-
               <div className="flex items-center gap-8 ml-auto">
-
                 <div className="flex items-center gap-1">
                   <div className="h-2 w-2 rounded-full bg-white" />
                   <span className="text-sm text-white">This year</span>
                 </div>
-
                 <div className="flex items-center gap-1">
                   <div className="h-2 w-2 rounded-full bg-purple-400" />
                   <span className="text-sm text-white">Last year</span>
                 </div>
-
               </div>
-
-
             </div>
-
 
             <div className="flex h-full">
               <div className="flex flex-col justify-between py-6 pr-2">
                 {timeRanges.map((range) => (
                   <button
                     key={range}
-                    className="px-3 py-1 text-sm text-white hover:bg-white/10 rounded-md transition-colors"
+                    onClick={() => setSelectedRange(range)}
+                    className={`px-3 py-1 text-sm rounded-md transition-colors ${
+                      selectedRange === range ? "bg-purple-600 text-white" : "text-white hover:bg-white/10"
+                    }`}
                   >
                     {range}
                   </button>
@@ -115,7 +109,7 @@ export default function Analytictable() {
                       content={({ active, payload }) => {
                         if (active && payload && payload.length) {
                           return (
-                            <div className="rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md">
+                            <div className="rounded-lg border border-gray-700 bg-gray-800 bg-opacity-90 p-2 shadow-md">
                               <div className="grid grid-cols-2 gap-2">
                                 <div className="flex flex-col">
                                   <span className="text-[0.70rem] uppercase text-gray-400">This Year</span>
@@ -127,9 +121,9 @@ export default function Analytictable() {
                                 </div>
                               </div>
                             </div>
-                          )
+                          );
                         }
-                        return null
+                        return null;
                       }}
                     />
                     <Area
@@ -155,10 +149,7 @@ export default function Analytictable() {
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
-  )
+  );
 }
-
