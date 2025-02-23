@@ -231,7 +231,7 @@ const Swap = () => {
             </button>
           </div>
 
-          <div className=" bg-[#1F1333] p-4 rounded-lg mb-2 relative">
+          <div className="border-[0.4px] border-[#8B8B8B] bg-[#1F1333] p-4 rounded-lg mb-2 relative">
             <div className="flex justify-between items-center">
               <p className="text-[#8B8B8B] text-[0.75rem] font-normal">To</p>
 
