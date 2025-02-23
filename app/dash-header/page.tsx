@@ -11,7 +11,7 @@ export default function Dashboard() {
 
   const handleConnect = () => {
     setIsConnected(true)
-    setBalance("1,234.56") // Replace with actual balance fetching logic
+    setBalance("1,234.56") //replace with actual balance fetching logic
   }
 
   return (

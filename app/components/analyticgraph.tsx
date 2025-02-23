@@ -2,7 +2,13 @@
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useState } from "react";
 
-const data = [
+interface DataItem {
+  month: string;
+  thisYear: number;
+  lastYear: number;
+}
+
+const data: DataItem[] = [
   { month: "JAN", thisYear: 1000, lastYear: 800 },
   { month: "FEB", thisYear: 2000, lastYear: 1600 },
   { month: "MAR", thisYear: 1800, lastYear: 1800 },
@@ -21,6 +27,18 @@ const timeRanges = ["ALL", "6M", "3M", "1M", "1W"];
 
 export default function Analytictable() {
   const [selectedRange, setSelectedRange] = useState("ALL");
+  const [filteredData, setFilteredData] = useState<DataItem[]>(data);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const handleFilterChange = (selectedMonth: string) => {
+    if (selectedMonth === "ALL") {
+      setFilteredData(data);
+    } else {
+      const filtered = data.filter(item => item.month === selectedMonth);
+      setFilteredData(filtered);
+    }
+    setIsFilterOpen(false);
+  };
 
   return (
     <div className="">
@@ -29,10 +47,34 @@ export default function Analytictable() {
             <div className="text-2xl font-bold text-white">$0.00</div>
             <div className="text-sm text-red-500">-100.00% (-29.51) this week</div>
           </div>
-          <button className="flex p-2 gap-3 text-white hover:bg-white/10 rounded-full transition-colors">
-            <span>Filter</span>
-            <img src="/filter.svg" alt="Filter" />
-          </button>
+          <div className="relative">
+            <button 
+              className="flex p-2 gap-3 text-white hover:bg-white/10 rounded-full transition-colors"
+              onClick={() => setIsFilterOpen(!isFilterOpen)}
+            >
+              <span>Filter</span>
+              <img src="/filter.svg" alt="Filter" />
+            </button>
+            {isFilterOpen && (
+              <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
+                <button
+                  className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white w-full text-left"
+                  onClick={() => handleFilterChange("ALL")}
+                >
+                  All
+                </button>
+                {data.map((item) => (
+                  <button
+                    key={item.month}
+                    className="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white w-full text-left"
+                    onClick={() => handleFilterChange(item.month)}
+                  >
+                    {item.month}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       <div className="bg-gradient-to-b from-[#21192F] to-[#3E246B] rounded-2xl shadow-lg overflow-hidden h-full">
 
@@ -78,7 +120,7 @@ export default function Analytictable() {
               </div>
               <div className="flex-1 h-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+                  <AreaChart data={filteredData} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
                     <defs>
                       <linearGradient id="thisYear" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor="#fff" stopOpacity={0.2} />
