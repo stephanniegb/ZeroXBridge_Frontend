@@ -13,6 +13,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "var(--primary)",
+        purple: "var(--purple)",
         white: "var(--white)",
         "white-2": "var(--white-2)",
         'dark-bg': 'rgba(9, 5, 14, 1)',
