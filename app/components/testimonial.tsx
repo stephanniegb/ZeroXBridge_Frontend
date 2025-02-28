@@ -75,7 +75,7 @@ export default function Testimonial() {
   }
 
   return (
-    <div className="w-[1200px] min-h-[647px] mx-auto bg-[#09050E] relative overflow-hidden rounded-3xl">
+    <div className="w-full min-h-[647px] mx-auto bg-[#09050E] relative overflow-hidden rounded-3xl">
       {/* Header */}
       <div className="text-center pt-7 space-y-2 w-[550px] mx-auto">
         <h2 className="text-5xl font-bold bg-howitworks text-transparent leading-[65px] font-manrope bg-clip-text">
@@ -167,7 +167,7 @@ export default function Testimonial() {
             return (
               <motion.div
                 key={testimonial.id}
-                className={`absolute w-[488px] h-[233px] border-[0.4px] border-[#8B8B8B] py-4 px-8 bg-grid-pattern rounded-2xl font-roboto-serif ${
+                className={`absolute w-[33%] h-[233px] border-[0.4px] border-[#8B8B8B] py-4 px-8 bg-grid-pattern rounded-2xl font-roboto-serif ${
                   offset === 0 ? "bg-[#2F1F4C]" : "bg-[#09050E] bg-opacity-60"
                 } backdrop-blur-sm`}
                 initial={false}
