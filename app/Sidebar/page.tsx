@@ -24,7 +24,7 @@ export default function Home() {
                         icon={<AnimatedIcon iconType='lock' />}
                     />
                     {/* this button is used to test the light and dark by opening the success modal since, the navbar is displayed in this component as in the figma file */}
-                    <button onClick={() => setOpen(!open)} className={`${isDarkMode ? "text-white ":"text-[#09050e]"} text-xl p-4 rounded-md text-white`}>
+                    <button onClick={() => setOpen(!open)} className="font-manrope w-[1/4] py-3 px-6 text-center bg-gradient-to-b text-base from-[#A26DFF] to-[#09050E] hover:bg-opacity-90 rounded-full font-bold text-[#D4D4D4] transition-all m-4">
                         Click to open success state
                     </button>
                 </main>
