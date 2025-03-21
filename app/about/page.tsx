@@ -1,10 +1,10 @@
 import React from 'react';
-import AboutUs from '../components/about';
+import AboutTech from '../components/about-technology';
 
 const AboutPage = () => {
   return (
-    <main className="min-h-screen bg-dark-bg flex items-center justify-center">
-      <AboutUs />
+    <main className="min-h-screen bg-dark-bg p-12">
+      <AboutTech />
     </main>
   );
 };
