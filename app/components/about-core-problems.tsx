@@ -105,7 +105,7 @@ const AboutCoreProblems: React.FC = () => {
 
       {/* Problems Section */}
       <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-20 mb-20">
-        <div className="w-full max-w-[575px]">
+        <div className="w-full max-w-[575px] m-auto">
           <SectionTitle>Core Problems</SectionTitle>
           <SectionText>
             It is not a new thing that Traditional cross-chain solutions face
