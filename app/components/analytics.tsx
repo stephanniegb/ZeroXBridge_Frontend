@@ -63,7 +63,7 @@ export default function AnalyticsDashboard({
   const textPrimary = isDarkMode ? "text-white" : "text-[#09050E]";
   const textSecondary = isDarkMode ? "text-gray-400" : "text-[#53436D]";
   const borderColor = isDarkMode ? "border-[#614199]" : "border-[#F8F4FF]";
-   const tabActiveBg = isDarkMode ? "#7D53C4" : "#ECE1FF"; 
+  const tabActiveBg = isDarkMode ? "#7D53C4" : "#ECE1FF";
   const chartGridColor = isDarkMode ? "#6B7280" : "#D1D5DB";
   const tooltipBg = isDarkMode ? "#282433" : "#FBF9FF";
   const emptyChartColor = isDarkMode ? "#8B8B8B" : "#53436D";
