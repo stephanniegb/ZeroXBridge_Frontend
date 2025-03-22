@@ -1,8 +1,10 @@
+"use client";
+import React from "react";
 import Image from "next/image";
 import coreProblemImg from "@/public/images/problem.png";
 import coreSolutionImg from "@/public/images/solution.png";
 import Arrow from "@/public/icons/Arrow";
-import React from "react";
+import blur3 from "@/public/topBlur.svg"; // Import the blur effect SVG
 
 interface SectionTitleProps {
   children: React.ReactNode;
@@ -91,7 +93,16 @@ const AboutCoreProblems: React.FC = () => {
   ];
 
   return (
-    <div className="py-16 px-4 md:px-8 xl:max-w-[1200px] mx-auto">
+    <div className="relative py-16 px-4 md:px-10 xl:max-w-[1086px] mx-auto">
+      <div className="absolute -top-[250px] left-1/2 -translate-x-1/2 z-10">
+        <Image
+          src={blur3}
+          alt="Glow Effect"
+          width={700}
+          height={600}
+        />
+      </div>
+
       {/* Problems Section */}
       <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-20 mb-20">
         <div className="w-full max-w-[575px]">
