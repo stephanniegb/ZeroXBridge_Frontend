@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import {
   LineChart,
@@ -28,7 +29,15 @@ const DUMMY_DATA = [
 const LOCKED_ASSETS_COLORS = ["#5088FF", "#D456FD"];
 const XZB_BALANCE_COLORS = ["#9E8FFF", "#FF9000"];
 
-export default function AnalyticsDashboard({ isConnected = false }) {
+interface AnalyticsDashboardProps {
+  isDarkMode: boolean;
+  isConnected?: boolean;
+}
+
+export default function AnalyticsDashboard({
+  isDarkMode,
+  isConnected = false,
+}: AnalyticsDashboardProps) {
   const [mounted, setMounted] = useState(false);
   const [activeMetric, setActiveMetric] = useState("TVL");
 
@@ -50,6 +59,15 @@ export default function AnalyticsDashboard({ isConnected = false }) {
     return null;
   }
 
+  const cardBg = isDarkMode ? "#21192F" : "#F8F4FF";
+  const textPrimary = isDarkMode ? "text-white" : "text-[#09050E]";
+  const textSecondary = isDarkMode ? "text-gray-400" : "text-[#53436D]";
+  const borderColor = isDarkMode ? "border-[#614199]" : "border-[#F8F4FF]";
+   const tabActiveBg = isDarkMode ? "#7D53C4" : "#ECE1FF"; 
+  const chartGridColor = isDarkMode ? "#6B7280" : "#D1D5DB";
+  const tooltipBg = isDarkMode ? "#282433" : "#FBF9FF";
+  const emptyChartColor = isDarkMode ? "#8B8B8B" : "#53436D";
+
   const MetricCard = ({
     title,
     value,
@@ -59,9 +77,12 @@ export default function AnalyticsDashboard({ isConnected = false }) {
     value: string;
     change?: number | null;
   }) => (
-    <div className="bg-[#21192F] rounded-2xl p-6 w-[350px] h-[150px]">
-      <p className="text-gray-400 mb-2">{title}</p>
-      <p className="text-3xl font-semibold text-white mb-1">${value}</p>
+    <div
+      className={`rounded-2xl p-6 w-[350px] h-[150px]`}
+      style={{ backgroundColor: cardBg }}
+    >
+      <p className={`${textSecondary} mb-2`}>{title}</p>
+      <p className={`text-3xl font-semibold ${textPrimary} mb-1`}>${value}</p>
       {change !== null && (
         <p
           className={`text-[14px] ${
@@ -78,9 +99,11 @@ export default function AnalyticsDashboard({ isConnected = false }) {
   const CustomDonut = ({
     data,
     colors,
+    isEmpty = false,
   }: {
     data: { name: string; value: number }[];
     colors: string[];
+    isEmpty?: boolean;
   }) => (
     <PieChart width={150} height={150}>
       <Pie
@@ -94,7 +117,10 @@ export default function AnalyticsDashboard({ isConnected = false }) {
         endAngle={450}
       >
         {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index]} />
+          <Cell
+            key={`cell-${index}`}
+            fill={isEmpty ? emptyChartColor : colors[index]}
+          />
         ))}
       </Pie>
     </PieChart>
@@ -102,7 +128,7 @@ export default function AnalyticsDashboard({ isConnected = false }) {
 
   return (
     <div className="space-y-6 p-6 max-w-6xl mx-auto">
-      <div className="grid grid-cols-3 gap-6 border-b border-[#614199] py-6">
+      <div className={`grid grid-cols-3 gap-6 border-b ${borderColor} py-6`}>
         <MetricCard
           title="Total Value Locked"
           value={isConnected ? "1,500" : "0.00"}
@@ -117,20 +143,37 @@ export default function AnalyticsDashboard({ isConnected = false }) {
       </div>
 
       <div className="grid grid-cols-4">
-        <div className="col-span-3 bg-[#21192F] rounded-2xl p-6  w-[720px]">
+        <div
+          className="col-span-3 rounded-2xl p-6 w-[720px]"
+          style={{ backgroundColor: cardBg }}
+        >
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-[16px] font-semibold text-white">
+            <h2 className={`text-[16px] font-semibold ${textPrimary}`}>
               Protocol Metrics
             </h2>
-            <div className="flex gap-2 bg-[#282433] rounded-full p-1">
+            <div className="flex border-b-0 text-sm font-medium">
               {["TVL", "Volume", "Price"].map((metric) => (
                 <button
                   key={metric}
-                  className={`px-4 py-1 rounded-full transition-all ${
+                  className={cn(
+                    "px-4 py-2 transition-all border-r last:border-r-0 first:rounded-l-full last:rounded-r-full",
                     activeMetric === metric
-                      ? "bg-[#7D53C4] text-white"
-                      : "text-gray-400 hover:text-white"
-                  }`}
+                      ? "bg-[#E8DFFC] text-black font-medium"
+                      : "bg-transparent text-black hover:bg-gray-100"
+                  )}
+                  style={{
+                    borderColor: isDarkMode ? "#E8DFFC" : "#A26DFF",
+                    backgroundColor:
+                      activeMetric === metric ? tabActiveBg : "#FBF9FF",
+                    color:
+                      activeMetric === metric
+                        ? isDarkMode
+                          ? "white"
+                          : "black"
+                        : isDarkMode
+                        ? "white"
+                        : "black",
+                  }}
                   onClick={() => setActiveMetric(metric)}
                 >
                   {metric}
@@ -143,30 +186,30 @@ export default function AnalyticsDashboard({ isConnected = false }) {
             <LineChart data={isConnected ? DUMMY_DATA : []}>
               <XAxis
                 dataKey="hour"
-                stroke="#6B7280"
-                tick={{ fill: "#6B7280" }}
+                stroke={chartGridColor}
+                tick={{ fill: chartGridColor }}
                 tickLine={false}
                 fontSize={"12px"}
                 axisLine={false}
               />
               <YAxis
-                stroke="#6B7280"
-                tick={{ fill: "#6B7280" }}
+                stroke={chartGridColor}
+                tick={{ fill: chartGridColor }}
                 fontSize={"14px"}
                 tickLine={false}
                 axisLine={false}
               />
               <CartesianGrid
-                stroke="#6B7280"
+                stroke={chartGridColor}
                 horizontal={true}
                 vertical={false}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "#282433",
+                  backgroundColor: tooltipBg,
                   border: "none",
                   borderRadius: "8px",
-                  color: "#FFFFFF",
+                  color: isDarkMode ? "#FFFFFF" : "#000000",
                 }}
               />
               <Line
@@ -193,16 +236,18 @@ export default function AnalyticsDashboard({ isConnected = false }) {
         {/* Right Column - Donut Charts */}
         <div className="space-y-6 w-[350px] -ml-[76px]">
           {/* Locked Assets */}
-          <div className="bg-[#21192F] rounded-2xl py-6 px-4 h-[261px] ">
-            <h2 className="text-[16px] font-semibold mb-4 text-white">
+          <div
+            className="rounded-2xl py-6 px-4 h-[261px]"
+            style={{ backgroundColor: cardBg }}
+          >
+            <h2 className={`text-[16px] font-semibold mb-4 ${textPrimary}`}>
               Your Locked Assets
             </h2>
             <div className="flex items-center justify-between px-4">
               <CustomDonut
                 data={lockedAssets}
-                colors={
-                  isConnected ? LOCKED_ASSETS_COLORS : ["#8B8B8B", "#8B8B8B"]
-                }
+                colors={LOCKED_ASSETS_COLORS}
+                isEmpty={!isConnected}
               />
               <div className="space-y-2">
                 {isConnected ? (
@@ -213,8 +258,12 @@ export default function AnalyticsDashboard({ isConnected = false }) {
                         style={{ backgroundColor: LOCKED_ASSETS_COLORS[index] }}
                       />
                       <div>
-                        <p className="text-sm text-white">{asset.amount}</p>
-                        <p className="text-sm text-gray-400">{asset.display}</p>
+                        <p className={`text-sm ${textPrimary}`}>
+                          {asset.amount}
+                        </p>
+                        <p className={`text-sm ${textSecondary}`}>
+                          {asset.display}
+                        </p>
                       </div>
                     </div>
                   ))
@@ -223,9 +272,11 @@ export default function AnalyticsDashboard({ isConnected = false }) {
                     <div className="flex items-center gap-2">
                       <div
                         className={`w-3 h-3 rounded-full`}
-                        style={{ backgroundColor: "#8B8B8B" }}
+                        style={{
+                          backgroundColor: isDarkMode ? "#8B8B8B" : "#53436D",
+                        }}
                       />
-                      <div className="text-gray-400">
+                      <div className={textSecondary}>
                         <p>0 xZB</p>
                         <p>$0.00</p>
                       </div>
@@ -233,9 +284,11 @@ export default function AnalyticsDashboard({ isConnected = false }) {
                     <div className="flex items-center gap-2">
                       <div
                         className={`w-3 h-3 rounded-full`}
-                        style={{ backgroundColor: "#8B8B8B" }}
+                        style={{
+                          backgroundColor: isDarkMode ? "#8B8B8B" : "#53436D",
+                        }}
                       />
-                      <div className="text-gray-400">
+                      <div className={textSecondary}>
                         <p>0 ETH</p>
                         <p>$0.00</p>
                       </div>
@@ -247,16 +300,18 @@ export default function AnalyticsDashboard({ isConnected = false }) {
           </div>
 
           {/* xZB Balance */}
-          <div className="bg-[#21192F] rounded-2xl py-6 px-4 h-[261px]">
-            <h2 className="text-[16px] text-white font-semibold mb-4">
+          <div
+            className="rounded-2xl py-6 px-4 h-[261px]"
+            style={{ backgroundColor: cardBg }}
+          >
+            <h2 className={`text-[16px] ${textPrimary} font-semibold mb-4`}>
               Your xZB Balance
             </h2>
             <div className="flex items-center justify-between px-4">
               <CustomDonut
-                data={xzbBalance}
-                colors={
-                  isConnected ? XZB_BALANCE_COLORS : ["#8B8B8B", "#8B8B8B"]
-                }
+                data={lockedAssets}
+                colors={XZB_BALANCE_COLORS}
+                isEmpty={!isConnected}
               />
               <div className="space-y-2">
                 {isConnected ? (
@@ -267,8 +322,10 @@ export default function AnalyticsDashboard({ isConnected = false }) {
                         style={{ backgroundColor: XZB_BALANCE_COLORS[index] }}
                       />
                       <div>
-                        <p className="text-sm text-white">{balance.amount}</p>
-                        <p className="text-sm text-gray-400">
+                        <p className={`text-sm ${textPrimary}`}>
+                          {balance.amount}
+                        </p>
+                        <p className={`text-sm ${textSecondary}`}>
                           {balance.display}
                         </p>
                       </div>
@@ -279,9 +336,11 @@ export default function AnalyticsDashboard({ isConnected = false }) {
                     <div className="flex items-center gap-2">
                       <div
                         className={`w-3 h-3 rounded-full`}
-                        style={{ backgroundColor: "#8B8B8B" }}
+                        style={{
+                          backgroundColor: isDarkMode ? "#8B8B8B" : "#53436D",
+                        }}
                       />
-                      <div className="text-gray-400">
+                      <div className={textSecondary}>
                         <p>0 xZB</p>
                         <p>$0.00</p>
                       </div>
@@ -289,9 +348,11 @@ export default function AnalyticsDashboard({ isConnected = false }) {
                     <div className="flex items-center gap-2">
                       <div
                         className={`w-3 h-3 rounded-full`}
-                        style={{ backgroundColor: "#8B8B8B" }}
+                        style={{
+                          backgroundColor: isDarkMode ? "#8B8B8B" : "#53436D",
+                        }}
                       />
-                      <div className="text-gray-400">
+                      <div className={textSecondary}>
                         <p>0 xZB</p>
                         <p>$0.00</p>
                       </div>
