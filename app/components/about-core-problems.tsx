@@ -4,7 +4,6 @@ import coreSolutionImg from "@/public/images/solution.png";
 import Arrow from "@/public/icons/Arrow";
 import React from "react";
 
-// Define types for props
 interface SectionTitleProps {
   children: React.ReactNode;
 }
@@ -27,29 +26,29 @@ interface SolutionItem {
   subItems: string[];
 }
 
-// Reusable components
 const SectionTitle: React.FC<SectionTitleProps> = ({ children }) => (
-  <h1 className="text-[24px] md:text-[28px] font-bold bg-gradient-to-r from-[#26183E] to-[#A26DFF] text-transparent bg-clip-text font-manrope">
+  <h1 className="text-[24px] md:text-[28px] font-bold bg-gradient-to-r from-[#26183E] to-[#A26DFF] text-transparent bg-clip-text font-manrope mb-4">
     {children}
   </h1>
 );
 
 const SectionText: React.FC<SectionTextProps> = ({ children }) => (
-  <p className="text-[16px] md:text-[18px] text-[#D4D4D4] leading-[24px] md:leading-[27px] mb-5 font-roboto-serif">
+  <p className="text-[16px] md:text-[18px] text-[#D4D4D4] leading-[24px] md:leading-[27px] mb-6 font-roboto-serif">
     {children}
   </p>
 );
 
 const ListItem: React.FC<ListItemProps> = ({ children }) => (
-  <li className="flex items-start gap-2">
-    <Arrow className="w-5 h-5" /> {children}
+  <li className="flex items-start gap-3">
+    <span className="mt-0.5 flex-shrink-0"><Arrow className="w-5 h-5" /></span>
+    <span className="text-[#D4D4D4]">{children}</span>
   </li>
 );
 
 const SubList: React.FC<SubListProps> = ({ items }) => (
-  <ul className="text-[#8B8B8B] list-disc pl-6 md:pl-10">
+  <ul className="text-[#8B8B8B] list-disc pl-8 md:pl-10 mt-2 mb-2 space-y-1">
     {items.map((item, index) => (
-      <li key={index}>{item}</li>
+      <li key={index} className="text-sm">{item}</li>
     ))}
   </ul>
 );
@@ -92,50 +91,57 @@ const AboutCoreProblems: React.FC = () => {
   ];
 
   return (
-    <div className="py-10 px-4 md:px-8">
+    <div className="py-16 px-4 md:px-8 xl:max-w-[1200px] mx-auto">
       {/* Problems Section */}
-      <div className="flex flex-col lg:flex-row justify-between gap-20">
-        <div className="max-w-[575px]">
+      <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-20 mb-20">
+        <div className="w-full max-w-[575px]">
           <SectionTitle>Core Problems</SectionTitle>
           <SectionText>
             It is not a new thing that Traditional cross-chain solutions face
             critical challenges such as:
           </SectionText>
-          <ul className="text-sm text-[#D4D4D4] flex flex-col gap-4 font-roboto-serif">
+          <ul className="text-sm flex flex-col gap-4 font-roboto-serif">
             {problems.map((problem, index) => (
               <ListItem key={index}>{problem}</ListItem>
             ))}
           </ul>
         </div>
         <div className="flex justify-center lg:justify-end">
-          <Image
-            src={coreProblemImg}
-            alt="Problem illustration"
-            className="w-full max-w-[256px]"
-          />
+          <div className="relative w-[256px] h-[256px]">
+            <Image
+              src={coreProblemImg}
+              alt="Problem illustration"
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </div>
         </div>
       </div>
 
       {/* Solutions Section */}
-      <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-10 pt-24">
+      <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-10 pt-6">
         <div className="flex justify-center lg:justify-start">
-          <Image
-            src={coreSolutionImg}
-            alt="Solution illustration"
-            className="w-full max-w-[256px]"
-          />
+          <div className="relative w-[256px] h-[256px]">
+            <Image
+              src={coreSolutionImg}
+              alt="Solution illustration"
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </div>
         </div>
-        <div className="max-w-[576px]">
+        <div className="w-full max-w-[576px]">
           <SectionTitle>The Solution</SectionTitle>
           <SectionText>
             There is no doubt that ZeroXBridge is solving these problems through
             these innovative approaches:
           </SectionText>
-          <ul className="text-sm text-[#D4D4D4] flex flex-col gap-3 font-roboto-serif">
+          <ul className="text-sm flex flex-col gap-5 font-roboto-serif">
             {solutionItems.map((solution, index) => (
               <div key={index}>
                 <ListItem>
-                  {solution.title}{solution.description ? `: ${solution.description}` : ""}
+                  <span className="font-medium">{solution.title}</span>
+                  {solution.description ? `: ${solution.description}` : ""}
                 </ListItem>
                 {solution.subItems.length > 0 && <SubList items={solution.subItems} />}
               </div>
