@@ -5,7 +5,8 @@ import Navbar from '../components/navbar';
 import AboutTeam from '../components/about-team';
 import Image from 'next/image';
 import blur3 from "@/public/outerBlur.svg";
-import AboutCoreProblems from '../components/about-core-problems';
+import AboutCoreProblems from "../components/about-core-problems";
+
 
 const AboutPage = () => {
   const [toggleDark, setToggleDark] = useState(false)
