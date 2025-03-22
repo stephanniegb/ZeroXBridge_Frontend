@@ -4,7 +4,7 @@ import pointerdown from "../../public/down-pointer.png"
 
 const AboutTech = () => {
     return (
-        <div className="bg-dark-bg rounded-3xl">
+        <div className="bg-dark-bg rounded-3xl py-8 mx-28 z-10 relative">
             <div>
                 <h1 className="text-[48px] text-center bg-gradient-to-r from-black from-30% via-[#A26DFF] via-50% to-black to-70% bg-clip-text text-transparent">
                     Our <span>Technology</span>
@@ -12,7 +12,7 @@ const AboutTech = () => {
                 <p className="text-white-2 text-center">Terms and their explanations</p>
             </div>
 
-            <div className="text-white-style flex justify-center items-center py-20">
+            <div className="text-white-style flex justify-center py-20">
                 <div className="leading-[3rem]">
                     <div className="flex items-center gap-4">
                         <p className="text-custom-purple text-[12px]">How ZeroXBridge differs</p>
