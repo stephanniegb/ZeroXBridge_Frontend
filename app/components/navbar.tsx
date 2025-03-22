@@ -2,40 +2,46 @@
 import { Search, Moon, Sun } from "lucide-react";
 import Notification from "../../public/bell.png";
 import Image from "next/image";
-import Logo from "../../public/zerologo.png"; // Ensure this is a black logo
-import LogoWhite from "../../public/zerologo-white.svg"; // Ensure this is a light logo
+import LogoDark from "../../public/zerologo.png"; // Light mode logo
+import LogoWhite from "../../public/zerologo-white.png"; // Dark mode logo
 
 interface NavbarProps {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
-  handleConnect: () => void; // Add handleConnect prop
-  isConnected: boolean; // Add isConnected prop
+  handleConnect: () => void;
+  isConnected: boolean;
+  className?: string; // Add className to the props
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode, handleConnect, isConnected }) => {
+const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode, handleConnect, isConnected, className }) => {
   const gradientBorder = "bg-gradient-to-b from-[#A26DFF] to-[#A26DFF] p-[0.7px] rounded-full";
 
   return (
     <header
-      className={`${isDarkMode ? "bg-[#09050E]" : "bg-white"} border-b-2 ${
+      className={`${className} ${isDarkMode ? "bg-[#09050E]" : "bg-white"} border-b-2 ${
         isDarkMode ? "border-[#1F1333]" : "border-gray-300"
-      } flex h-24 w-full transition-colors duration-500`}
+      } flex h-24 w-full transition-colors duration-500 fixed top-0 left-0 right-0 z-50`} // Fixed positioning for Navbar
     >
+      {/* Logo Container */}
       <div
         className={`w-80 h-24 flex items-center justify-start pl-6 border-r-2 ${
           isDarkMode ? "border-[#1F1333]" : "border-gray-300"
-        } transition-colors duration-500`}
+        } transition-colors duration-500 ${isDarkMode ? "bg-[#09050E]" : "bg-white"}`} // Add background color
       >
-        {/* Logo */}
-        <Image
-          src={isDarkMode ? LogoWhite : Logo} // Use LogoWhite in dark mode, Logo in light mode
-          alt="ZeroxBridge Logo"
-          width={140}
-          height={50}
-          className="object-contain transition-opacity duration-500"
-        />
+        <div
+          className={`transform ${isDarkMode ? "scale-100" : "scale-150"}`} // Scale light mode logo to 120%
+        >
+          <Image
+            src={isDarkMode ? LogoDark : LogoWhite} // Switch logos based on theme
+            alt="ZeroxBridge Logo"
+            width={isDarkMode ? 140 : 160} // Increase width for light mode
+            height={isDarkMode ? 50 : 60} // Increase height for light mode
+            className="object-contain transition-opacity duration-500"
+          />
+        </div>
       </div>
 
+      {/* Rest of the Navbar */}
       <div
         className={`flex-1 flex justify-between items-center px-8 h-24 border-r ${
           isDarkMode ? "border-gray-800" : "border-gray-300"
@@ -83,9 +89,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode, handleConne
           </div>
         </div>
 
-        {/* Right side controls */}
         <div className="flex items-center space-x-6">
-          {/* Dark mode toggle with gradient border */}
           <div className={gradientBorder}>
             <div
               className={`flex items-center justify-between ${
@@ -111,10 +115,9 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode, handleConne
             </div>
           </div>
 
-          {/* Connect Wallet button with gradient border */}
           <div className={gradientBorder}>
             <button
-              onClick={handleConnect} // Use handleConnect here
+              onClick={handleConnect}
               className={`${
                 isDarkMode ? "bg-[#09050E]" : "bg-white"
               } py-3 px-8 rounded-full text-sm ${

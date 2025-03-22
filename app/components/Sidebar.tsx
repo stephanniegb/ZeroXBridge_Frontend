@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useState } from "react";
 import Image from "next/image";
 import Chart from "../../public/Chart.png";
@@ -12,15 +12,15 @@ import { Settings } from "lucide-react";
 
 // Either define an interface for props or don't accept any props
 interface SidebarProps {
-  // This interface can be empty if you're only using context
+  className?: string; // Add className to the props
 }
 
-const Sidebar: React.FC<SidebarProps> = () => {
+const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     const { isDarkMode } = useTheme();
     const [activeTab, setActiveTab] = useState("Dashboard");
 
     return (
-        <aside className={`w-80 ${isDarkMode ? "bg-[#09050E] border-[#1F1333]" : "bg-white border-none"} border-r-2 h-screen flex flex-col fixed`}>
+        <aside className={`${className} w-80 ${isDarkMode ? "bg-[#09050E] border-[#1F1333]" : "bg-white border-none"} border-r-2 h-screen flex flex-col fixed`}>
             <div className="flex-1 mt-6 flex flex-col items-start gap-2 pl-6">
                 {[
                     { name: "Dashboard", icon: Dashboard },

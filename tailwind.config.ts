@@ -65,6 +65,9 @@ const config: Config = {
       animation: {
         slowSpin: "spin 3s linear infinite",
       },
+      scale: {
+        150: "1.5", 
+      },
     },
   },
   plugins: [],
