@@ -164,7 +164,11 @@ export default function AnalyticsDashboard({
                   style={{
                     borderColor: isDarkMode ? "#E8DFFC" : "#A26DFF",
                     backgroundColor:
-                      activeMetric === metric ? tabActiveBg : "#FBF9FF",
+                      activeMetric === metric
+                        ? tabActiveBg
+                        : isDarkMode
+                        ? "#282433"
+                        : "#FBF9FF",
                     color:
                       activeMetric === metric
                         ? isDarkMode
