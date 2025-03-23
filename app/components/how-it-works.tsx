@@ -4,6 +4,7 @@ import wallet from '../../public/wallet.svg';
 import write from '../../public/write.svg';
 import scroll from '../../public/scroll.svg';
 import token from '../../public/token.svg';
+import blur3 from "@/public/outerBlur.svg";
 
 const steps = [
   {
@@ -49,7 +50,23 @@ const HowItWorks = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-transparent p-8 w-full">
+    <div className="h-screen xl:h-[941px] bg-[#09050E]  bg-blend-normal px-8 py-[6rem] pb-8 w-full relative">
+      <div className="absolute -top-[20px] left-[10%] bg-blend-normal z-20">
+        <Image
+          src={blur3}
+          alt="Glow Effect"
+          width={500}
+          height={500}
+          className='h-[350px] w-[950px] opacity-90'
+        />
+      </div>
+      <Image
+          src="/images/ellipse.png"
+          alt="Glow Effect"
+          width={500}
+          height={500}
+          className="w-[600px] h-[600px] absolute -bottom-[400px] -left-[0%] z-20"
+        />
       <div className="max-w-6xl mx-auto h-fit">
         <div className="text-center mb-24 animate-fade-in">
           <h2 className="text-5xl font-bold mb-4 gradient-text">How it Works</h2>

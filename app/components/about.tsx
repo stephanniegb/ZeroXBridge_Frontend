@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Manrope, Roboto_Serif } from "next/font/google";
+import JoinCommunity from "./join-community";
 
 const manrope = Manrope({
   weight: ["700"],
@@ -16,27 +17,19 @@ const robotoSerif = Roboto_Serif({
 
 const AboutUs = () => {
   return (
-    <div className="relative overflow-hidden w-full flex flex-col items-center">
-      {/* Glow Effect Outside Section */}
-      <div className="absolute top-[150px] left-0 -translate-x-1/2 -translate-y-1/2 z-0">
-        <Image
-          src="/images/ellipse.png"
-          alt="Glow Effect"
-          width={500}
-          height={500}
-        />
-      </div>
-      {/* <div className="absolute top-[1100px] left-[700px] -translate-x-1/2 -translate-y-1/2 z-0">
+    <div className="relative overflow-hidden w-full flex flex-col items-center py-8 bg-[#09050E]">
+
+      <div className="absolute top-[1100px] left-[700px] -translate-x-1/2 -translate-y-1/2 z-0">
         <Image
           src="/images/ellipse-1.png"
           alt="Glow Effect"
           width={500}
           height={500}
         />
-      </div> */}
+      </div>
 
       {/* Main Section Content */}
-      <section className="relative bg-dark-bg text-white rounded-3xl p-10 shadow-lg w-[85%] m-10  z-10">
+      <section className="relative bg-dark-bg text-white rounded-3xl p-10 shadow-lg w-[85%] m-10  z-50">
         <h1 className="text-5xl font-bold font-manrope mb-3 text-center bg-gradient-to-r from-[#262429] via-[#9B6DFF] to-[#262429] bg-clip-text text-transparent">
           ZeroXBridge is here to <br />
           Redefine Cross-Chain liquidity
@@ -46,9 +39,9 @@ const AboutUs = () => {
           With ZeroXBridge eliminating the vulnerabilities of traditional cross-chain solutions:
         </p>
 
-        <div className="flex flex-row md:flex-row gap-6 py-5 px-10">
+        <div className="flex flex-row md:flex-row gap-8 py-5 px-10">
           <div className="flex flex-col gap-6 flex-1">
-            <div className="relative bg-grid-pattern bg-cover bg-center rounded-2xl pb-5 px-5 shadow-custom-purple border border-transparent flex flex-col justify-center h-[300px] w-[520px]">
+            <div className="relative bg-grid-pattern bg-cover bg-center rounded-2xl pb-5 px-5 shadow-custom-purple border border-transparent flex flex-col justify-center h-[300px] w-full">
               <div className="flex absolute top-2 left-96">
                 <Image
                   src="/images/assets-transfer.png"
@@ -71,7 +64,7 @@ const AboutUs = () => {
               </div>
             </div>
 
-            <div className="relative bg-grid-pattern bg-cover bg-center rounded-2xl pb-5 px-5 shadow-custom-purple border border-transparent flex flex-col justify-between h-[300px] w-[520px]">
+            <div className="relative bg-grid-pattern bg-cover bg-center rounded-2xl pb-5 px-5 shadow-custom-purple border border-transparent flex flex-col justify-between h-[300px] w-full">
               <div className="flex absolute top-2 left-96">
                 <Image
                   src="/images/centralized-icon.png"
@@ -123,6 +116,8 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+
+<JoinCommunity />
     </div>
   );
 };

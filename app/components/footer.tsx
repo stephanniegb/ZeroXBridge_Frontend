@@ -12,7 +12,7 @@ const manrope = Manrope({
 const Footer = () => {
   const footerLinks = {
     product: [
-      { name: 'About Us', href: '#' },
+      { name: 'About Us', href: '/about' },
       { name: 'FAQs', href: '#' },
       { name: 'Documentation', href: '#' },
       { name: 'Prices', href: '#' },
@@ -32,24 +32,26 @@ const Footer = () => {
   }
 
   return (
-    <footer className="relative w-full bg-black">
+    <footer className="relative w-full  bg-[#09050E]  bg-blend-normal">
 
       <div 
         className="absolute inset-0" 
         style={{
-          background: 'linear-gradient(180deg, rgba(9, 5, 14, 1) 0%, rgba(74, 42, 130, 1) 100%)',
+          background: 'linear-gradient(180deg, rgba(9, 5, 14, 0) 0%, rgba(74, 42, 130, 1) 100%)',
           position: 'absolute',
           bottom: '-20%',
         }}
       />
 
-      <div className="absolute inset-0 overflow-hidden bottom-[-20%] w-full z-0 style={{ height: '100%', bottom: 0 }}">
+      <div className="absolute inset-0 overflow-hidden bottom-[-20%] w-full z-0 style={{ height: '100%'}}">
         <div 
-          className="absolute bottom-[-20] w-full text-center"
+          className="absolute bottom-[-20px] w-full mx-auto"
           style={{
-            minWidth: '100vw',
             overflow: 'hidden',
-            fontSize: '240px',
+            padding: 'auto',
+            textAlign: 'center',
+            textWrap: 'nowrap',
+            fontSize: '225px',
             lineHeight: '1',
             fontWeight: '700',  
             background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(74, 42, 130, 1) 80%, rgba(74, 42, 130, 0.9) 40%, transparent 100%)',
@@ -59,7 +61,7 @@ const Footer = () => {
             color: 'transparent',
             width: '100%',
             letterSpacing: '-0.02em',
-            transform: 'scale(1.2)',
+            transform: 'scale(1.02)',
             position: 'absolute',
           }}
         >
