@@ -52,7 +52,7 @@ export default function RootLayout({
           <div className="flex">
             {showSidebar && <Sidebar />}
             <div className={`min-h-screen flex w-full ${showSidebar ? 'ml-[320px]' : ''}`}>
-              <main className={`flex-1 ${showSidebar ? 'mt-[4rem]' : ''} `}>{children}</main>
+              <main className={`flex-1  ${showSidebar ? 'mt-[4rem]' : ''} `}>{children}</main>
             </div>
           </div>
         </ThemeProvider>

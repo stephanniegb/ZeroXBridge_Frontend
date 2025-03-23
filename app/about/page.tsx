@@ -11,7 +11,7 @@ import Footer from '../components/footer';
 
 const AboutPage = () => {
   return (
-    <main className="min-h-screen bg-dark-bg relative items-center max-w-[1800px] mx-auto justify-center">
+    <main className="min-h-screen bg-[#09050E] relative items-center max-w-[1800px] mx-auto justify-center">
      <HomeNav />
       <AboutUs />
       <AboutCoreProblems />
