@@ -36,19 +36,35 @@ const Swap = () => {
       {isWalletConnected ? (
         <>
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-[1rem] font-bold">Swap Tokens</h2>
-            <button className="flex items-center text-[0.75rem]  border-[0.4px] border-[#8B8B8B] text-[#8B8B8B] px-4 py-2 rounded-full">
+            <h2
+              className={`text-[1rem] font-bold ${
+                isDarkMode ? "text-white" : "text-black"
+              }`}
+            >
+              Swap Tokens
+            </h2>
+            <button
+              className={`flex items-center text-[0.75rem]  border-[0.4px] border-[#8B8B8B] text-[#8B8B8B] px-4 py-2 rounded-full ${
+                isDarkMode ? "" : "bg-[#6c5d92] text-gray-100"
+              } `}
+            >
               Slippage 0.5% <Settings size={11.45} className="ml-1" />
             </button>
           </div>
 
-          <div className="border-[0.4px] border-[#8B8B8B] bg-[#1F1333] p-4 rounded-lg mb-2 relative">
+          <div
+            className={`border-[0.4px] border-[#8B8B8B] ${
+              isDarkMode ? "bg-[#1F1333]" : "bg-[#e6d9ff]"
+            }  p-4 rounded-lg mb-2 relative"`}
+          >
             <div className="flex justify-between items-center">
               <input
                 type="text"
                 value={fromValue}
                 onChange={(e) => setFromValue(e.target.value)}
-                className="bg-transparent text-xl font-semibold w-full focus:outline-none"
+                className={`bg-transparent text-xl font-semibold w-full focus:outline-none ${
+                  isDarkMode ? "text-white" : "text-[#1F1333]"
+                }`}
               />
               <div className="relative">
                 <button
@@ -62,18 +78,35 @@ const Swap = () => {
                     height={24}
                     className="w-[24px] h-[24px] object-contain mr-2"
                   />
-                  <span className="font-medium text-[1.125rem] w-12 text-center">
+                  <span
+                    className={`${
+                      isDarkMode ? "" : "text-[#1F1333]"
+                    } font-medium text-[1.125rem] w-12 text-center`}
+                  >
                     {fromToken}
                   </span>
-                  <ChevronDown size={16} className="ml-1 flex-shrink-0" />
+                  <ChevronDown
+                    size={16}
+                    className={`"ml-1 flex-shrink-0 ${
+                      isDarkMode ? "text-white" : "text-black"
+                    }`}
+                  />
                 </button>
 
                 {showFromDropdown && (
-                  <div className="absolute right-0 mt-2 bg-[#2D1B42] p-2 rounded-lg shadow-md z-20">
+                  <div
+                    className={`absolute right-0 mt-2 ${
+                      isDarkMode ? "" : "bg-[#6c5d92]"
+                    } bg-[#2D1B42] p-2 rounded-lg shadow-md z-20`}
+                  >
                     {tokens.map((token) => (
                       <div
                         key={token}
-                        className="cursor-pointer p-2 hover:bg-gray-600 rounded"
+                        className={`"cursor-pointer p-2 rounded ${
+                          isDarkMode
+                            ? "hover:bg-gray-600"
+                            : "hover:bg-[#e6d9ff] hover:text-black"
+                        }`}
                         onClick={() => {
                           setFromToken(token);
                           setShowFromDropdown(false);
@@ -86,28 +119,59 @@ const Swap = () => {
                 )}
               </div>
             </div>
-            <p className="text-sm text-gray-400">- $3.85 USD</p>
+            <p
+              className={`text-sm ${
+                isDarkMode ? "text-gray-400" : "text-gray-800"
+              }`}
+            >
+              - $3.85 USD
+            </p>
             <div className="flex items-center gap-x-1">
-              <Wallet2 className="w-[10.94px] h-[9.63px] text-[#8B8B8B]" />
-              <p className="text-[0.75rem] text-[#888888] ">
-                7.04 <span className="text-white font-bold">MAX</span>
+              <Wallet2
+                className={`${
+                  isDarkMode ? "text-[#8B8B8B]" : "text-[#1F1333]"
+                } w-[10.94px] h-[9.63px]`}
+              />
+              <p
+                className={`text-[0.75rem] ${
+                  isDarkMode ? "text-[#8B8B8B]" : "text-[#1F1333]"
+                }`}
+              >
+                7.04{" "}
+                <span
+                  className={`${
+                    isDarkMode ? "text-white" : "text-[#1F1333]"
+                  } font-bold`}
+                >
+                  MAX
+                </span>
               </p>
             </div>
           </div>
 
           <div className="flex justify-center my-2">
             <button onClick={handleSwap} className="p-2 ">
-              <ArrowUpDown size={20} className="text-[#D2B9FF]" />
+              <ArrowUpDown
+                size={20}
+                className={`${
+                  isDarkMode ? "text-[#D2B9FF]" : "text-[#1F1333]"
+                }`}
+              />
             </button>
           </div>
 
-          <div className=" bg-[#1F1333] p-4 rounded-lg mb-2 relative">
+          <div
+            className={`${
+              isDarkMode ? "bg-[#1F1333]" : "bg-[#e6d9ff]"
+            } p-4 rounded-lg mb-2 relative`}
+          >
             <div className="flex justify-between items-center">
               <input
                 type="text"
                 value={toValue}
                 onChange={(e) => setToValue(e.target.value)}
-                className="bg-transparent text-xl font-semibold w-full focus:outline-none"
+                className={`${isDarkMode ? "text-white" : "text-[#1F1333]"}
+                 bg-transparent text-xl font-semibold w-full focus:outline-none`}
               />
               <div className="relative">
                 <button
@@ -121,11 +185,20 @@ const Swap = () => {
                     height={24}
                     className="w-[24px] h-[24px] object-contain mr-2"
                   />
-                  <span className="font-medium text-[1.125rem] w-12 text-center">
+                  <span
+                    className={`${
+                      isDarkMode ? "" : "text-[#1F1333]"
+                    } font-medium text-[1.125rem] w-12 text-center`}
+                  >
                     {toToken}
                   </span>{" "}
                   {/* Fixed width */}
-                  <ChevronDown size={16} className="ml-1 flex-shrink-0" />
+                  <ChevronDown
+                    size={16}
+                    className={`ml-1 flex-shrink-0 ${
+                      isDarkMode ? "text-white" : "text-black"
+                    }`}
+                  />
                 </button>
 
                 {showToDropdown && (
@@ -133,7 +206,11 @@ const Swap = () => {
                     {tokens.map((token) => (
                       <div
                         key={token}
-                        className="cursor-pointer p-2 hover:bg-gray-600 rounded"
+                        className={`"cursor-pointer p-2 rounded ${
+                          isDarkMode
+                            ? "hover:bg-gray-600"
+                            : "hover:bg-[#e6d9ff] hover:text-black"
+                        }`}
                         onClick={() => {
                           setToToken(token);
                           setShowToDropdown(false);
@@ -146,15 +223,37 @@ const Swap = () => {
                 )}
               </div>
             </div>
-            <p className="text-sm text-gray-400">- $3.9 USD (-1.24%)</p>
+            <p
+              className={`text-sm ${
+                isDarkMode ? "text-gray-400" : "text-gray-800"
+              }`}
+            >
+              - $3.9 USD (-1.24%)
+            </p>
 
             <div className="flex items-center gap-x-1">
-              <Wallet2 className="w-[10.94px] h-[9.63px] text-[#8B8B8B]" />
-              <p className="text-[0.75rem] text-[#888888] ">0.00 </p>
+              <Wallet2
+                className={`${
+                  isDarkMode ? "text-[#8B8B8B]" : "text-[#1F1333]"
+                } w-[10.94px] h-[9.63px]`}
+              />
+              <p
+                className={`text-[0.75rem] ${
+                  isDarkMode ? "text-[#8B8B8B]" : "text-[#1F1333]"
+                }`}
+              >
+                0.00{" "}
+              </p>
             </div>
           </div>
 
-          <div className=" bg-[#1F1333] p-2 rounded-lg mb-[3rem] relative text-[#888888] text-[12px]">
+          <div
+            className={`${
+              isDarkMode
+                ? "bg-[#1F1333] text-[#888888]"
+                : "bg-[#e6d9ff] text-[#1F1333]"
+            } p-2 rounded-lg mb-[3rem] relative  text-[12px]`}
+          >
             <div className="w-ful flex justify-between items-center">
               <p>Price:</p> <p> -0.7785 USDT per Eth</p>
             </div>
@@ -163,7 +262,11 @@ const Swap = () => {
             </div>
           </div>
 
-          <div className="text-[#D4D4D4] text-[12px] flex w-full justify-center gap-x-1 mb-[1.2rem] items-center">
+          <div
+            className={`${
+              isDarkMode ? "text-[#D4D4D4]" : "text-[#1F1333]"
+            } text-[12px] flex w-full justify-center gap-x-1 mb-[1.2rem] items-center`}
+          >
             <p>Advanced Option</p>
             <ChevronDown size={16} className="ml-1 flex-shrink-0" />
           </div>

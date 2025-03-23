@@ -2,8 +2,8 @@
 import { usePathname } from "next/navigation";
 import { Geist, Geist_Mono, Manrope, Roboto_Serif } from "next/font/google";
 import "./globals.css";
-import Sidebar from "./components/Sidebar";
 import { ThemeProvider } from "./context/ThemeContext";
+import LayoutContent from "./layout-content";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,16 +50,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${robotoSerif.variable} antialiased`}
       >
         <ThemeProvider>
-          <div className="flex">
+          <LayoutContent showSidebar={showSidebar}>{children}</LayoutContent>
+          {/* <div className="flex">
             {showSidebar && <Sidebar />}
             <div
               className={`min-h-screen flex w-full ${
                 showSidebar ? "ml-[320px]" : ""
               }`}
             >
-              <main className="bg-white dark:bg-black flex-1">{children}</main>
+              <main className="bg-white bg flex-1">{children}</main>
             </div>
-          </div>
+          </div> */}
         </ThemeProvider>
       </body>
     </html>
