@@ -4,7 +4,7 @@
 
 /* Theme Variables */
 :root {
-  --background-light: #ffffff;
+  --background-light: #09050E;
   --foreground-light: #171717;
   --primary-light: #a26dff;
   --purple-light: #a26dff;
@@ -12,7 +12,7 @@
   --white-2-light: #d4d4d4;
 
   --background-dark: #09050e;
-  --foreground-dark: #d4d4d4;
+  --foreground-dark: #09050E;
   --primary-dark: #a26dff;
   --purple-dark: #a26dff;
   --white-dark: #1e1e1e;

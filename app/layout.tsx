@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${robotoSerif.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${robotoSerif.variable} antialiased bg-[#09050E]`}
       >
         <ThemeProvider>
         {showSidebar && <NavbarWithTheme />}
@@ -54,7 +54,7 @@ export default function RootLayout({
             <div className={`min-h-screen flex w-full ${showSidebar ? 'ml-[320px]' : ''}`}>
               <main className={`flex-1  ${showSidebar ? 'mt-[4rem]' : ''} `}>{children}</main>
             </div>
-          </div> */}
+          </div>
         </ThemeProvider>
       </body>
     </html>

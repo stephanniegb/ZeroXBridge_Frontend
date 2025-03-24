@@ -127,7 +127,7 @@ export default function AnalyticsDashboard({
   );
 
   return (
-    <div className="space-y-6 p-6 max-w-6xl mx-auto">
+    <div className="space-y-6 p-6 max-w-[1800px] 2xl:scale-150 mx-auto">
       <div className={`grid grid-cols-3 gap-6 border-b ${borderColor} py-6`}>
         <MetricCard
           title="Total Value Locked"

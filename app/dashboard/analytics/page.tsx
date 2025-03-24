@@ -7,7 +7,7 @@ export default function AnalyticsPage() {
   const { isDarkMode } = useTheme();
   return (
     <div
-      className={`flex flex-col items-center w-full h-full relative py-4 ${
+      className={`flex flex-col items-center w-full h-full relative 2xl:pt-[18rem] py-[2rem] ${
         isDarkMode ? "bg-black" : "bg-white"
       }`}
     >

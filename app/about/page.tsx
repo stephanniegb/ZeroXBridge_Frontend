@@ -9,12 +9,14 @@ import AboutHeader from '../components/about-header';
 
 const AboutPage = () => {
   return (
-    <main className="min-h-screen bg-[#09050E] relative items-center max-w-[1800px] mx-auto justify-center">
+    <main className="min-h-screen bg-[#09050E] relative items-center justify-center">
      <HomeNav />
+     <div className='max-w-[1800px] mx-auto'>
      <AboutHeader />
       <AboutCoreProblems />
       <AboutTeam />
       <AboutTech />
+      </div>
       <Footer />
     </main>
   );
