@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 const AboutHeader = () => {
   return (
-    <section className="relative text-white rounded-3xl py-[70px] shadow-lg z-10 font-roboto-serif">
+    <section className="relative w-[85%] mx-auto text-white rounded-3xl py-[70px] shadow-lg z-10 font-roboto-serif">
       <h1 className="text-5xl font-bold font-manrope mb-3 text-center bg-gradient-to-r from-[#262429] via-[#9B6DFF] to-[#262429] bg-clip-text text-transparent">
         About Us
       </h1>
@@ -33,7 +33,11 @@ const AboutHeader = () => {
             </div>
           </div>
 
-          <Button variant="gradientPrimary" size="default" className="max-w-[200px] w-full">
+          <Button
+            variant="gradientPrimary"
+            size="default"
+            className="max-w-[200px] w-full"
+          >
             Launch App
           </Button>
         </div>

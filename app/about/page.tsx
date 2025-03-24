@@ -1,12 +1,10 @@
 'use client'
-import React, { useState } from 'react';
+import blur3 from "@/public/outerBlur.svg";
+import Image from 'next/image';
 import AboutUs from "../components/about";
 import AboutHeader from "../components/about-header";
-import HomeNav from "../components/HomeNav";
-import AboutUs from '../components/about';
 import AboutTeam from '../components/about-team';
-import Image from 'next/image';
-import blur3 from "@/public/outerBlur.svg";
+import HomeNav from "../components/HomeNav";
 
 const AboutPage = () => {
   return (
