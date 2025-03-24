@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useState } from "react";
 import Image from "next/image";
 import Chart from "../../public/Chart.png";
@@ -42,9 +42,8 @@ const Sidebar = () => {
 
                 ))}
             </div>
-            <div className="pl-6 pb-[70%] flex items-center gap-3">
+            <div className="mt-auto pl-6 pb-6 flex items-center gap-3">
                 <Settings size={24} className={`${isDarkMode ? 'text-white' : 'text-black'}`} />
-                {/* <Image src={cog} alt="settings" height={24} width={24} /> */}
                 <p className={`font-light ${isDarkMode ? 'text-white' : 'text-black'}`}>Settings</p>
             </div>
         </aside>
