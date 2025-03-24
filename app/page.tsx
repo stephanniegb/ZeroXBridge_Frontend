@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import AboutUs from "./components/about";
 import FAQ from "./components/FAQ";
 import Footer from "./components/footer";
@@ -6,7 +6,6 @@ import Header from "./components/header";
 import HomeNav from "./components/HomeNav";
 import HowItWorks from "./components/how-it-works";
 import Testimonial from "./components/testimonial";
-
 
 export default function Home() {
   return (

@@ -1,12 +1,17 @@
+'use client'
 import Swap from '@/app/components/swap'
+import { useTheme } from '@/app/ThemeContext'
 import React from 'react'
 
-function page() {
+const SwapPage = () => {
+  const { isDarkMode } = useTheme();
   return (
-    <div className='mt-[12rem]'>
+    <div className={`flex flex-col items-center justify-center h-full w-full ${
+      isDarkMode ? "bg-[#09050E]" : "bg-white"
+    }`}>
     <Swap />
     </div>
   )
 }
 
-export default page
+export default SwapPage

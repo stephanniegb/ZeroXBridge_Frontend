@@ -1,5 +1,5 @@
-'use client'
-import { usePathname } from 'next/navigation';
+"use client";
+import { usePathname } from "next/navigation";
 import { Geist, Geist_Mono, Manrope, Roboto_Serif } from "next/font/google";
 import "./globals.css";
 import Sidebar from "./components/Sidebar";
@@ -54,7 +54,7 @@ export default function RootLayout({
             <div className={`min-h-screen flex w-full ${showSidebar ? 'ml-[320px]' : ''}`}>
               <main className={`flex-1  ${showSidebar ? 'mt-[4rem]' : ''} `}>{children}</main>
             </div>
-          </div>
+          </div> */}
         </ThemeProvider>
       </body>
     </html>
