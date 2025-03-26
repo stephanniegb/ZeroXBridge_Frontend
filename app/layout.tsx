@@ -51,7 +51,7 @@ export default function RootLayout({
         {showSidebar && <NavbarWithTheme />}
           <div className="flex">
             {showSidebar && <Sidebar />}
-            <div className={`min-h-screen flex w-full ${showSidebar ? 'ml-[320px]' : ''}`}>
+            <div className={`min-h-screen flex w-full ${showSidebar ? 'lg:ml-[320px]' : ''}`}>
               <main className={`flex-1  ${showSidebar ? 'mt-[4rem]' : ''} `}>{children}</main>
             </div>
           </div>
