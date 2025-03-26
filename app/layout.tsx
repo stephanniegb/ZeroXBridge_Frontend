@@ -30,7 +30,7 @@ const robotoSerif = Roboto_Serif({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-export default function RootLayout({
+export default function ClientLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -50,21 +50,15 @@ export default function RootLayout({
       >
         <ThemeProvider>
           {showSidebar && <NavbarWithTheme />}
-          <div className="flex overflow-hidden">
+          <div className="relative">
             {showSidebar && <Sidebar />}
             <div
-              className={`min-h-screen w-full ${
-                showSidebar ? "ml-[320px]" : ""
-              } overflow-x-hidden`}
+              className={`min-h-screen overflow-x-hidden ${
+                showSidebar ? "lg:ml-[320px]" : ""
+              }`}
             >
-              <main
-                className={`${
-                  showSidebar ? "mt-[4rem]" : ""
-                } w-full overflow-x-hidden`}
-              >
-                <div className="w-full max-w-full overflow-x-hidden">
-                  {children}
-                </div>
+              <main className={`${showSidebar ? "mt-[4rem]" : ""}`}>
+                {children}
               </main>
             </div>
           </div>
