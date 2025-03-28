@@ -76,6 +76,10 @@ body {
   bottom: -150px;
 }
 
+.gradient-border {
+  @apply bg-gradient-to-b from-[#A26DFF] to-[#A26DFF] p-[0.7px] rounded-full;
+}
+
 /* Custom Range Slider */
 .custom-range {
   @apply w-full appearance-none cursor-pointer;
