@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import LiquidityLockTable from "@/app/components/lock-liquidity";
 import { useTheme } from "@/app/ThemeContext";
 
@@ -66,7 +67,8 @@ const LockTokens = () => {
             ))}
           </div>
 
-          <div className="w-full max-w-full overflow-hidden">
+          {/* LiquidityLockTable - Ensure it takes full width */}
+          <div className="w-full overflow-x-auto">
             <LiquidityLockTable isDarkMode={isDarkMode} />
           </div>
         </div>
