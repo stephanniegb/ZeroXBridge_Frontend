@@ -19,8 +19,7 @@ interface XZBInterfaceProps {
   tokenData: TokenData;
   onClaim: (asset: string) => void;
   onBurn: (amount: string, asset: string) => void;
-  onConnect: () => void;
-  isConnected: boolean;
+  isConnected: boolean | undefined;
   isDarkMode: boolean;
 }
 
@@ -49,7 +48,6 @@ const XZBInterface: React.FC<XZBInterfaceProps> = ({
   tokenData,
   onClaim,
   onBurn,
-  onConnect,
   isConnected,
   isDarkMode,
 }) => {
@@ -338,7 +336,7 @@ const XZBInterface: React.FC<XZBInterfaceProps> = ({
             className={`w-full bg-gradient-to-b from-[#A26DFF] to-[#09050E] hover:bg-[#5a4eb8] rounded-2xl p-[14px] lg:p-4 font-bold lg:font-medium transition-colors ${
               !isDarkMode && "text-white"
             }`}
-            onClick={onConnect}
+            onClick={()=>{return}}
           >
             Connect Wallet
           </button>

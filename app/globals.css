@@ -128,9 +128,94 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* Custom Scrollbar - Combined and Simplified */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 0 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: #d4c2f3;
+  transition: background 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b69fe6;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #3b2a65;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #5c4a85;
+}
+
 /* Ensure Smooth Rendering on Webkit Browsers */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   .footer-background-text {
     -webkit-font-smoothing: antialiased;
   }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(162, 109, 255, 0.7);
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(162, 109, 255, 0.6);
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(162, 109, 255, 0);
+  }
+}
+
+.shadow-glow {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(162, 109, 255, 0.6);
+}
+
+/* Add this to your global CSS file */
+
+@keyframes glow {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+  }
+  20% {
+    filter: brightness(0.8) drop-shadow(0 0 0px rgba(255, 255, 255, 0.2));
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+  }
+  70% {
+    filter: brightness(1.4) drop-shadow(0 0 0px rgba(255, 255, 255, 0.7));
+  }
+}
+
+.animate-glowSlow {
+  animation: glow 4s cubic-bezier(0.6, 0.8, 0.6, 1) infinite;
+}
+
+/* Remove default borders from all images */
+img {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.globe-grid-image {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
 }
