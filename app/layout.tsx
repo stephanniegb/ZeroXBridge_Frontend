@@ -43,10 +43,7 @@ export default function RootLayout({
   const pathname = usePathname();
   const showSidebar =
     pathname === "/dashboard" ||
-    pathname === "/claim" ||
-    pathname === "/claim-burn" ||
-    pathname.startsWith("/dashboard/") ||
-    pathname.startsWith("/claim/");
+    pathname.startsWith("/dashboard/");
 
   return (
     <html lang="en">
@@ -55,24 +52,9 @@ export default function RootLayout({
       >
         <StarknetProvider>
           <ThemeProvider>
-            {showSidebar && <NavbarWithTheme />}
-            <div className="flex ">
-              {showSidebar && <Sidebar />}
-              <div
-                className={`min-h-screen relative flex flex-col w-full ${
-                  showSidebar ? "lg:ml-[320px]" : ""
-                }`}
-              >
-                <main
-                  className={`flex-1  ${
-                    showSidebar ? "mt-[4rem] mb-[4rem]" : ""
-                  } `}
-                >
-                  {children}
-                </main>
-                {showSidebar && <NavigationBar />}
-              </div>
-            </div>
+            <LayoutContent showSidebar={showSidebar}>
+              {children}
+            </LayoutContent>
           </ThemeProvider>
         </StarknetProvider>
       </body>
@@ -80,7 +62,36 @@ export default function RootLayout({
   );
 }
 
-function NavbarWithTheme() {
+// Extract the inner content to a new component where hooks can be used
+function LayoutContent({ 
+  children, 
+  showSidebar 
+}: { 
+  children: React.ReactNode;
+  showSidebar: boolean;
+}) {
   const { isDarkMode, toggleDarkMode } = useTheme();
-  return <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />;
+  
+  return (
+    <>
+      {showSidebar && <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
+      <div className="flex">
+        {showSidebar && <Sidebar />}
+        <div
+          className={`${isDarkMode ? 'bg-black' : 'bg-white'} min-h-screen relative flex flex-col w-full ${
+            showSidebar ? "lg:ml-[320px]" : ""
+          }`}
+        >
+          <main
+            className={`flex-1 ${
+              showSidebar ? "mt-[4rem] mb-[4rem]" : ""
+            }`}
+          >
+            {children}
+          </main>
+          {showSidebar && <NavigationBar />}
+        </div>
+      </div>
+    </>
+  );
 }

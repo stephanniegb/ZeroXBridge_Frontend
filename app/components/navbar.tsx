@@ -209,11 +209,11 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
       >
         <div className="flex flex-col h-full py-6 px-4 bg-[#21192F]">
           {/* Mobile Menu Header */}
-          <div className={`flex justify-between items-center p-6 border-b ${isDarkMode ? "border-[#1F1333]" : "border-gray-300"}`}>
+          <div className={`flex justify-between items-center p-6 border-b ${isDarkMode ? "border-[#1F1333]" : "border-[#1F1333]"}`}>
             {/* Logo for mobile */}
             <Link href='/'>
               <Image
-                src={isDarkMode ? Logo : LogoWhite}
+                src={isDarkMode ? Logo : Logo}
                 alt="ZeroxBridge Logo"
                 width={120}
                 height={40}
@@ -232,20 +232,20 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
             
             {/* Navigation Links */}
             <nav className="flex flex-col gap-3 ">
-              <Link href="" className={`block py-3 px-4  border-b border-[#A26DFF] ${isDarkMode ? 'text-white hover:bg-[#1F1333]' : 'text-black hover:bg-gray-100'}`}>
+              <Link href="" className={`block py-3 px-4  border-b border-[#A26DFF] ${isDarkMode ? 'text-white hover:bg-[#1F1333]' : 'text-white'}`}>
               <span className="flex items-center w-full justify-between px-2 py-4">
                 <p>Search</p>
                 <SearchIcon className="text-white" size={24} />
               </span>
             
               </Link>
-              <Link href="" className={`block py-3 px-4  border-b border-[#A26DFF]  ${isDarkMode ? 'text-white hover:bg-[#1F1333]' : 'text-black hover:bg-gray-100'}`}>
+              <Link href="" className={`block py-3 px-4  border-b border-[#A26DFF]  ${isDarkMode ? 'text-white hover:bg-[#1F1333]' : 'text-white '}`}>
               <span className="flex items-center w-full justify-between px-2 py-4">
                 <p>Notifications</p>
                 <Bell className="text-white" size={24} />
               </span>
               </Link>
-              <Link href="" className={`block py-3 px-4  ${isDarkMode ? 'text-white hover:bg-[#1F1333]' : 'text-black hover:bg-gray-100'}`}>
+              <Link href="" className={`block py-3 px-4  ${isDarkMode ? 'text-white hover:bg-[#1F1333]' : 'text-white'}`}>
               <span className="flex items-center w-full justify-between px-2 py-4">
                 <p>Settings</p>
                 <Settings className="text-white" size={24} />
