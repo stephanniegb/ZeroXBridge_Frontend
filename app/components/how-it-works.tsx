@@ -116,23 +116,23 @@ const HowItWorks = () => {
           <div className="relative order-1 md:order-2 lg:pl-4">
             <div className="transition-opacity duration-1000 opacity-100">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 lg:w-[60px] lg:h-[60px] rounded-full border border-[#A26DFF] text-white flex items-center justify-center text-base lg:text-[18px] font-serif flex-shrink-0">
+                <div className="w-10 h-10 lg:w-[60px] lg:h-[60px] rounded-full border border-[#A26DFF] text-white flex items-center justify-center text-base lg:text-[18px] font-serif flex-shrink-0">
                   {steps[currentStep].number}.
                 </div>
                 <div>
-                  <h3 className="text-2xl lg:text-[36px] font-semibold text-white mb-2">
+                  <h3 className="text-sm lg:text-[36px] font-semibold text-[#8B8B8B] sm:text-white mb-2">
                     {steps[currentStep].title}
                   </h3>
-                  <p className="text-gray-300 text-sm lg:text-[16px]">
+                  <p className="text-gray-300 text-sm lg:text-[16px] w-[80%] text-wrap">
                     {steps[currentStep].description}
                   </p>
 
                   {/* Navigation Dots */}
-                  <div className="flex justify-start self-start gap-2 mt-8 lg:mt-24">
+                  <div className="flex  pr-24 sm:pr-0 justify-center w-full self-start gap-2 mt-8 lg:mt-24">
                     {steps.map((_, index) => (
                       <button
                         key={index}
-                        className={`w-8 lg:w-12 h-1 rounded-full transition-all ${currentStep === index ? 'bg-[#A26DFF]' : 'bg-gray-600'
+                        className={`w-10 lg:w-12 h-[0.8px] rounded-full transition-all ${currentStep === index ? 'bg-[#A26DFF]' : 'bg-gray-600'
                           }`}
                         onClick={() => {
                           setIsAnimating(true);
