@@ -42,8 +42,7 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   const showSidebar =
-    pathname === "/dashboard" ||
-    pathname.startsWith("/dashboard/");
+    pathname === "/dashboard" || pathname.startsWith("/dashboard/");
 
   return (
     <html lang="en">
@@ -52,9 +51,7 @@ export default function RootLayout({
       >
         <StarknetProvider>
           <ThemeProvider>
-            <LayoutContent showSidebar={showSidebar}>
-              {children}
-            </LayoutContent>
+            <LayoutContent showSidebar={showSidebar}>{children}</LayoutContent>
           </ThemeProvider>
         </StarknetProvider>
       </body>
@@ -62,29 +59,31 @@ export default function RootLayout({
   );
 }
 
-function LayoutContent({ 
-  children, 
-  showSidebar 
-}: { 
+function LayoutContent({
+  children,
+  showSidebar,
+}: {
   children: React.ReactNode;
   showSidebar: boolean;
 }) {
   const { isDarkMode, toggleDarkMode } = useTheme();
-  
+
   return (
     <>
-      {showSidebar && <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
+      {showSidebar && (
+        <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      )}
       <div className="flex">
         {showSidebar && <Sidebar />}
         <div
-          className={`${isDarkMode ? 'bg-black' : 'bg-white'} min-h-screen relative flex flex-col w-full ${
+          className={`${
+            isDarkMode ? "bg-black" : "bg-white"
+          } min-h-screen relative flex flex-col w-full ${
             showSidebar ? "lg:ml-[320px]" : ""
           }`}
         >
           <main
-            className={`flex-1 ${
-              showSidebar ? "mt-[4rem] mb-[4rem]" : ""
-            }`}
+            className={`flex-1 ${showSidebar ? "mt-[4rem] mb-[4rem]" : ""}`}
           >
             {children}
           </main>
