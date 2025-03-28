@@ -31,10 +31,6 @@ const Swap = () => {
     setToValue(fromValue);
   };
 
-  const handleConnectWallet = () => {
-    setIsWalletConnected(!isWalletConnected);
-  };
-
   return (
     <div
       className={`font-[family-name:var(--font-manrope)] flex flex-col items-center justify-center w-full min-h-screen h-fit mx-auto relative `}
@@ -401,7 +397,7 @@ const Swap = () => {
         <div
           className={`${
             isDarkMode ? "bg-[#332646]" : "bg-[#f8f4fe]"
-          } 2xl:scale-150 w-[85vw] md:w-[93vw] lg:w-[500px] mx-auto relative p-6 rounded-[1.25rem] shadow-lg text-white border-[0.4px] border-transparent before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#1F1333] before:to-[#614199] before:rounded-[1.25rem] before:-z-10 before:w-full before:h-full before:border-[0.4px] before:border-transparent`}
+          } 2xl:scale-150 w-[85vw] md:w-[93vw] lg:w-[500px] mx-auto relative p-6 rounded-[1.25rem] shadow-lg text-white border-[0.4px] border-transparent`}
         >
           <div
             className={`border-[0.4px] border-[#8B8B8B] ${
@@ -547,7 +543,6 @@ const Swap = () => {
               backgroundClip: "padding-box",
               position: "relative",
             }}
-            onClick={handleConnectWallet}
           >
             <span
               className="absolute inset-0 rounded-[16px] p-[2px]"
@@ -557,7 +552,8 @@ const Swap = () => {
                 WebkitMaskImage: "linear-gradient(white, white)",
               }}
             />
-            <span className="relative z-10">Connect Wallet</span>
+            {isConnected ? ( <span className="relative z-10">Swap</span>) : ( <span className="relative z-10">Connect Wallet</span>)}
+           
           </button>
         </div>
       )}
