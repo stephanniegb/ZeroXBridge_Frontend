@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -36,9 +36,7 @@ const Footer = () => {
       <div 
         className="absolute inset-0" 
         style={{
-          background: 'linear-gradient(180deg, rgba(9, 5, 14, 1) 0%, rgba(74, 42, 130, 1) 100%)',
-          position: 'absolute',
-          bottom: '-20%',
+          background: 'linear-gradient(180deg, #09050E 21.97%, #48287E 63.69%)'
         }}
       />
 
@@ -148,6 +146,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="relative text-center">
+        <h1 className="text-[12vw] lg:text-[12.5vw] font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#09050E] to-[#48287E] opacity-100 uppercase tracking-widest">
+          ZEROXBRIDGE
+        </h1>
       </div>
     </footer>
   )
