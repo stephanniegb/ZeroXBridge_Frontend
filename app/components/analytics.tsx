@@ -127,7 +127,7 @@ export default function AnalyticsDashboard({
   );
 
   return (
-    <div className="space-y-6 p-6 w-full lg:max-w-[1800px] mx-auto mac-16:scale-125 mac-16:pb-[4rem] mac-16:pt-[8rem]">
+    <div className="space-y-6 p-6 w-full lg:max-w-[1800px] mac-16:w-fit mx-auto mac-16:scale-125 mac-16:pb-[4rem] mac-16:pt-[8rem]">
       <div
         className={`flex flex-col lg:flex-row justify-evenly md:px-4 gap-6 border-b ${borderColor} py-6`}
       >
