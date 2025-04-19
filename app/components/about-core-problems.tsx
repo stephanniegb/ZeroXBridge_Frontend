@@ -93,7 +93,7 @@ const AboutCoreProblems: React.FC = () => {
   ];
 
   return (
-    <div className="relative md:m-0 pt-12 pb-4 md:py-16 mx-8 px-6 md:px-10 xl:max-w-[1086px]">
+    <div className="relative md:m-0 pt-12 pb-4 md:py-16 mx-8 px-6 md:px-10 w-[85%] mx-auto">
       <div className="absolute -top-[250px] left-1/2 -translate-x-1/2 z-10">
         <Image
           src={blur3}

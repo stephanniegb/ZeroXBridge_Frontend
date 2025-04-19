@@ -33,7 +33,7 @@ const Swap = () => {
 
   return (
     <div
-      className={`font-[family-name:var(--font-manrope)] flex flex-col items-center justify-center w-full min-h-screen h-fit mx-auto relative `}
+      className={` flex flex-col items-center justify-center w-full mt-[80px] md:mt-0 lg:min-h-screen h-fit mx-auto relative `}
     >
       {isConnected ? (
         <div className="flex items-start gap-4 w-fit mx-auto 2xl:scale-150">

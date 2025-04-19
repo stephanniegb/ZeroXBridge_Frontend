@@ -87,7 +87,7 @@ export default function Testimonial() {
             Hear what people are saying about us
           </h2>
           <p className="text-[#D4D4D4] text-sm font-semibold sm:text-xl sm:font-normal font-roboto-serif">
-            Don't be left out of this Revolution
+            Don&apos;t be left out of this Revolution
           </p>
         </div>
 

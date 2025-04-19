@@ -3,7 +3,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import Image from "next/image";
-import menumobile from "../../public/menu-mobile.png"
 
 
 type NavLink = {
@@ -77,11 +76,6 @@ const HomeNav = () => {
           ))}
         </div>
 
-
-        {/* Mobile Menu Button */}
-        <button className="lg:hidden text-[#A26DFF]">
-          <Image src={menumobile} alt="menu" width={24} height={24} />
-        </button>
 
         {/* Launch App Button - Hidden on Mobile */}
         <Link href="/dashboard" className="hidden lg:block cursor-pointer">

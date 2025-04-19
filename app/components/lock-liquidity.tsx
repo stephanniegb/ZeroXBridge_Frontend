@@ -1,4 +1,5 @@
 "use client";
+import { useAccount } from "@starknet-react/core";
 import Image from "next/image";
 
 interface LiquidityLockTableProps {
@@ -10,6 +11,7 @@ const LiquidityLockTable = ({
   isDarkMode,
   className,
 }: LiquidityLockTableProps) => {
+  const { isConnected } = useAccount()
   const liquidityRows = [
     {
       token: "SOL",
@@ -109,9 +111,8 @@ const LiquidityLockTable = ({
                 <td className="p-3 text-right whitespace-nowrap">
                   <button
                     className="bg-[#09050E] text-white px-4 py-2 rounded-full flex items-center justify-center ml-auto"
-                    onClick={() => alert("Connect Wallet clicked")}
                   >
-                    Connect Wallet
+                    {isConnected ?  "Select" : "Connect Wallet" }
                   </button>
                 </td>
               </tr>

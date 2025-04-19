@@ -32,17 +32,13 @@ const Footer = () => {
   }
 
   return (
-    <footer className="relative w-full bg-[#09050E] bg-blend-normal">
-      <div 
-        className="absolute inset-0" 
-        style={{
-          background: 'linear-gradient(180deg, #09050E 21.97%, #48287E 63.69%)'
-        }}
-      />
+    <footer className="relative w-full h-fit py-[80px] bg-blend-normal"  style={{
+      background: 'linear-gradient(180deg, #09050E 21.97%, #48287E 63.69%)'
+    }}>
 
-      <div className="absolute inset-0 overflow-hidden bottom-[-20%] w-full z-0">
+      <div className="absolute inset-0 overflow-hidden bottom-[-2%] w-full z-0">
         <div 
-          className="absolute bottom-[-20px] w-full mx-auto"
+          className="absolute bottom-[10px] lg:bottom-[-1rem] w-full mx-auto"
           style={{
             overflow: 'hidden',
             padding: 'auto',
@@ -60,7 +56,7 @@ const Footer = () => {
             letterSpacing: '-0.02em',
             transform: 'scale(1.02)',
             position: 'absolute',
-            bottom: '-1rem',
+            // bottom: '1rem',
           }}
         >
           ZEROXBRIDGE
@@ -71,7 +67,7 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-24 pt-4 lg:pt-24 pb-4 lg:pb-24">
           {/* Logo and Description Section */}
           <div className="flex-shrink-0 lg:w-1/3">
-            <div className="flex items-center space-x-3 mb-4 lg:mb-6">
+            <div className="flex items-center space-x-3 mb-8 lg:mb-6">
               <div className="relative h-9 bg-white/10 flex items-center justify-center rounded-sm">
                 <Image
                   src="/zerologo.png"
@@ -146,12 +142,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="relative text-center">
-        <h1 className="text-[12vw] lg:text-[12.5vw] font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#09050E] to-[#48287E] opacity-100 uppercase tracking-widest">
-          ZEROXBRIDGE
-        </h1>
       </div>
     </footer>
   )
