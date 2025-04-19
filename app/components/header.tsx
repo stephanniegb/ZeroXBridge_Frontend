@@ -173,12 +173,12 @@ const Header = () => {
   return (
     <div className="w-full bg-[#09050E] h-fit pt-24">
       <div className="flex flex-col gap-10 md:gap-[10em] bg-[url(/hero-bg.png)] bg-cover bg-no-repeat bg-center min-h-screen justify-center w-full px-4 sm:px-6 lg:px-[4rem]">
-        <div className="flex flex-col lg:flex-row justify-between relative items-center w-full">
+        <div className="flex flex-col lg:flex-row justify-between relative items-center w-full h-full">
           <div className="flex flex-col justify-center h-full gap-4 lg:gap-[1rem] w-full px-[1px] lg:w-[70%] text-center lg:text-left">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[54px] font-manrope py-2 text-wrap w-full font-bold bg-gradient-to-r from-[#262429] via-[#9B6DFF] to-[#262429] bg-clip-text text-transparent leading-tight lg:leading-[4rem]">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[54px] 4k:text-[78px] font-manrope py-2 text-wrap w-full font-bold bg-gradient-to-r from-[#262429] via-[#9B6DFF] to-[#262429] bg-clip-text text-transparent leading-tight lg:leading-[4rem] 4k:leading-[6rem]">
               Secure Cross-Chain Liquidity with Zero-Knowledge Proofs
             </h1>
-            <div className="font-roboto-serif text-sm md:text-base lg:text-[17px] 2xl:text-[24px] font-[400] relative mt-4 w-full max-w-sm mx-auto lg:mx-0">
+            <div className="font-roboto-serif text-sm md:text-base lg:text-[17px] 2xl:text-[24px] 4k:text-[32px] font-[400] relative mt-4 w-full max-w-sm mac-16:max-w-full 4k:max-w-full mx-auto lg:mx-0 flex flex-col gap-4">
               <p className="md:text-gray-400 text-white">
                 Unlock liquidity on Starknet using Ethereum collateral—no asset
                 transfers,
@@ -186,7 +186,7 @@ const Header = () => {
               <p className="md:text-gray-400 text-white">no wrapping, no centralized bridges.</p>
             </div>
             <div className="flex justify-center lg:justify-start mt-6 lg:mt-[39px]">
-              <Link href="/dashboard" className="w-full max-w-sm mx-auto lg:mx-0">
+              <Link href="/dashboard" className="w-full max-w-sm 4k:max-w-full 4k:w-1/3 mx-auto lg:mx-0">
                 <button className="relative w-full overflow-hidden py-[15px] px-[54px] text-white bg-[#4C327A] rounded-full transition-all hover:bg-opacity-90 shadow-[0_4px_8px_rgba(194,151,255,0.25),0_-4px_4px_rgba(162,109,255,0.5)]">
                   <span className="relative font-bold text-base font-manrope z-10">Launch App</span>
                   <span
@@ -200,7 +200,7 @@ const Header = () => {
           </div>
 
 
-          <div className="mt-10 lg:mt-0 w-full lg:w-[520px] max-w-[520px] relative h-[300px] sm:h-[400px] lg:h-[457px]">
+          <div className="mt-10 lg:mt-0 w-full lg:w-[520px] max-w-[520px] 4k:max-w-full 4k:w-[720px] relative h-[300px] sm:h-[400px] lg:h-[457px] 4k:h-[720px]">
             {/* Spinning globe (inner element) */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <Image

@@ -22,6 +22,7 @@ const config: Config = {
       'mac-13': '1280px',        // 13" MacBook
       'mac-14': '1512px',        // 14" MacBook Pro
       'mac-16': '1728px',        // 16" MacBook Pro
+      '4k': '2500px',
     },
     extend: {
       colors: {
