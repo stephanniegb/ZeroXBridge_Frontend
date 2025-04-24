@@ -47,11 +47,6 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonial() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -90,46 +85,6 @@ export default function Testimonial() {
             Don&apos;t be left out of this Revolution
           </p>
         </div>
-
-        {/* Floating Profile Images */}
-        {mounted && (
-          <div className="hidden md:block relative w-[60%] 2xl:w-[56%] mx-auto h-24 z-10">
-            <div className="absolute inset-0">
-              <div className="absolute top-2 left-[134px] w-12 h-12 -translate-x-1/2 -translate-y-1/2">
-                <Image
-                  src="/images/testimonial-float-1.png"
-                  alt=""
-                  width={42}
-                  height={45}
-                />
-              </div>
-              <div className="absolute top-10 right-48 w-12 h-12 translate-x-1/2 -translate-y-1/2">
-                <Image
-                  src="/testimonial-float-2.png"
-                  alt=""
-                  width={31}
-                  height={34}
-                />
-              </div>
-              <div className="absolute top-24 left-[140px] w-12 h-12 -translate-x-1/2 translate-y-1/2">
-                <Image
-                  src="/testimonial-float-3.png"
-                  alt=""
-                  width={34}
-                  height={37}
-                />
-              </div>
-              <div className="absolute top-24 right-[70px] w-12 h-12 translate-x-1/2 translate-y-1/2">
-                <Image
-                  src="/testimonial-float-2.png"
-                  alt=""
-                  width={25}
-                  height={27}
-                />
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Glowing SVG Lines */}
         <div className="absolute top-[35%] sm:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import RightArrow from "@/public/right-arrow.svg";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 interface StatItem {
   value: string;
@@ -19,8 +21,8 @@ const STATS_DATA: StatItem[] = [
 ];
 
 const NETWORK_NODES = [
-  { top: "5.5%", left: "27%", translateX: "0", translateY: "0", delay: "0s" },
-  { top: "6%", left: "67.4%", translateX: "0", translateY: "0", delay: "1.5s" },
+  { top: "5.7%", left: "26%", translateX: "0", translateY: "0", delay: "0s" },
+  { top: "6%", left: "67.7%", translateX: "0", translateY: "0", delay: "1.5s" },
   {
     top: "38.5%",
     left: "83.5%",
@@ -30,7 +32,7 @@ const NETWORK_NODES = [
   },
   {
     top: "71.5%",
-    left: "89.5%",
+    left: "90.9%",
     translateX: "0",
     translateY: "0",
     delay: "2.2s",
@@ -44,28 +46,28 @@ const NETWORK_NODES = [
   },
   {
     top: "85%",
-    left: "20%",
+    left: "19%",
     translateX: "0",
     translateY: "0",
     delay: "2.8s",
   },
   {
     top: "58%",
-    left: "5%",
+    left: "4%",
     translateX: "0",
     translateY: "-50%",
     delay: "0.4s",
   },
   {
     top: "47%",
-    left: "10%",
+    left: "9%",
     translateX: "0",
     translateY: "0",
     delay: "3.3s",
   },
   {
     top: "32%",
-    left: "6.5%",
+    left: "5%",
     translateX: "0",
     translateY: "0",
     delay: "1.8s",
@@ -112,8 +114,34 @@ const NETWORK_NODES = [
 ];
 
 const Header = () => {
+  const [is4K, setIs4K] = useState(false);
   const [counts, setCounts] = useState<number[]>(STATS_DATA.map(() => 0));
   const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Check if screen is 4K or higher
+    const check4K = () => {
+      setIs4K(window.innerWidth >= 3000);
+    };
+    
+    check4K();
+    window.addEventListener('resize', check4K);
+    return () => window.removeEventListener('resize', check4K);
+  }, []);
+
+  // Then in your node mapping:
+  // Add a small adjustment to positions for 4K screens
+  const getNodePosition = (node: any) => {
+    if (is4K) {
+      // Adjust position for 4K screens - fine-tune these values
+      return {
+        top: `calc(${node.top} + 0.4%)`,
+        left: `calc(${node.left} - 2.2%)`
+      };
+    }
+    return { top: node.top, left: node.left };
+  };
+
 
   useEffect(() => {
     setIsVisible(true);
@@ -151,7 +179,7 @@ const Header = () => {
   }, [isVisible]);
 
   const renderStatItem = (stat: StatItem, index: number) => (
-    <div key={index} className="flex gap-2 z-20 w-fit">
+    <div key={index} className="flex gap-2 w-full items-center">
       <Image
         src={RightArrow}
         alt="Right Arrow"
@@ -159,7 +187,7 @@ const Header = () => {
         priority={false}
       />
       <div className="flex flex-col space-y-2">
-        <div className="text-xl lg:text-2xl font-[500] text-[#D4D4D4] font-manrope">
+        <div className="text-xl lg:text-[32px] 4k-large:text-[48px] font-[500] text-[#D4D4D4] font-manrope">
           {counts[index]}
           {stat.value.slice(-2)}
         </div>
@@ -171,14 +199,14 @@ const Header = () => {
   );
 
   return (
-    <div className="w-full bg-[#09050E] h-fit pt-24">
-      <div className="flex flex-col gap-10 md:gap-[10em] bg-[url(/hero-bg.png)] bg-cover bg-no-repeat bg-center min-h-screen justify-center w-full px-4 sm:px-6 lg:px-[4rem]">
+    <div className="w-full bg-[#09050E] h-fit pt-[8rem] 4k-large:pt-[12rem] 4k-large:w-[85%] mx-auto px-[1.5rem]">
+      <div className="flex flex-col gap-10 md:gap-[10em] bg-[url(/hero-bg.png)] bg-cover bg-no-repeat bg-center h-fit justify-center w-full px-4 sm:px-6 lg:px-[4rem]">
         <div className="flex flex-col lg:flex-row justify-between relative items-center w-full h-full">
           <div className="flex flex-col justify-center h-full gap-4 lg:gap-[1rem] w-full px-[1px] lg:w-[70%] text-center lg:text-left">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[54px] 4k:text-[78px] font-manrope py-2 text-wrap w-full font-bold bg-gradient-to-r from-[#262429] via-[#9B6DFF] to-[#262429] bg-clip-text text-transparent leading-tight lg:leading-[4rem] 4k:leading-[6rem]">
               Secure Cross-Chain Liquidity with Zero-Knowledge Proofs
             </h1>
-            <div className="font-roboto-serif text-sm md:text-base lg:text-[17px] 2xl:text-[24px] 4k:text-[32px] font-[400] relative mt-4 w-full max-w-sm mac-16:max-w-full 4k:max-w-full mx-auto lg:mx-0 flex flex-col gap-4">
+            <div className="font-roboto-serif text-sm md:text-base lg:text-[17px] 2xl:text-[24px] 4k:text-[32px] font-[400] relative mt-4 w-full max-w-sm mac-14:max-w-full 4k:max-w-full mx-auto lg:mx-0 flex flex-col gap-4">
               <p className="md:text-gray-400 text-white">
                 Unlock liquidity on Starknet using Ethereum collateral—no asset
                 transfers,
@@ -186,21 +214,16 @@ const Header = () => {
               <p className="md:text-gray-400 text-white">no wrapping, no centralized bridges.</p>
             </div>
             <div className="flex justify-center lg:justify-start mt-6 lg:mt-[39px]">
-              <Link href="/dashboard" className="w-full max-w-sm 4k:max-w-full 4k:w-1/3 mx-auto lg:mx-0">
-                <button className="relative w-full overflow-hidden py-[15px] px-[54px] text-white bg-[#4C327A] rounded-full transition-all hover:bg-opacity-90 shadow-[0_4px_8px_rgba(194,151,255,0.25),0_-4px_4px_rgba(162,109,255,0.5)]">
-                  <span className="relative font-bold text-base font-manrope z-10">Launch App</span>
-                  <span
-                    aria-hidden
-                    className="absolute inset-[-75px] animate-slowSpin rounded-lg bg-gradient-to-r from-[#A26DFFE5] via-[#e3e1e5d6] to-[#4C327A]"
-                  />
-                  <span className="absolute inset-[2px] bg-[#4C327A] rounded-full" />
-                </button>
-              </Link>
+               <Link href="/dashboard" className="hidden lg:block cursor-pointer">
+          <Button variant="gradientPrimary" size="default">
+            Launch App
+          </Button>
+        </Link>
             </div>
           </div>
 
 
-          <div className="mt-10 lg:mt-0 w-full lg:w-[520px] max-w-[520px] 4k:max-w-full 4k:w-[720px] relative h-[300px] sm:h-[400px] lg:h-[457px] 4k:h-[720px]">
+          <div className="mt-10 lg:mt-0 w-full lg:w-[520px] max-w-[520px] 4k:max-w-full 4k:w-[720px] 4k-large:scale-110 relative h-[300px] sm:h-[400px] lg:h-[457px] 4k:h-[720px] ">
             {/* Spinning globe (inner element) */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <Image
@@ -225,29 +248,32 @@ const Header = () => {
 
             {/* Flashing nodes */}
             <div className="absolute inset-0 pointer-events-none">
-              {NETWORK_NODES.map((node, index) => (
+              {NETWORK_NODES.map((node, index) => {
+      const position = getNodePosition(node);
+      return (
                 <div
                   key={index}
-                  className="absolute"
-                  style={{
-                    top: node.top,
-                    left: node.left,
-                    transform: `translate(${node.translateX}, ${node.translateY})`,
-                  }}
+                  className={``}
+                   style={{
+                    position: 'absolute',
+                    top: position.top,
+                    left: position.left,
+                     transform: `translate(${node.translateX}, ${node.translateY})`,
+                   }}
                 >
                   <div
-                    className="w-2 h-2 bg-gradient-to-b from-[#FFFFFF] to-[#A26DFF] rounded-full shadow-glow"
+                    className="w-2 h-2 4k-large:w-4 4k-large:h-4 bg-gradient-to-b from-[#FFFFFF] to-[#A26DFF] rounded-full shadow-glow"
                     style={{
                       animation: `pulse 3s infinite ${node.delay}`,
                     }}
                   ></div>
                 </div>
-              ))}
+              )})}
             </div>
           </div>
         </div>
-        <div className="mt-10  lg:mt-0">
-          <div className="grid grid-cols-2 sm:grid-cols-4 pl-10 md:pl-0 gap-4 sm:gap-6 justify-center items-center w-full lg:w-[70%] xl:w-[60%] mx-auto lg:ml-[4rem]">
+        <div className="mt-10  lg:-mt-0 4k-large:mt-[2rem] w-full flex items-center">
+          <div className="w-full flex items-center justify-center gap-4 ml-[12%]">
             {STATS_DATA.map(renderStatItem)}
           </div>
         </div>
