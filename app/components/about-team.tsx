@@ -52,7 +52,7 @@ const AboutTeam = () => {
                     Meet the Team
                 </p>
                 <p className={`text-[16px] sm:text-[18px] md:text-[20px] font-normal rgba(212, 212, 212, 1) ${roboto.className}`}>
-                    ZeroXBridge's Team leads
+                    ZeroXBridge&apos;s Team leads
                 </p>
                 <div className="flex flex-col sm:flex-row items-center gap-10 sm:gap-[50px] md:gap-[100px] mt-6 sm:mt-8 md:mt-10 justify-center">
                     <div className="flex flex-col items-center justify-center">

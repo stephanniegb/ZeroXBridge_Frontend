@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from "react";
 import { ChevronDown, Info } from "lucide-react";
 import Image from "next/image";
@@ -71,9 +72,9 @@ const XZBInterface: React.FC<XZBInterfaceProps> = ({
   
   const { 
     isConnected: isEthereumConnected, 
-    connect: connectEthereum,
-    depositAsset,
-    claimTokens,
+    // connect: connectEthereum,
+    // depositAsset,
+    // claimTokens,
     address: ethereumAddress,
     provider
   } = useEthereum();
@@ -161,13 +162,14 @@ const XZBInterface: React.FC<XZBInterfaceProps> = ({
       // Check if Ethereum wallet is connected for L1
       if (!isEthereumConnected || !ethereumAddress) {
         try {
-          await connectEthereum();
+          // await connectEthereum();
           await new Promise(resolve => setTimeout(resolve, 1000));
           
           if (!isEthereumConnected || !ethereumAddress) {
             throw new Error("Failed to connect Ethereum wallet");
           }
-        } catch (_) {
+        } catch (error: any) {
+          console.error('error', error)
           throw new Error("Please connect your Ethereum wallet first");
         }
       }
@@ -212,13 +214,13 @@ const XZBInterface: React.FC<XZBInterfaceProps> = ({
       });
 
       // Call depositAsset function
-      const txHash = await depositAsset(
-        assetType,
-        tokenAddress,
-        amount
-      );
+      // const txHash = await depositAsset(
+      //   assetType,
+      //   tokenAddress,
+      //   amount
+      // );
       
-      console.log("Transaction hash:", txHash);
+      // console.log("Transaction hash:", txHash);
       setHasBurned(true);
       onBurn(amount, assetId);
     } catch (error) {
@@ -243,11 +245,11 @@ const XZBInterface: React.FC<XZBInterfaceProps> = ({
       setIsProcessing(true);
 
       if (!isEthereumConnected || !ethereumAddress) {
-        await connectEthereum();
+        // await connectEthereum();
         return;
       }
 
-      await claimTokens();
+      // await claimTokens();
       onClaim(selectedAsset?.id || "");
     } catch (error) {
       console.error("Error in handleClaim:", error);
@@ -263,7 +265,7 @@ const XZBInterface: React.FC<XZBInterfaceProps> = ({
       setIsProcessing(true);
 
       if (activeTab === "claim" && !isEthereumConnected) {
-        await connectEthereum();
+        // await connectEthereum();
         // Wait a bit for the connection to be established
         await new Promise(resolve => setTimeout(resolve, 1000));
         
