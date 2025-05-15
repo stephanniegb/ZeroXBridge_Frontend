@@ -1,5 +1,14 @@
 "use client";
-import { Search, Moon, Sun, Menu, X, SearchIcon, Bell, Settings } from "lucide-react";
+import {
+  Search,
+  Moon,
+  Sun,
+  Menu,
+  X,
+  SearchIcon,
+  Bell,
+  Settings,
+} from "lucide-react";
 import Notification from "../../public/bell.png";
 import Image from "next/image";
 import Logo from "../../public/zerologo.png";
@@ -9,9 +18,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import ConnectModal from "./connectWallet";
 import { useAccount } from "@starknet-react/core";
-import { useWalletState } from '../hooks/useWalletState';
+import { useWalletState } from "../hooks/useWalletState";
 // import { useRegistration } from '../hooks/useRegistration';
-
 
 interface NavbarProps {
   isDarkMode: boolean;
@@ -22,19 +30,24 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [disconnectModal, setdisconnectModalOpen] = useState(false);
   const { isConnected } = useAccount();
-  
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const { 
+  const {
     // isAnyWalletConnected,
     isAllConnected,
     getDisplayAddress,
-    disconnectAll 
+    ethereumAddress,
+    starknetAddress,
+    disconnectEthereum,
+    disconnectStarknet,
+    disconnectAll,
   } = useWalletState();
-  
+
   // const { registerUser, isRegistering } = useRegistration();
 
   // useEffect(() => {
@@ -55,7 +68,8 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const handleConnectWallet = () => {
     if (isAllConnected) {
-      disconnectAll();
+      // disconnectAll();
+      setdisconnectModalOpen(true);
     } else {
       setIsModalOpen(true);
     }
@@ -66,7 +80,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
       setIsModalOpen(false);
     }
   }, [isConnected]);
-  
+
   const gradientBorder =
     "bg-gradient-to-b from-[#A26DFF] to-[#A26DFF] p-[0.7px] rounded-full";
 
@@ -78,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
         } flex h-24 w-full fixed z-50`}
       >
         {/* Logo section with border */}
-        <Link href='/'>
+        <Link href="/">
           <div
             className={`w-80 h-24 hidden lg:flex items-center justify-start pl-6 border-r-2 ${
               isDarkMode ? "border-[#1F1333]" : "border-gray-300"
@@ -149,29 +163,33 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
           {/* Mobile menu button */}
           <div className="flex lg:hidden items-center space-x-6">
             <button onClick={toggleMobileMenu}>
-              <Menu className={`${isDarkMode ? 'text-[#A26DFF]' : 'text-[#A26DFF]'}`} />
+              <Menu
+                className={`${
+                  isDarkMode ? "text-[#A26DFF]" : "text-[#A26DFF]"
+                }`}
+              />
             </button>
           </div>
 
           {/* Right side controls */}
           <div className="flex items-center space-x-6">
             <div className="flex md:hidden">
-            {/* Dark mode toggle with gradient border */}
-            {isDarkMode ? (
-              <button
-                onClick={toggleDarkMode}
-                className={`p-2 rounded-full transition-colors border border-[#291A43]`}
-              > 
-                <Sun size={18} color={`${isDarkMode ? "white" : "black"}`} />
-              </button>
-            ) : (
-              <button
-                onClick={toggleDarkMode}
-                className={`p-2 rounded-full transition-colors border border-[#291A43]`}
-              >
-                <Moon size={18} color={`${isDarkMode ? "white" : "black"}`} />
-              </button>
-            )}
+              {/* Dark mode toggle with gradient border */}
+              {isDarkMode ? (
+                <button
+                  onClick={toggleDarkMode}
+                  className={`p-2 rounded-full transition-colors border border-[#291A43]`}
+                >
+                  <Sun size={18} color={`${isDarkMode ? "white" : "black"}`} />
+                </button>
+              ) : (
+                <button
+                  onClick={toggleDarkMode}
+                  className={`p-2 rounded-full transition-colors border border-[#291A43]`}
+                >
+                  <Moon size={18} color={`${isDarkMode ? "white" : "black"}`} />
+                </button>
+              )}
             </div>
             <div className={` ${gradientBorder} hidden lg:flex`}>
               <div
@@ -205,18 +223,18 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
             {/* Connect Wallet button with gradient border */}
             <div className={gradientBorder}>
               <button
-               onClick={handleConnectWallet}
+                onClick={handleConnectWallet}
                 className={`${
                   isDarkMode ? "bg-[#09050E]" : "bg-white"
                 } py-3 px-8 rounded-full text-sm ${
                   isDarkMode ? "text-white" : "text-black"
                 }`}
               >
-                 {/* {isRegistering 
+                {/* {isRegistering 
       ? "Registering..." 
       : getDisplayAddress()
     } */}
-    {getDisplayAddress()}
+                {getDisplayAddress()}
               </button>
             </div>
           </div>
@@ -224,27 +242,116 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
       </header>
 
       {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black opacity-50" onClick={() => setIsModalOpen(false)} />
-            {/* Modal Content */}
-            <div className="bg-[#09050E] p-6 rounded-md z-10">
-              <ConnectModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black opacity-50"
+            onClick={() => setIsModalOpen(false)}
+          />
+          {/* Modal Content */}
+          <div className="bg-[#09050E] p-6 rounded-md z-10">
+            <ConnectModal
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+            />
+          </div>
+        </div>
+      )}
+
+      {disconnectModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black opacity-50"
+            onClick={() => setdisconnectModalOpen(false)}
+          />
+          {/* Modal Content */}
+          <div className="bg-[#09050E] p-6 rounded-xl z-10 w-1/3">
+            <div className="space-y-4">
+              {/* Ethereum Option */}
+              <button
+                onClick={() => disconnectEthereum()}
+                className="w-full flex items-center justify-between p-4 rounded-lg bg-[#291A43] hover:bg-[#342251] transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <Image src="/eth-icon.png" alt="Ethereum" className="w-8 h-8" width={500} height={500} />
+                  <div className="text-left">
+                    <p className="font-medium text-white">
+                      {" "}
+                      Disconnect Ethereum
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      {ethereumAddress
+                        ? `${ethereumAddress.slice(
+                            0,
+                            6
+                          )}...${ethereumAddress.slice(-4)}`
+                        : "Not connected"}
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className={`w-3 h-3 rounded-full ${
+                    ethereumAddress ? "bg-green-500" : "bg-red-500"
+                  }`}
+                />
+              </button>
+
+              {/* Starknet Option */}
+              <button
+                onClick={() => disconnectStarknet()}
+                className="w-full flex items-center justify-between p-4 rounded-lg bg-[#291A43] hover:bg-[#342251] transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <Image src="/wallet.svg" alt="Starknet" className="w-8 h-8" width={500} height={500} />
+                  <div className="text-left">
+                    <p className="font-medium text-white">
+                      Disconnect Starknet
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      {starknetAddress
+                        ? `${starknetAddress.slice(
+                            0,
+                            6
+                          )}...${starknetAddress.slice(-4)}`
+                        : "Not connected"}
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className={`w-3 h-3 rounded-full ${
+                    starknetAddress ? "bg-green-500" : "bg-red-500"
+                  }`}
+                />
+              </button>
+
+              {/* Disconnect all */}
+              <button
+                onClick={() => {disconnectAll(); setdisconnectModalOpen(false)}}
+                className="w-full p-4 rounded-lg bg-[#291A43] hover:bg-[#342251] transition-colors"
+              >
+                <p>Disconnect All</p>
+              </button>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
       {/* Mobile Menu Overlay */}
-      <div 
+      <div
         className={`lg:hidden fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out ${
-          mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
-        } ${isDarkMode ? 'bg-[#09050E]' : 'bg-white'}`}
+          mobileMenuOpen ? "translate-y-0" : "-translate-y-full"
+        } ${isDarkMode ? "bg-[#09050E]" : "bg-white"}`}
       >
         <div className="flex flex-col h-full py-6 px-4 bg-[#21192F]">
           {/* Mobile Menu Header */}
-          <div className={`flex justify-between items-center p-6 border-b ${isDarkMode ? "border-[#1F1333]" : "border-[#1F1333]"}`}>
+          <div
+            className={`flex justify-between items-center p-6 border-b ${
+              isDarkMode ? "border-[#1F1333]" : "border-[#1F1333]"
+            }`}
+          >
             {/* Logo for mobile */}
-            <Link href='/'>
+            <Link href="/">
               <Image
                 src={isDarkMode ? Logo : Logo}
                 alt="ZeroxBridge Logo"
@@ -253,36 +360,54 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
                 className="object-contain"
               />
             </Link>
-            
+
             {/* Close button */}
             <button onClick={toggleMobileMenu}>
-              <X className={`${isDarkMode ? 'text-[#A26DFF]' : 'text-[#A26DFF]'}`} size={32} />
+              <X
+                className={`${
+                  isDarkMode ? "text-[#A26DFF]" : "text-[#A26DFF]"
+                }`}
+                size={32}
+              />
             </button>
           </div>
-          
+
           {/* Menu Content */}
           <div className="flex flex-col px-4 py-3 space-y-2 flex-1">
-            
             {/* Navigation Links */}
             <nav className="flex flex-col gap-3 ">
-              <Link href="" className={`block py-3 px-4  border-b border-[#A26DFF] ${isDarkMode ? 'text-white hover:bg-[#1F1333]' : 'text-white'}`}>
-              <span className="flex items-center w-full justify-between px-2 py-4">
-                <p>Search</p>
-                <SearchIcon className="text-white" size={24} />
-              </span>
-            
+              <Link
+                href=""
+                className={`block py-3 px-4  border-b border-[#A26DFF] ${
+                  isDarkMode ? "text-white hover:bg-[#1F1333]" : "text-white"
+                }`}
+              >
+                <span className="flex items-center w-full justify-between px-2 py-4">
+                  <p>Search</p>
+                  <SearchIcon className="text-white" size={24} />
+                </span>
               </Link>
-              <Link href="" className={`block py-3 px-4  border-b border-[#A26DFF]  ${isDarkMode ? 'text-white hover:bg-[#1F1333]' : 'text-white '}`}>
-              <span className="flex items-center w-full justify-between px-2 py-4">
-                <p>Notifications</p>
-                <Bell className="text-white" size={24} />
-              </span>
+              <Link
+                href=""
+                className={`block py-3 px-4  border-b border-[#A26DFF]  ${
+                  isDarkMode ? "text-white hover:bg-[#1F1333]" : "text-white "
+                }`}
+              >
+                <span className="flex items-center w-full justify-between px-2 py-4">
+                  <p>Notifications</p>
+                  <Bell className="text-white" size={24} />
+                </span>
               </Link>
-              <Link href="" className={`block py-3 px-4  ${isDarkMode ? 'text-white hover:bg-[#1F1333]' : 'text-white'}`}>
-              <span className="flex items-center w-full justify-between px-2 py-4">
-                <p>Settings</p>
-                <Settings className="text-white" size={24} />
-              </span>
+              <Link
+                href=""
+                className={`block py-3 px-4  ${
+                  isDarkMode ? "text-white hover:bg-[#1F1333]" : "text-white"
+                }`}
+              >
+                <span className="flex items-center w-full justify-between px-2 py-4">
+                  <p>Settings</p>
+                  <Settings className="text-white" size={24} />
+                </span>
               </Link>
             </nav>
           </div>

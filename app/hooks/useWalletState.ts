@@ -32,6 +32,8 @@ export const useWalletState = () => {
     isEthereumConnected,
     disconnectAll,
     getDisplayAddress,
+    disconnectEthereum,
+    disconnectStarknet,
     isAnyWalletConnected: isStarknetConnected || isEthereumConnected,
     isAllConnected: isStarknetConnected && isEthereumConnected
   };

@@ -100,15 +100,14 @@ const Index = () => {
     }
   };
 
-  const address = `0x${""}`;
+  const address1 = `0x${""}`;
 
   // Proper hook to read data from a Cairo function
   const {
     data: supplyRate,
-    isLoading,
     isError,
   } = useReadContract({
-    address: address, // Replace with actual contract address
+    address: address1, // Replace with actual contract address
     abi: [
       {
         // Define the ABI for the Cairo function
@@ -133,7 +132,7 @@ const Index = () => {
   };
 
   const { data: dynamic_Rate } = useReadContract({
-    address: address, // Replace with actual contract address
+    address: address1, // Replace with actual contract address
     abi: [
       {
         // Define the ABI for the Cairo function
