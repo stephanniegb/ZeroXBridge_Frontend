@@ -72,7 +72,7 @@ Then visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 ```bash
 /app
-  ├── components      → UI components (shared, modular)
+  ├── landing-v2      → UI(landing page)
   ├── dashboard       → Dashboard-related pages
   ├── governance      → Governance and voting pages
   ├── hooks           → Custom React hooks
