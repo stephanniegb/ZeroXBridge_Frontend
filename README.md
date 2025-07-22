@@ -1,40 +1,132 @@
- ## Roadmap: [Explore-Beyond-Innovations/ZeroXBridge-Roadmap](https://github.com/Explore-Beyond-Innovations/ZeroXBridge-Roadmap)
 
+---
 
+````md
+# ⚡ ZeroXBridge Frontend
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+> Decentralized cross-chain liquidity without bridging — powered by ZK on Starknet.
 
-## Getting Started
+ZeroXBridge is a trustless liquidity protocol that allows users to lock assets on Ethereum and instantly access liquidity on Starknet — without moving or wrapping assets. This is the frontend for the ZeroXBridge protocol, currently being redesigned from scratch in the `zero-x-v2` branch.
 
-First, run the development server:
+📍 **Roadmap:** [Explore-Beyond-Innovations/ZeroXBridge-Roadmap](https://github.com/Explore-Beyond-Innovations/ZeroXBridge-Roadmap)  
+💬 **Community Chat:** [Join us on Telegram](https://t.me/ZeroXBridge1)
+
+---
+
+## 🚀 Project Overview
+
+This project is built with [Next.js](https://nextjs.org) using the **App Router**, **TailwindCSS**, and **Framer Motion** for smooth animations. The `zero-x-v2` branch represents a complete landing page redesign — responsive for **mobile, desktop, and 4K screens**, based on our latest Figma spec.
+
+Contributions are welcome! If you'd like to help, check the open issues and reach out via [Telegram](https://t.me/ZeroXBridge1).
+
+---
+
+## 🛠️ Getting Started
+
+> You’ll need Node.js and npm (or pnpm/yarn/bun) installed.
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/Explore-Beyond-Innovations/ZeroXBridge_Frontend.git
+cd ZeroXBridge_Frontend
+````
+
+### 2. Checkout the redesign branch
+
+```bash
+git checkout zero-x-v2
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+# or
+yarn
+# or
+pnpm install
+# or
+bun install
+```
+
+### 4. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Tech Stack
 
-## Learn More
+* **Framework**: [Next.js 14+ (App Router)](https://nextjs.org/docs/app)
+* **Styling**: [TailwindCSS](https://tailwindcss.com/)
+* **Animation**: [Framer Motion](https://www.framer.com/motion/)
+* **Icons**: [Lucide](https://lucide.dev/)
+* **Design System**: [shadcn/ui](https://ui.shadcn.com/)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+/app/components              → Pages & routes (App Router)/→ UI components (shared, modular)
+     
+/public          → Static assets (logos, illustrations)
+/utils           → Helpers and utility functions
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Want to contribute to the `zero-x-v2` redesign?
+
+1. Check the [open issues](https://github.com/Explore-Beyond-Innovations/ZeroXBridge_Frontend/issues)
+2. Comment on the issue you'd like to work on
+3. Wait to be assigned before opening a PR
+
+When submitting your PR:
+
+```bash
+git checkout -b feat/your-feature
+# work on your changes
+git commit -m "feat: add [feature name]"
+git push origin feat/your-feature
+```
+
+Then open a PR to `zero-x-v2` and reference the issue ID:
+
+```md
+Closes #xx
+```
+
+---
+
+## 📦 Deployment
+
+We recommend deploying with [Vercel](https://vercel.com/) for optimal performance.
+
+---
+
+## 📣 Stay Connected
+
+Got a question? Want to suggest something? Join our growing community:
+
+👉 [t.me/ZeroXBridge1](https://t.me/ZeroXBridge1)
+
+---
+
+## 📄 License
+
+MIT — open-source and community-first.
+
+```
+
+---
+
+Would you like a shorter version for your GitHub project description too?
+```
