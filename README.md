@@ -2,7 +2,7 @@
 
 > Decentralized cross-chain liquidity without bridging — powered by ZK on Starknet.
 
-ZeroXBridge is a trustless liquidity protocol that allows users to lock assets on Ethereum and instantly access liquidity on Starknet — without moving or wrapping assets. This is the frontend for the ZeroXBridge protocol, currently being redesigned from scratch in the `zero-x-v2` branch.
+ZeroXBridge is a trustless liquidity protocol that allows users to lock assets on Ethereum and instantly access liquidity on Starknet — without bridging  assets. 
 
 📍 **Roadmap:** [Explore-Beyond-Innovations/ZeroXBridge-Roadmap](https://github.com/Explore-Beyond-Innovations/ZeroXBridge-Roadmap)  
 💬 **Community Chat:** [t.me/ZeroXBridge1](https://t.me/ZeroXBridge1)
