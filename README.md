@@ -76,7 +76,6 @@ Then visit [http://localhost:3000](http://localhost:3000) in your browser.
   ├── dashboard       → Dashboard-related pages
   ├── governance      → Governance and voting pages
   ├── hooks           → Custom React hooks
-  ├── lock-summary    → Collateral lock summary flow
   └── page.tsx        → Main landing entry (to be replaced in v2)
 
 /public               → Static assets (images, icons, fonts)
