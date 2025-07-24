@@ -173,7 +173,8 @@ body {
   50% {
     transform: scale(1.2);
     opacity: 1;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(162, 109, 255, 0.6);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+      0 0 20px rgba(162, 109, 255, 0.6);
   }
   100% {
     transform: scale(0.8);
@@ -183,13 +184,15 @@ body {
 }
 
 .shadow-glow {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(162, 109, 255, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+    0 0 20px rgba(162, 109, 255, 0.6);
 }
 
 /* Add this to your global CSS file */
 
 @keyframes glow {
-  0%, 100% {
+  0%,
+  100% {
     filter: brightness(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
   }
   20% {
@@ -219,4 +222,3 @@ img {
   outline: none !important;
   background: transparent !important;
 }
-

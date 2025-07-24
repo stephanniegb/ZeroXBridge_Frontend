@@ -10,20 +10,20 @@ const config: Config = {
   theme: {
     screens: {
       // Default breakpoints
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1172px',
-      'xl': '1280px',
-      '2xl': '1536px',
-      
+      sm: "640px",
+      md: "768px",
+      lg: "1172px",
+      xl: "1280px",
+      "2xl": "1536px",
+
       // Custom laptop breakpoints
-      'win-laptop': '1366px',    // Common Windows laptop (HD)
-      'win-laptop-lg': '1920px', // Windows laptop (Full HD)
-      'mac-13': '1280px',        // 13" MacBook
-      'mac-14': '1512px',        // 14" MacBook Pro
-      'mac-16': '1728px',        // 16" MacBook Pro
-      '4k': '2500px',
-      '4k-large': '3200px'
+      "win-laptop": "1366px", // Common Windows laptop (HD)
+      "win-laptop-lg": "1920px", // Windows laptop (Full HD)
+      "mac-13": "1280px", // 13" MacBook
+      "mac-14": "1512px", // 14" MacBook Pro
+      "mac-16": "1728px", // 16" MacBook Pro
+      "4k": "2500px",
+      "4k-large": "3200px",
     },
     extend: {
       colors: {
@@ -33,9 +33,9 @@ const config: Config = {
         purple: "var(--purple)",
         white: "var(--white)",
         "white-2": "var(--white-2)",
-        'dark-bg': 'rgba(9, 5, 14, 1)',
-        'white-style': 'rgba(139, 139, 139, 1)',
-        'custom-purple': 'rgba(162, 109, 255, 1)',
+        "dark-bg": "rgba(9, 5, 14, 1)",
+        "white-style": "rgba(139, 139, 139, 1)",
+        "custom-purple": "rgba(162, 109, 255, 1)",
       },
       backgroundImage: {
         "check-bg": "url('/check-bg.svg')",
@@ -58,45 +58,48 @@ const config: Config = {
         mono: ["var(--font-geist-mono)"],
         manrope: ["var(--font-manrope)"],
         "roboto-serif": ["var(--font-roboto-serif)"],
+        inter: ["var(--font-inter)"],
       },
       boxShadow: {
         "custom-purple": "0 0 4px 2px rgba(162, 109, 255, 0.25)",
-        "glow": "0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(162, 109, 255, 0.6)",
+        glow: "0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(162, 109, 255, 0.6)",
       },
       animation: {
         slowSpin: "spin 3s linear infinite",
-        spinSlow: 'spin 20s linear infinite',
-        glowSlow: 'glow 4s cubic-bezier(0.6, 0.8, 0.6, 1) infinite',
+        spinSlow: "spin 20s linear infinite",
+        glowSlow: "glow 4s cubic-bezier(0.6, 0.8, 0.6, 1) infinite",
       },
       keyframes: {
         glow: {
-          '0%, 100%': { 
-            filter: 'brightness(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.3))'
+          "0%, 100%": {
+            filter:
+              "brightness(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.3))",
           },
-          '50%': { 
-            filter: 'brightness(1.3) drop-shadow(0 0 8px rgba(255, 255, 255, 0.7))'
+          "50%": {
+            filter:
+              "brightness(1.3) drop-shadow(0 0 8px rgba(255, 255, 255, 0.7))",
           },
         },
         pulse: {
-          '0%': { 
-            transform: 'scale(0.8)',
-            opacity: '0',
-            boxShadow: '0 0 0 0 rgba(162, 109, 255, 0.7)'
+          "0%": {
+            transform: "scale(0.8)",
+            opacity: "0",
+            boxShadow: "0 0 0 0 rgba(162, 109, 255, 0.7)",
           },
-          '50%': { 
-            transform: 'scale(1.2)',
-            opacity: '1',
-            boxShadow: '0 0 0 10px rgba(162, 109, 255, 0)'
+          "50%": {
+            transform: "scale(1.2)",
+            opacity: "1",
+            boxShadow: "0 0 0 10px rgba(162, 109, 255, 0)",
           },
-          '100%': { 
-            transform: 'scale(0.8)',
-            opacity: '0',
-            boxShadow: '0 0 0 0 rgba(162, 109, 255, 0)'
+          "100%": {
+            transform: "scale(0.8)",
+            opacity: "0",
+            boxShadow: "0 0 0 0 rgba(162, 109, 255, 0)",
           },
         },
       },
       scale: {
-        150: "1.5", 
+        150: "1.5",
       },
       transform: ["responsive", "hover", "focus"],
     },

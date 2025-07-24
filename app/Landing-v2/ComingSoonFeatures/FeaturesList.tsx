@@ -37,8 +37,7 @@ const features = [
   },
 ];
 
-
-const FeatureCard = ({ feature }: { feature: typeof features[number] }) => {
+const FeatureCard = ({ feature }: { feature: (typeof features)[number] }) => {
   const controls = useAnimation();
   const bgControls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -52,7 +51,6 @@ const FeatureCard = ({ feature }: { feature: typeof features[number] }) => {
     mediaQuery.addEventListener("change", updateScreenSize);
     return () => mediaQuery.removeEventListener("change", updateScreenSize);
   }, []);
-
 
   useEffect(() => {
     if (!isLargeScreen) return;
@@ -124,7 +122,10 @@ const FeatureCard = ({ feature }: { feature: typeof features[number] }) => {
       </div>
 
       <motion.div
-        initial={{ y: isLargeScreen ? -100 : 0, opacity: isLargeScreen ? 0 : 1 }}
+        initial={{
+          y: isLargeScreen ? -100 : 0,
+          opacity: isLargeScreen ? 0 : 1,
+        }}
         animate={controls}
         className="bg-[#131313] h-[60px] w-[60px] lg:w-[165.17px] lg:h-[165.17px] rounded-[5.2px] flex lg:hidden  lg:group-hover:flex lg:absolute lg:left-[33%] lg:-top-[20%] lg:rotate-2"
       >
