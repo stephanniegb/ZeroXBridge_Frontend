@@ -50,6 +50,7 @@ const config: Config = {
           "linear-gradient(90deg, rgba(6,6,6,0.01) 0%, rgba(154,128,207,0.01) 49%, rgba(4,1,8,1) 100%)",
         "gradient-card":
           "linear-gradient(135deg, rgba(162, 109, 255, 0.25), rgba(72, 61, 139, 0.5))",
+        "gradient-pink": "linear-gradient(90deg, #FF779A 50%, #99485D 86.57%)",
         "grid-pattern": "url('/small-grid.svg')",
         "grid-pattern-2": "url('/large-grid.svg')",
       },
@@ -68,6 +69,7 @@ const config: Config = {
         slowSpin: "spin 3s linear infinite",
         spinSlow: "spin 20s linear infinite",
         glowSlow: "glow 4s cubic-bezier(0.6, 0.8, 0.6, 1) infinite",
+        jiggle: "jiggle 0.4s ease-in-out",
       },
       keyframes: {
         glow: {
@@ -79,6 +81,13 @@ const config: Config = {
             filter:
               "brightness(1.3) drop-shadow(0 0 8px rgba(255, 255, 255, 0.7))",
           },
+        },
+        jiggle: {
+          "0%": { transform: "translateX(0)" },
+          "25%": { transform: "translateX(-3px)" },
+          "50%": { transform: "translateX(3px)" },
+          "75%": { transform: "translateX(-2px)" },
+          "100%": { transform: "translateX(0)" },
         },
         pulse: {
           "0%": {

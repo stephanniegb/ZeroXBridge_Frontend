@@ -2,6 +2,7 @@ import Image from "next/image";
 import Navbar from "./Navbar";
 import HeroBg from "./HeroBg";
 import ArrowIcon from "@/app/components/ui/ArrowIcon";
+import GradientText from "../../components/ui/GradientText";
 
 const Hero = () => {
   return (
@@ -10,7 +11,8 @@ const Hero = () => {
         <Navbar />
         <div className="flex flex-col gap-4 mt-[clamp(100px,10dvh,150px)] max-w-[478px] mx-auto ">
           <h1 className="text-4xl ">
-            Secure Cross-Chain Liquidity with Zero-Knowledge Proofs
+            Secure <GradientText>Cross-Chain</GradientText> Liquidity with
+            Zero-Knowledge Proofs
           </h1>
           <p className="">
             Unlock liquidity on Starknet using ZK,{" "}
@@ -28,6 +30,7 @@ const Hero = () => {
         </div>
       </div>
       <HeroBg />
+      background: linear-gradient(90deg, #FF779A 50%, #99485D 86.57%);
     </div>
   );
 };
