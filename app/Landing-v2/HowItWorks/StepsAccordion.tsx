@@ -58,7 +58,7 @@ const StepsAccordion = () => {
                 {step.id}
               </div>
               <span
-                className={`text-white text-[1em] font-[300]  font-inter  ${
+                className={`text-white font-[300]  font-inter  ${
                   step.id === openStep ? "text-white" : "text-[#626263]"
                 }`}
               >
@@ -73,7 +73,7 @@ const StepsAccordion = () => {
                 : "max-h-0 h-0 opacity-0"
             }`}
           >
-            <div className="px-6 py-4  text-sm 2xl:text-[1em]">
+            <div className="px-6 py-4  text-sm">
               <AutoFadeTextWrapper>{step.description}</AutoFadeTextWrapper>
             </div>
           </div>

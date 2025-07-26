@@ -168,12 +168,8 @@ function AnimatedCard({
               : ""
           }`}
         >
-          <h2 className="text-[19.78px] 2xl:text-[24px] font-[400] ">
-            {card.title}
-          </h2>
-          <p className="text-[12px] lg:text-[14px] 2xl:text-[16px] font-[300] ">
-            {card.description}
-          </p>
+          <h2 className="font-[400] ">{card.title}</h2>
+          <p className="font-[300] ">{card.description}</p>
         </div>
         <motion.div
           className={`w-full h-full relative opacity-40 group-hover:opacity-100 ${
@@ -205,7 +201,7 @@ const InsideZeroX = () => {
     <div className="w-fit px-2 2xl:px-[40px] h-fit py-4 flex flex-col gap-4 items-center mx-auto">
       <AutoFadeTextWrapper
         as="h2"
-        className="font-mono font-[500] text-[14px]  self-start px-2 uppercase"
+        className="font-mono text-sm font-[500] mb-6  self-start px-2 uppercase"
       >
         Inside ZeroXBridge
       </AutoFadeTextWrapper>

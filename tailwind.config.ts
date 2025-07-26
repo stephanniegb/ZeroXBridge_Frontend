@@ -15,6 +15,8 @@ const config: Config = {
       lg: "1172px",
       xl: "1280px",
       "2xl": "1536px",
+      "3xl": "1920px",
+      "4xl": "2560px",
 
       // Custom laptop breakpoints
       "win-laptop": "1366px", // Common Windows laptop (HD)

@@ -8,7 +8,7 @@ import { HowItWorks } from "./Landing-v2/HowItWorks";
 
 const Page = () => {
   return (
-    <div className="w-full min-h-screen h-full bg-[#0a0a0a]  flex flex-col items-center">
+    <div className="w-full min-h-screen h-full bg-[#0a0a0a] flex flex-col items-center">
       <Hero />
       <div className="bg-[#0A0A0A] w-full relative z-10">
         <ZeroXPosition />

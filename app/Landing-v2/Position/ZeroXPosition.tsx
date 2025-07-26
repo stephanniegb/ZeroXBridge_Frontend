@@ -15,7 +15,7 @@ const ZeroXPosition = () => {
           </AutoFadeTextWrapper>
         </GradientWrapper>
 
-        <AutoFadeTextWrapper className="tracking-tight text-[1em] font-[300]  font-inter">
+        <AutoFadeTextWrapper className="tracking-tight font-[300]  font-inter">
           ZeroXBridge is a decentralized protocol that unlocks cross-chain
           liquidity without requiring users to bridge or move their original
           assets across chains. Instead of bridging assets, users lock ETH
@@ -41,12 +41,12 @@ const ZeroXPosition = () => {
           locked on Ethereum.
         </AutoFadeTextWrapper>
 
-        <AutoFadeTextWrapper className="tracking-tight text-[1em] font-[300]  font-inter">
+        <AutoFadeTextWrapper className="tracking-tight font-[300]  font-inter">
           xZB can be used across DeFi applications on Starknet — including
           lending, trading, and staking (LSTs) — all without moving your
           original assets from L1 or depending on centralized bridges.
         </AutoFadeTextWrapper>
-        <AutoFadeTextWrapper className="tracking-tight text-[1em] font-[300]  font-inter">
+        <AutoFadeTextWrapper className="tracking-tight font-[300]  font-inter">
           Zero-knowledge proofs (ZKPs) are used to verify that a deposit was
           made on Ethereum — without revealing user data or bridging L1 assets.
           This allows Starknet to trustlessly mint xZB, enabling secure and
