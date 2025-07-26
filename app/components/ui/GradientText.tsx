@@ -9,7 +9,7 @@ const GradientText: React.FC<GradientTextProps> = ({
 }) => {
   return (
     <span
-      className={`bg-[url('/border.png')] bg-cover bg-no-repeat bg-center bg-clip-text text-transparent ${className}`}
+      className={`bg-[url('/border.svg')] bg-cover bg-no-repeat bg-center bg-clip-text text-transparent ${className}`}
     >
       {children}
     </span>

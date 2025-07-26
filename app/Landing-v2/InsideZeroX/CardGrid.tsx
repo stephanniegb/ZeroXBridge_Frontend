@@ -136,8 +136,8 @@ function AnimatedCard({
       className={`${
         card.containerstyling
       } flex flex-col items-center justify-center bg-center rounded-[16px] overflow-none ${
-        isActive ? 'bg-[url("/border.png")]' : "bg-none"
-      } hover:bg-[url("/border.png")]`}
+        isActive ? 'bg-[url("/border.svg")]' : "bg-none"
+      } hover:bg-[url("/border.svg")]`}
       onHoverStart={() => {
         controls.start({
           scale: 1.05,

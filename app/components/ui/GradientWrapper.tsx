@@ -9,7 +9,7 @@ const GradientWrapper: React.FC<GradientWrapperProps> = ({
 }) => {
   return (
     <div
-      className={`bg-[url('/border.png')] bg-center bg-cover bg-no-repeat p-[1px] inline-block ${className}`}
+      className={`bg-[url('/border.svg')] bg-center bg-cover bg-no-repeat p-[1px] inline-block ${className}`}
     >
       {children}
     </div>
