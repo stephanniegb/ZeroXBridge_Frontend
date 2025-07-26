@@ -7,7 +7,7 @@ import GradientText from "../../components/ui/GradientText";
 const Hero = () => {
   return (
     <div className="h-[100dvh] relative w-full">
-      <div className="relative  h-full z-10">
+      <div className="relative   z-10">
         <Navbar />
         <div className="flex flex-col  gap-4 mt-[clamp(100px,10dvh,150px)] 2xl:mt-[15vh]  max-w-[478px] mx-auto 2xl:max-w-[500px] 3xl:max-w-[650px]  4xl:max-w-[750px]">
           <h1 className="">
@@ -29,14 +29,22 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="h-[100%] z-[2] mx-auto absolute  left-1/2  top-[50%]  -translate-x-1/2 w-full bottom-0  mix-blend-lighten">
+      <div className="h-[100%] z-[2] mx-auto absolute left-1/2  top-[50%]  -translate-x-1/2 w-full bottom-0 mix-blend-lighten group">
         <Image
           src="/bridge-xl.png"
           alt="hero-bg"
           width={3840}
           height={2095}
           priority
-          className="object-center -translate-y-[25%] object-contain"
+          className="object-center absolute inset-0 -translate-y-[25%] object-contain"
+        />
+        <Image
+          src="/bridge-xl-animated.png"
+          alt="hero-bg"
+          width={3840}
+          height={2095}
+          priority
+          className="object-center absolute inset-0 -translate-y-[25%] object-contain opacity-0 group-hover:opacity-100 transition-[opacity] duration-300"
         />
       </div>
 

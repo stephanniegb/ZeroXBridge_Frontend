@@ -8,7 +8,7 @@ interface Step {
 }
 
 const StepsAccordion = () => {
-  const [openStep, setOpenStep] = useState<number | null>(0);
+  const [openStep, setOpenStep] = useState<number | null>(1);
 
   const steps: Step[] = [
     {
