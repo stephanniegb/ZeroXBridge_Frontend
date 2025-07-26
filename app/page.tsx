@@ -10,7 +10,7 @@ const Page = () => {
   return (
     <div className="w-full min-h-screen h-full bg-[#0a0a0a]  flex flex-col items-center">
       <Hero />
-      <div className="bg-[#0A0A0A] relative z-10">
+      <div className="bg-[#0A0A0A] w-full relative z-10">
         <ZeroXPosition />
         <HowItWorks />
         <InsideZeroX />

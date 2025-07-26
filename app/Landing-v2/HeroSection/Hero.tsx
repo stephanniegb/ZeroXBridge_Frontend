@@ -6,10 +6,10 @@ import GradientText from "../../components/ui/GradientText";
 
 const Hero = () => {
   return (
-    <div className="h-[100dvh] w-full">
+    <div className="h-[100dvh] relative w-full">
       <div className="relative  h-full z-10">
         <Navbar />
-        <div className="flex flex-col gap-4 mt-[clamp(100px,10dvh,150px)] max-w-[478px] mx-auto ">
+        <div className="flex flex-col  gap-4 mt-[clamp(100px,10dvh,150px)] 2xl:mt-[15vh]  max-w-[478px] mx-auto ">
           <h1 className="text-4xl ">
             Secure <GradientText>Cross-Chain</GradientText> Liquidity with
             Zero-Knowledge Proofs
@@ -29,8 +29,10 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      <div className="h-[60%] z-[2] mx-auto absolute left-1/2 -translate-x-1/2 w-full bottom-0 mt-auto mix-blend-lighten">
+        <Image src="/bridge-lg.png" alt="hero-bg" fill priority />
+      </div>
       <HeroBg />
-      background: linear-gradient(90deg, #FF779A 50%, #99485D 86.57%);
     </div>
   );
 };
