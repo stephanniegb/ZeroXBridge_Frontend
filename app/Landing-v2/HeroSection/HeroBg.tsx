@@ -6,7 +6,7 @@ const HeroBg = () => {
         backgroundImage: "url('/star-noise.png')",
         backgroundSize: "600px 600px",
         backgroundPosition: "center",
-        opacity: 0.8,
+        opacity: 0.5,
       }}
     >
       <div className="absolute top-0 left-0 w-full h-full bg-[url('/hero-2.svg')] bg-cover opacity-10 bg-no-repeat bg-center" />
