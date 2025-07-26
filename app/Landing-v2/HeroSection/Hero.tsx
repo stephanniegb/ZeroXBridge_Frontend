@@ -29,21 +29,18 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="h-[100%] z-[2] mx-auto absolute  left-1/2  top-[35%]  -translate-x-1/2 w-full bottom-0  mix-blend-lighten">
+      <div className="h-[100%] z-[2] mx-auto absolute  left-1/2  top-[50%]  -translate-x-1/2 w-full bottom-0  mix-blend-lighten">
         <Image
-          src="/1.png"
+          src="/bridge-xl.png"
           alt="hero-bg"
-          width={1720}
-          height={938}
-          // fill
+          width={3840}
+          height={2095}
           priority
-          className="object-center object-contain 3xl:hidden"
+          className="object-center -translate-y-[25%] object-contain"
         />
       </div>
 
       <HeroBg />
-      {/* <div className="absolute w-full h-[80%] bottom-0 bg-[url('/bridge-xl.png')] bg-cover bg-top bg-no-repeat" /> */}
-      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-10" /> */}
     </div>
   );
 };
