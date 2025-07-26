@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
+import ScrollProvider from "@/providers/ScrollProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,7 +52,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable}  ${geistMono.variable} ${manrope.variable} ${robotoSerif.variable} ${badScript.variable} antialiased bg-[#09050E] h-full`}
       >
-        {children}
+        <ScrollProvider>{children}</ScrollProvider>
       </body>
     </html>
   );

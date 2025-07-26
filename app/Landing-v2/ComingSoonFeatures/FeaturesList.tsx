@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import GradientWrapper from "@/app/components/ui/GradientWrapper";
+import { AutoFadeTextWrapper } from "@/app/components/AutoFadeTextWrapper";
 
 const features = [
   {
@@ -114,12 +115,12 @@ const FeatureCard = ({ feature }: { feature: (typeof features)[number] }) => {
       className="flex flex-row gap-4 justify-between items-start border-b border-[#131314] text-[#B2B2B2] pb-[40px] px-1 text-start relative group"
     >
       <div className="flex flex-col lg:flex-row w-full items-center justify-between gap-4 lg:px-[30px] lg:py-2">
-        <p className="w-full md:w-[400px] font-[400] text-[20px] 2xl:w-[800px] 2xl:text-[37px] tracking-[-2px] ">
+        <AutoFadeTextWrapper className="w-full md:w-[400px] font-[400] text-[20px] 2xl:w-[800px] 2xl:text-[37px] tracking-[-2px] ">
           {feature.title}
-        </p>
-        <p className="w-full lg:max-w-[50%] 2xl:w-[1200px] font-[300] text-[14px] md:text-[16px] 2xl:text-[24px]">
+        </AutoFadeTextWrapper>
+        <AutoFadeTextWrapper className="w-full lg:max-w-[50%] 2xl:w-[1200px] font-[300] text-[14px] md:text-[16px] 2xl:text-[24px]">
           {feature.description}
-        </p>
+        </AutoFadeTextWrapper>
       </div>
 
       <motion.div
@@ -147,14 +148,17 @@ const FeatureCard = ({ feature }: { feature: (typeof features)[number] }) => {
 const FeaturesList = () => {
   return (
     <div className="w-full px-2 md:px-[40px] lg:px-4 xl:w-full h-fit py-4 flex flex-col gap-6 2xl:gap-12 items-center mx-auto my-[10rem]">
-      <h2 className="font-mono font-[500] text-[14px] 2xl:text-[32px] text-[#A6A6A7] self-start px-2 uppercase lg:pl-[40px] ">
+      <AutoFadeTextWrapper
+        as="h2"
+        className="font-mono font-[500] text-[14px] 2xl:text-[32px]  self-start px-2 uppercase lg:pl-[40px] "
+      >
         Inside ZeroXBridge{" "}
         <GradientWrapper className="w-fit h-fit rounded-full">
           <span className="uppercase inline-block py-1 px-2 rounded-full w-fit bg-[#19191A] ">
             Coming Soon
           </span>
         </GradientWrapper>
-      </h2>
+      </AutoFadeTextWrapper>
 
       <div className="flex flex-col h-full gap-[16px] 2xl:gap-[24px] w-full px-4 2xl:px-0 relative">
         {features.map((feature, idx) => (

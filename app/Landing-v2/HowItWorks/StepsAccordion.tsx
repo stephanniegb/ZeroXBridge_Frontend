@@ -1,3 +1,4 @@
+import { AutoFadeTextWrapper } from "@/app/components/AutoFadeTextWrapper";
 import { useState } from "react";
 
 interface Step {
@@ -61,7 +62,7 @@ const StepsAccordion = () => {
                   step.id === openStep ? "text-white" : "text-[#626263]"
                 }`}
               >
-                {step.title}
+                <AutoFadeTextWrapper>{step.title}</AutoFadeTextWrapper>
               </span>
             </div>
           </button>
@@ -72,8 +73,8 @@ const StepsAccordion = () => {
                 : "max-h-0 h-0 opacity-0"
             }`}
           >
-            <div className="px-6 py-4 text-gray-300 text-sm 2xl:text-[1em]">
-              {step.description}
+            <div className="px-6 py-4  text-sm 2xl:text-[1em]">
+              <AutoFadeTextWrapper>{step.description}</AutoFadeTextWrapper>
             </div>
           </div>
         </div>

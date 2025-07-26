@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { AutoFadeTextWrapper } from "@/app/components/AutoFadeTextWrapper";
 
 const cardData = [
   {
@@ -83,7 +84,7 @@ function AnimatedCard({
 
   const { ref, inView } = useInView({
     threshold: 0.2,
-    triggerOnce: false,
+    triggerOnce: true,
     rootMargin: "-5px 10px",
   });
 
@@ -98,10 +99,8 @@ function AnimatedCard({
   // Trigger animation when in view (for mobile/scroll)
   useEffect(() => {
     if (inView) {
-      // On mobile, activate hover effects when in view
-      if (isMobile) {
-        setIsActive(true);
-      }
+      // Activate hover effects when in view for both mobile and desktop
+      setIsActive(true);
       controls.start({
         scale: 1,
         opacity: 1,
@@ -114,9 +113,7 @@ function AnimatedCard({
         },
       });
     } else {
-      if (isMobile) {
-        setIsActive(false);
-      }
+      setIsActive(false);
       controls.start({
         scale: 0.95,
         opacity: 1,
@@ -126,18 +123,14 @@ function AnimatedCard({
         },
       });
     }
-  }, [inView, controls, index, isMobile]);
+  }, [inView, controls, index]);
 
   return (
     <motion.div
       ref={ref}
       initial={{ scale: 0.9, opacity: 0, y: 50 }}
       animate={controls}
-      className={`${
-        card.containerstyling
-      } flex flex-col items-center justify-center bg-center rounded-[16px] overflow-none ${
-        isActive ? 'bg-[url("/border.svg")]' : "bg-none"
-      } hover:bg-[url("/border.svg")]`}
+      className={`${card.containerstyling} flex flex-col items-center justify-center bg-center rounded-[16px] overflow-none hover:bg-[url("/border.svg")]`}
       onHoverStart={() => {
         controls.start({
           scale: 1.05,
@@ -210,9 +203,12 @@ function AnimatedCard({
 const InsideZeroX = () => {
   return (
     <div className="w-fit px-2 2xl:px-[40px] h-fit py-4 flex flex-col gap-4 items-center mx-auto">
-      <h2 className="font-mono font-[500] text-[14px] text-[#A6A6A7] self-start px-2 uppercase">
+      <AutoFadeTextWrapper
+        as="h2"
+        className="font-mono font-[500] text-[14px]  self-start px-2 uppercase"
+      >
         Inside ZeroXBridge
-      </h2>
+      </AutoFadeTextWrapper>
       <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-row lg:flex-wrap 2xl:flex-row h-full gap-[16px] 2xl:gap-[24px] w-full  relative">
         {cardData.map((card, idx) => (
           <AnimatedCard key={idx} card={card} index={idx} />

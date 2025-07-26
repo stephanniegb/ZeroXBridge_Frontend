@@ -45,6 +45,11 @@
   }
 }
 
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
 /* Base Styles */
 body {
   color: var(--foreground);

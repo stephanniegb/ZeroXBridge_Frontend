@@ -1,16 +1,14 @@
-'use client'
+"use client";
 
 import { InsideZeroX } from "./InsideZeroX";
 import { FeaturesList } from "./ComingSoonFeatures";
 
-
- const Page = () => {
-return(
+const Page = () => {
+  return (
     <div className="w-full min-h-screen h-full bg-[#0a0a0a] px-4 py-8 flex flex-col items-center ">
-    <InsideZeroX />
-    <FeaturesList />
+      <InsideZeroX />
+      <FeaturesList />
     </div>
-)
-}
-
-export default Page
+  );
+};
+export default Page;
