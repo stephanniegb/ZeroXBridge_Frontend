@@ -31,7 +31,7 @@ const Navbar = () => {
             <Link href="#">X/Twitter</Link>
           </li>
         </ul>
-        <button className="bg-white  rounded-full text-black px-3 py-1.5 flex items-center gap-2">
+        <button className="bg-white text-base  rounded-full text-black px-3 py-1.5 flex items-center gap-2">
           Launch App
           <ArrowIcon direction="right" />
         </button>
