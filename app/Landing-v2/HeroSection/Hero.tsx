@@ -29,7 +29,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="h-[100%] z-[2]  mx-auto absolute left-1/2  top-[50%]  -translate-x-1/2 w-full bottom-0 mix-blend-lighten group">
+      <div className="h-[100%] z-[2] scale-[1.17] mx-auto absolute left-1/2 top-[65%]  3xl:top-[50%] 3xl:scale-100  -translate-x-1/2 w-full bottom-0 mix-blend-lighten group">
         <Image
           src="/bridge-xl.png"
           alt="hero-bg"
