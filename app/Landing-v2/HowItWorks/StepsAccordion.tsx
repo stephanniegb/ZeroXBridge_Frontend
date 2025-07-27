@@ -38,16 +38,22 @@ const StepsAccordion = () => {
   ];
 
   const toggleStep = (stepId: number) => {
-    setOpenStep(openStep === stepId ? null : stepId);
+    // Only allow opening a step, not closing the currently open one
+    setOpenStep(stepId);
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 h-full flex flex-col">
       {steps.map((step) => (
-        <div key={step.id} className="overflow-hidden">
+        <div
+          key={step.id}
+          className={`overflow-hidden flex flex-col ${
+            openStep === step.id ? "flex-1" : ""
+          }`}
+        >
           <button
             onClick={() => toggleStep(step.id)}
-            className="w-full border-t border-[#1D1D1E] px-1 pt-6 pb-3 text-left transition-colors duration-200 flex items-center justify-between"
+            className="w-full border-t border-[#1D1D1E] px-1 pt-6 pb-3 text-left transition-colors duration-200 flex items-center justify-between flex-shrink-0"
           >
             <div className="flex items-center space-x-4">
               <div
@@ -69,11 +75,11 @@ const StepsAccordion = () => {
           <div
             className={`overflow-hidden transition-all flex items-end duration-300 ease-in-out ${
               openStep === step.id
-                ? "max-h-80 h-32 opacity-100"
+                ? "opacity-100 flex-1"
                 : "max-h-0 h-0 opacity-0"
             }`}
           >
-            <div className="px-6 py-4  text-sm">
+            <div className="px-6 py-4 text-sm">
               <AutoFadeTextWrapper>{step.description}</AutoFadeTextWrapper>
             </div>
           </div>

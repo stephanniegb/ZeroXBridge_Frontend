@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { AutoFadeTextWrapper } from "@/app/components/AutoFadeTextWrapper";
 
 const cardData = [
   {
@@ -84,7 +83,7 @@ function AnimatedCard({
 
   const { ref, inView } = useInView({
     threshold: 0.2,
-    triggerOnce: true,
+    triggerOnce: false,
     rootMargin: "-5px 10px",
   });
 
@@ -99,8 +98,10 @@ function AnimatedCard({
   // Trigger animation when in view (for mobile/scroll)
   useEffect(() => {
     if (inView) {
-      // Activate hover effects when in view for both mobile and desktop
-      setIsActive(true);
+      // On mobile, activate hover effects when in view
+      if (isMobile) {
+        setIsActive(true);
+      }
       controls.start({
         scale: 1,
         opacity: 1,
@@ -113,7 +114,9 @@ function AnimatedCard({
         },
       });
     } else {
-      setIsActive(false);
+      if (isMobile) {
+        setIsActive(false);
+      }
       controls.start({
         scale: 0.95,
         opacity: 1,
@@ -123,14 +126,18 @@ function AnimatedCard({
         },
       });
     }
-  }, [inView, controls, index]);
+  }, [inView, controls, index, isMobile]);
 
   return (
     <motion.div
       ref={ref}
       initial={{ scale: 0.9, opacity: 0, y: 50 }}
       animate={controls}
-      className={`${card.containerstyling} flex flex-col items-center justify-center bg-center rounded-[16px] overflow-none hover:bg-[url("/border.svg")]`}
+      className={`${
+        card.containerstyling
+      } flex flex-col items-center bg-center justify-center  rounded-[16px] overflow-none ${
+        isActive ? 'bg-[url("/border.svg")]' : "bg-none"
+      } hover:bg-[url("/border.svg")]`}
       onHoverStart={() => {
         controls.start({
           scale: 1.05,
@@ -168,8 +175,12 @@ function AnimatedCard({
               : ""
           }`}
         >
-          <h2 className="font-[400] ">{card.title}</h2>
-          <p className="font-[300] ">{card.description}</p>
+          <h2 className="text-[19.78px] 2xl:text-[24px] font-[400] ">
+            {card.title}
+          </h2>
+          <p className="text-[12px] lg:text-[14px] 2xl:text-[16px] font-[300] ">
+            {card.description}
+          </p>
         </div>
         <motion.div
           className={`w-full h-full relative opacity-40 group-hover:opacity-100 ${
@@ -199,12 +210,9 @@ function AnimatedCard({
 const InsideZeroX = () => {
   return (
     <div className="w-fit px-2 2xl:px-[40px] h-fit py-4 flex flex-col gap-4 items-center mx-auto">
-      <AutoFadeTextWrapper
-        as="h2"
-        className="font-mono text-sm font-[500] mb-6  self-start px-2 uppercase"
-      >
+      <h2 className="font-mono font-[500] text-[14px] text-[#A6A6A7] self-start px-2 uppercase">
         Inside ZeroXBridge
-      </AutoFadeTextWrapper>
+      </h2>
       <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-row lg:flex-wrap 2xl:flex-row h-full gap-[16px] 2xl:gap-[24px] w-full  relative">
         {cardData.map((card, idx) => (
           <AnimatedCard key={idx} card={card} index={idx} />

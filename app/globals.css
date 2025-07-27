@@ -238,47 +238,25 @@ p {
   p,
   body {
     font-size: 1rem /* 16px */;
-    line-height: 1.5rem /* 24px */;
+    line-height: 1.5rem /* 18px */;
   }
 
   h1 {
-    font-size: 2.25rem /* 36px */;
-    line-height: 2.5rem /* 40px */;
-  }
-
-  h2 {
-    font-size: 1.5rem /* 24px */;
-    line-height: 2rem /* 32px */;
+    font-size: 3rem /* 48px */;
+    line-height: 106% /* 50.88px */;
   }
 }
 
 @media (min-width: 1920px) {
   body,
   p {
-    font-size: 1.125rem; /* 18px */
-    line-height: 1.75rem; /* 28px */
+    font-size: 1.5rem; /* 24px */
+    line-height: 112%; /* 26.88px */
     letter-spacing: -0.25px;
   }
 
   h1 {
-    font-size: 3rem; /* 48px */
-    line-height: 1.2; /* 57.6px if calculated */
-  }
-
-  h2 {
-    font-size: 2rem; /* 32px */
-    line-height: 2.5rem; /* 40px */
-  }
-}
-
-@media (min-width: 2560px) {
-  h1 {
-    font-size: 3.5rem; /* 56px */
-    line-height: 1.2;
-  }
-
-  h2 {
-    font-size: 2.25rem; /* 36px */
-    line-height: 2.75rem;
+    font-size: 4rem; /* 64px */
+    line-height: 106%; /* 57.6px */
   }
 }

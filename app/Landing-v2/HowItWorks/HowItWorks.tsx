@@ -4,19 +4,21 @@ import { AutoFadeTextWrapper } from "@/app/components/AutoFadeTextWrapper";
 
 const Steps = () => {
   return (
-    <div className="container max-w-[1200px] bg-[#0A0A0A] mx-auto py-16">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div>
+    <div className="mx-auto px-24 py-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-[463px] 3xl:h-[983px] ">
+        <div className="flex flex-col h-full">
           <AutoFadeTextWrapper
             as="h2"
-            className="font-mono text-sm font-[500] mb-10  uppercase"
+            className="font-mono text-sm font-[500] mb-5 uppercase flex-shrink-0"
           >
             How it works
           </AutoFadeTextWrapper>
 
-          <StepsAccordion />
+          <div className="flex-1">
+            <StepsAccordion />
+          </div>
         </div>
-        <div className=" w-full h-[350px]  relative rounded-lg overflow-hidden">
+        <div className=" w-full h-full bg-[#161616]  relative rounded-lg overflow-hidden">
           <Image
             src="/how-it-works.png"
             alt="how-it-works"

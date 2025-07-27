@@ -4,14 +4,14 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <header className="justify-between  py-4 items-center flex w-full max-w-[1440px] mx-auto px-4">
+    <header className="justify-between  py-4 items-center flex w-full  mx-auto px-[clamp(16px,5vw,80px)] 3xl:px-[18.75rem]">
       <div className="w-12 h-12 flex items-center justify-center">
         <Link href="/">
           <Image src="/logo.png" alt="logo" width={100} height={100} />
         </Link>
       </div>
-      <nav className="flex items-center gap-4">
-        <ul className="flex items-center gap-4">
+      <nav className="flex items-center gap-6">
+        <ul className="flex items-center gap-6">
           <li>
             <Link href="#">App</Link>
           </li>

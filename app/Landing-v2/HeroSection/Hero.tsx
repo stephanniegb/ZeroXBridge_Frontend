@@ -9,7 +9,7 @@ const Hero = () => {
     <div className="h-[100dvh] relative w-full">
       <div className="relative   z-10">
         <Navbar />
-        <div className="flex flex-col  gap-4 mt-[clamp(100px,10dvh,150px)] 2xl:mt-[15vh]  max-w-[478px] mx-auto 2xl:max-w-[500px] 3xl:max-w-[650px]  4xl:max-w-[750px]">
+        <div className="flex flex-col  gap-4 mt-[clamp(100px,10dvh,150px)] 2xl:mt-[15vh]  max-w-[632px] mx-auto 2xl:max-w-[500px] 3xl:max-w-[650px]  4xl:max-w-[850px]">
           <h1 className="">
             Secure <GradientText>Cross-Chain</GradientText> Liquidity with
             Zero-Knowledge Proofs
@@ -29,7 +29,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="h-[100%] z-[2] mx-auto absolute left-1/2  top-[50%]  -translate-x-1/2 w-full bottom-0 mix-blend-lighten group">
+      <div className="h-[100%] z-[2]  mx-auto absolute left-1/2  top-[50%]  -translate-x-1/2 w-full bottom-0 mix-blend-lighten group">
         <Image
           src="/bridge-xl.png"
           alt="hero-bg"
